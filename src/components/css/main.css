@@ -1,0 +1,18 @@
+.mainBody {
+    padding-top: 70px;
+  }
+
+  .add{
+    position: fixed;
+width: 100%;
+
+margin:  auto; /* Will not center vertically and won't work in IE6/7. */
+z-index: 3;
+  }
+
+  .cat-choose{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+    margin: auto;
+  }

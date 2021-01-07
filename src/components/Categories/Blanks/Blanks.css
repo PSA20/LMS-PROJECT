@@ -1,0 +1,8 @@
+@media only screen and (max-device-width: 600px){
+    .add-blank{
+        margin-top: 7px;
+    }
+}
+.blankValueStyle{
+    padding: 7px;
+}

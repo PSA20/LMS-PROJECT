@@ -1,0 +1,53 @@
+.dropdown-container-style{
+    border: 1px lightgrey solid;
+    border-radius: 4px;
+    min-height: 200px;
+    margin: 10px;
+    
+    /* -webkit-box-shadow: 1px 2px 18px -10px rgba(69,68,69,1);
+    -moz-box-shadow: 1px 2px 18px -10px rgba(69,68,69,1);
+    box-shadow: 1px 2px 18px -10px rgba(69,68,69,1); */
+
+}
+
+#box {
+    position: relative;
+    width: 100%;
+   
+  }
+
+
+  #icon-delete-dropdown {
+    
+   
+    
+    width: 20px;
+    height: 40px;
+    position: absolute;
+    right: -20px;
+    top: -20px;
+  }
+
+  .checkbox-div{
+    width: 15%;
+  }
+
+  .option-value-div{
+    width: 60%;
+  }
+
+  .delete-option-value-div{
+    width: 15%;
+  }
+
+  .enter-option-value-container{
+      width:100%;
+  }
+
+  .enter-option-value-input{
+      width: 75%;
+  }
+
+  .enter-option-value-add-btn{
+    width: 20%;
+}
