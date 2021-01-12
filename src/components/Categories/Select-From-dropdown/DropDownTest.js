@@ -58,7 +58,7 @@ export default class DropDownSelect extends Component {
                         }
                         return item2;
                      })
-                    
+
                 }else{
                     return item;
                 }
@@ -72,9 +72,9 @@ export default class DropDownSelect extends Component {
                     return   <Menu.Item key={index} danger>{item}</Menu.Item>;
                 }else{
                     return(
-                        
+
                           <Menu.Item key={index}>
-                            
+                          
                               {item}
                           
                           </Menu.Item>
@@ -90,7 +90,7 @@ export default class DropDownSelect extends Component {
             <div className="col-12 col-sm-10 offset-sm-1">
       <Card
         style={{ backgroundColor: this.props.color }}
-        
+
       >
        {this.onRenderDropdownQuestion(this.props.quesNo, this.props.data)}
       </Card>
