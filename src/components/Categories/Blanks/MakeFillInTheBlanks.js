@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Button, Divider, Input} from "antd";
 import {DeleteTwoTone} from "@ant-design/icons";
 import Joi from "joi-browser";
@@ -21,6 +21,23 @@ export  const MakeFillInTheBlanks = (props) => {
         blankValue: "",
         bankValueError: "",
     });
+
+    useEffect(() => {
+      if(props.description){
+        setQuestion({
+          category: "Fill in the Blanks",
+          description: props.data.description,
+          options: props.data.ans,
+          ans: [],
+          
+          descriptionError: "",
+          blankValue: "",
+          bankValueError: "",
+      })
+      }
+    },[props.description, props.data.description, props.data.ans]);
+  
+
     const deleteBlankInDescription=(index)=>{
       console.log("index: ", index)
       let desc=question.description;

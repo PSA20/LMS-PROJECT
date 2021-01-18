@@ -6,9 +6,9 @@ import {  } from "reactstrap";
 import Header from "./Header";
 import {  Divider } from "antd";
 import "./css/main.css";
-import Options from "./Options";
+// import Options from "./Options";
 import MultipleChoice from "./Categories/Multiple Choice/MultipleChoiceTest";
-import AddQuestion from "./AddQuestion";
+// import AddQuestion from "./AddQuestion";
 import {Blanks} from "./Categories/Blanks/BlanksTest";
 import DropDownSelect from "./Categories/Select-From-dropdown/DropDownTest";
 import TrueAndFalse from "./Categories/TrueAndFalse/TrueAndFalseTest";
@@ -123,7 +123,7 @@ class Main extends Component {
           // key={item}
           className="row"
         >
-          <Blanks
+          <Blanks 
             color={this.props.questions.color}
             quesNo={index}
             data={item}

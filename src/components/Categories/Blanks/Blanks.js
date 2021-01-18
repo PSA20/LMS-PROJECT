@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Card } from "antd";
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import {EditFillInTheBlanks} from "./EditFillInTheBlanks";
+import {MakeFillInTheBlanks} from "./MakeFillInTheBlanks";
 const blankString = "____";
 
 
@@ -174,7 +175,7 @@ export const Blanks = (props) => {
         width={1200}
         footer={null}
       >
-         <EditFillInTheBlanks updateQuestion={props.updateQuestion} data={props.data} handleOk={handleOk} handleCancel={handleCancel}/> 
+         <MakeFillInTheBlanks updateQuestion={props.updateQuestion} description={props.data.description} data={props.data} handleOk={handleOk} handleCancel={handleCancel}/> 
       </Modal>
     </div>
   );

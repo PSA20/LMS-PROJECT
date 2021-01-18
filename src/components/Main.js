@@ -7,6 +7,7 @@ import {  Divider } from "antd";
 import "./css/main.css";
 import Options from "./Options";
 import MultipleChoice from "./Categories/Multiple Choice/MultipleChoice";
+import MultipleCheckbox from "./Categories/MultipleCheckbox/MultipleCheckbox";
 import AddQuestion from "./AddQuestion";
 import {Blanks} from "./Categories/Blanks/Blanks";
 import DropDownSelect from "./Categories/Select-From-dropdown/DropDown";
@@ -168,6 +169,23 @@ class Main extends Component {
           />
         </div>
       );
+    }else if(item.category === CategoryTypes.MULTIPLE_CHECKBOX){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <MultipleCheckbox
+            deleteQuestion={this.props.deleteQuestion}
+            updateQuestion={this.props.updateQuestion}
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
     }
     });
     return result;
@@ -185,11 +203,13 @@ class Main extends Component {
           <div className="row">
             
             <AddQuestion addQuestion={this.props.addQuestion} />
+            
             <br />
+            <NavLink to="/test">TEST START</NavLink>
             <hr />
             <br />
           </div>
-          <NavLink to="/test">TEST START</NavLink>
+          
         </div>
         {/* Options */}
         <div style={{ height: 10 }} />

@@ -23,7 +23,11 @@ export default class MakeMultipleChoice extends Component {
     };
   }
   componentDidMount() {
-    
+    if(this.props.description){
+      this.setState({description: this.props.question.description,
+          options: this.props.question.options,
+          value: this.props.question.ans})
+  }
   }
 
   onChange = (e) => {

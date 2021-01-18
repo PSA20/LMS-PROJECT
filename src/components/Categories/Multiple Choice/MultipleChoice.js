@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Radio,  Card, Modal } from 'antd';
 import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
 import EditMultipleChoice from "./EditMultipleChoice";
+import MakeMultipleChoice from "./MakeMultipleChoice";
 export default class MultipleChoice extends Component {
     constructor(props) {
         super(props);
@@ -70,7 +71,7 @@ export default class MultipleChoice extends Component {
               footer={null}
             >
             
-            <EditMultipleChoice updateQuestion={this.props.updateQuestion} question={this.props.data} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
+            <MakeMultipleChoice updateQuestion={this.props.updateQuestion} description={this.props.data.description} question={this.props.data}  handleOk={this.handleOk} handleCancel={this.handleCancel}/>
             </Modal>
             </div>
        

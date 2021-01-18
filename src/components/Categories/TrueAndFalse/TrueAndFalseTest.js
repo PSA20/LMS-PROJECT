@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import { Modal, Card, Radio} from "antd";
+import {  Card, Radio} from "antd";
 // import { EditTwoTone, DeleteTwoTone } from "@ant-design/icons";
 // import EditTrueFalse from "./EditTrueFalse";
 export default function TrueAndFalse(props) {
     // const [visible, toggleModal] = useState(false);
-    const [value, setValue] = React.useState(1);
+    const [value, setValue] = useState(1);
     const radioStyle = {
         display: 'block',
         height: '30px',

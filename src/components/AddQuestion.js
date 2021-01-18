@@ -4,6 +4,7 @@ import { Button, Menu, Modal, Dropdown, Divider,} from "antd";
 import "./css/main.css";
 import MakeMultipleChoice from "./Categories/Multiple Choice/MakeMultipleChoice"
 import {MakeFillInTheBlanks} from "./Categories/Blanks/MakeFillInTheBlanks";
+import MakeMultipleCheckbox from "./Categories/MultipleCheckbox/MakeMultipleCheckbox";
 import MakeDropDown from "./Categories/Select-From-dropdown/MakeDropDown";
 import MakeTrueFalse from "./Categories/TrueAndFalse/MakeTrueFalse";
 import * as CategoryTypes from "../util/Categories";
@@ -58,6 +59,11 @@ export default class AddQuestion extends Component {
               True and False
      
           </Menu.Item>
+          <Menu.Item onClick={()=>{this.onCatChange(CategoryTypes.MULTIPLE_CHECKBOX);}}>
+          
+              Multiple Response
+     
+          </Menu.Item>
         </Menu>
       );
    }
@@ -67,13 +73,16 @@ export default class AddQuestion extends Component {
       
        if(this.state.catergory === "Multiple Choice"){
         
-           return (<MakeMultipleChoice addQuestion={this.props.addQuestion} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+           return (<MakeMultipleChoice addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }else if (this.state.catergory === "Fill in the Blanks"){
-        return (<MakeFillInTheBlanks addQuestion={this.props.addQuestion}  handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+        return (<MakeFillInTheBlanks addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }else if (this.state.catergory === CategoryTypes.SELECT_FROM_DROPDOWN){
         return (<MakeDropDown addQuestion={this.props.addQuestion}  handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }else if (this.state.catergory === CategoryTypes.TRUE_AND_FALSE){
         return (<MakeTrueFalse addQuestion={this.props.addQuestion}  handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+       }
+       else if (this.state.catergory === CategoryTypes.MULTIPLE_CHECKBOX){
+        return (<MakeMultipleCheckbox addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }
        return null;
    }
