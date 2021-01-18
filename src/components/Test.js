@@ -99,7 +99,7 @@ class Main extends Component {
         <div
           key={item.ans[0]}
           style={{ marginTop: 20 }}
-          key={item}
+          // key={item}
           className="row"
         >
           <MultipleChoice
@@ -120,7 +120,7 @@ class Main extends Component {
         <div
           key={item.ans[0]}
           style={{ marginTop: 20 }}
-          key={item}
+          // key={item}
           className="row"
         >
           <Blanks
@@ -130,12 +130,12 @@ class Main extends Component {
           />
         </div>
       );
-    }else if(item.category=== CategoryTypes.SELECT_FROM_DROPDOWN){
+    }else if(item.category === CategoryTypes.SELECT_FROM_DROPDOWN){
       return (
         <div
           key={item.ans[0]}
           style={{ marginTop: 20 }}
-          key={item}
+          // key={item}
           className="row"
         >
           <DropDownSelect
@@ -145,12 +145,12 @@ class Main extends Component {
           />
         </div>
       );
-    }else if(item.category=== CategoryTypes.TRUE_AND_FALSE){
+    }else if(item.category === CategoryTypes.TRUE_AND_FALSE){
       return (
         <div
           key={item.ans[0]}
           style={{ marginTop: 20 }}
-          key={item}
+          // key={item}
           className="row"
         >
           <TrueAndFalse
@@ -168,6 +168,7 @@ class Main extends Component {
   render() {
     //console.log("questions:",this.props.questions);
     // console.log("questions:",this.props.questions);
+    console.log("questions:",this.props.questions);
     return (
       <div className="mainBody">
         {/* <h1>{this.props.user.username}</h1> */}

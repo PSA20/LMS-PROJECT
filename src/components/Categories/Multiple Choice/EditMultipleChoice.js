@@ -67,7 +67,7 @@ export default class MakeMultipleChoice extends Component {
       this.setState({ optionValueError: result.error.details[0].message });
     } else {
       const found = this.state.options.some(
-        (item) => item.toUpperCase() == this.state.optionValue.toUpperCase()
+        (item) => item.toUpperCase() === this.state.optionValue.toUpperCase()
       );
       if (!found) {
         this.setState({

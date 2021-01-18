@@ -37,7 +37,8 @@ export default class MultipleChoice extends Component {
           height: '30px',
           lineHeight: '30px',
         };
-        const { value } = this.state;
+        
+        // const { value } = this.state;
         return (
             <div  className="col-12 col-sm-10 offset-sm-1">
                 <Card style={{backgroundColor:this.props.color}}
@@ -60,7 +61,7 @@ export default class MultipleChoice extends Component {
                       
           </Radio.Group>
                 </Card>
-                <Modal
+            <Modal
               style={{ width: 1000 }}
               title="Edit Question"
               visible={this.state.visible}
@@ -68,6 +69,7 @@ export default class MultipleChoice extends Component {
               width={1200}
               footer={null}
             >
+            
             <EditMultipleChoice updateQuestion={this.props.updateQuestion} question={this.props.data} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
             </Modal>
             </div>

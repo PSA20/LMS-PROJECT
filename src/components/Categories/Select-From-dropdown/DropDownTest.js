@@ -39,7 +39,7 @@ export default class DropDownSelect extends Component {
                // console.log("item: ", item);
                 if(item.includes("#")){
                     const deepItem=item.split("#");
-                    // console.log("deepItem: ", deepItem);
+                    console.log("deepItem: ", deepItem);
                      return deepItem.map((item2)=>{
                         if(this.isNumeric(item2[0])){
                             ansIndex++;
@@ -48,6 +48,8 @@ export default class DropDownSelect extends Component {
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                               -Select- 
                             </a>
+                            {/* on click event should have to save the value and the index of the dropdown and the
+                            name -SELECT- have to be changed according to the options... */}
                           </Dropdown>);    
                         }
                         if(item2.includes("\n")){
@@ -94,16 +96,16 @@ export default class DropDownSelect extends Component {
       >
        {this.onRenderDropdownQuestion(this.props.quesNo, this.props.data)}
       </Card>
-      <Modal
+      {/* <Modal
         style={{ width: 1000 }}
         title="Edit Question"
         visible={this.state.visible}
         onCancel={() => this.handleCancel()}
         width={1200}
-        footer={null}
-      >
-         <EditDropDown updateQuestion={this.props.updateQuestion} data={this.props.data} handleOk={this.handleOk} handleCancel={this.handleCancel}/> 
-      </Modal>
+        footer={null} */}
+      {/* > */}
+         {/* <EditDropDown updateQuestion={this.props.updateQuestion} data={this.props.data} handleOk={this.handleOk} handleCancel={this.handleCancel}/>  */}
+      {/* </Modal> */}
     </div>
         )
     }

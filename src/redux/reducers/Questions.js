@@ -32,29 +32,33 @@ export const Questions = (
   switch (action.type) {
     case types.ADD_QUESTION:
        action.payload.id= action.payload.ans[0];
-      return { ...state, questions: state.questions.concat(action.payload) };
+       console.log(action.payload)
+       console.log(state.questions)
+      // return { ...state, questions: state.questions.concat(action.payload) };
+      return {...state, questions: [...state.questions, action.payload]}
     case types.DELETE_QUESTION:
         const newArray= state.questions.filter(item=>{return item.id!==action.payload});
         return { ...state, questions: newArray};
-     case types.CHANGE_COLOR:
+    case types.CHANGE_COLOR:
          return { ...state, color: action.payload} 
-         case types.CHANGE_SCORE:
+    case types.CHANGE_SCORE:
             return { ...state, score: action.payload}
-            case types.CHANGE_TIME:
+    case types.CHANGE_TIME:
             return { ...state, time: action.payload}   
-        case types.UPDATE_QUESTION:
+    case types.UPDATE_QUESTION:
             const question=action.payload;
            // console.log("question: ",question);
             const id= question.id;
           //  console.log("id: ",id);
-            var foundIndex = state.questions.findIndex(x => x.id == id);
+            var foundIndex = state.questions.findIndex(x => x.id === id);
            // console.log("found index: ",foundIndex);
             state.questions[foundIndex]=question;
             //console.log("state: ",state);
             return { ...state, questions: state.questions}        
-
+    default:
+              return state;
   }
-  return state;
+  // return state;
 };
 // {
 //     category: "Multiple Choice",

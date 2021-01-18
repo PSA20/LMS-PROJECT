@@ -12,6 +12,7 @@ import {Blanks} from "./Categories/Blanks/Blanks";
 import DropDownSelect from "./Categories/Select-From-dropdown/DropDown";
 import TrueAndFalse from "./Categories/TrueAndFalse/TrueAndFalse";
 import * as CategoryTypes from "../util/Categories"; 
+import { NavLink } from 'react-router-dom';
 import {
   addQuestion,
   deleteQuestion,
@@ -103,7 +104,7 @@ class Main extends Component {
         <div
           key={item.ans[0]}
           style={{ marginTop: 20 }}
-          key={item}
+          // key={item}
           className="row"
         >
           <MultipleChoice
@@ -121,7 +122,7 @@ class Main extends Component {
         <div
           key={item.ans[0]}
           style={{ marginTop: 20 }}
-          key={item}
+          // key={item}
           className="row"
         >
           <Blanks
@@ -138,7 +139,7 @@ class Main extends Component {
         <div
           key={item.ans[0]}
           style={{ marginTop: 20 }}
-          key={item}
+          // key={item}
           className="row"
         >
           <DropDownSelect
@@ -155,7 +156,7 @@ class Main extends Component {
         <div
           key={item.ans[0]}
           style={{ marginTop: 20 }}
-          key={item}
+          // key={item}
           className="row"
         >
           <TrueAndFalse
@@ -174,7 +175,8 @@ class Main extends Component {
 
   render() {
     //console.log("questions:",this.props.questions);
-    // console.log("questions:",this.props.questions);
+    console.log("questions:",this.props.questions);
+    // console.log(this.props.data)
     return (
       <div className="mainBody">
         {/* <h1>{this.props.user.username}</h1> */}
@@ -187,6 +189,7 @@ class Main extends Component {
             <hr />
             <br />
           </div>
+          <NavLink to="/test">TEST START</NavLink>
         </div>
         {/* Options */}
         <div style={{ height: 10 }} />
