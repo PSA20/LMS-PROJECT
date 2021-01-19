@@ -9,7 +9,7 @@ export const ConfigureStore = () => {
 const store = createStore(combineReducers({
     user: User,
     question: Questions,
-    option:options
+    option: options
 }, applyMiddleware(thunk, logger)));
 
 return store;

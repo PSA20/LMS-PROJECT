@@ -28,7 +28,12 @@ export const Questions = (
                 description: "From the below options select the states in INDIA",
                 options: ["New York", "Telangana",  "Nepal","Kerala"],
                 ans: ["Telangana", "Kerala"],
-              }
+              },{       id:"ale",
+              category: "Sequence In Order",
+              description: "From the below options place them in alphabetical order ",
+              options: ["Dino", "From",  "Apple","Cat"],
+              ans: ["Apple", "Cat", "Dino", "from"],
+            }
               
     ],color: "white",score:1,time:60
   },

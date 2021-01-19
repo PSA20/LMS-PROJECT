@@ -4,3 +4,4 @@ export const SELECT_FROM_DROPDOWN= "Select From Dropdown";
 export const TRUE_AND_FALSE= "True and False";
 export const MULTIPLE_SELECT= "Multiple Select";
 export const MULTIPLE_CHECKBOX= "Multiple Checkbox";
+export const SEQUENCE_IN_ORDER= "Sequence In Order";

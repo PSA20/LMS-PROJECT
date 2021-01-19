@@ -8,6 +8,7 @@ import "./css/main.css";
 import Options from "./Options";
 import MultipleChoice from "./Categories/Multiple Choice/MultipleChoice";
 import MultipleCheckbox from "./Categories/MultipleCheckbox/MultipleCheckbox";
+import SequenceinOrder from "./Categories/SequenceInOrder/SequenceInOrder";
 import AddQuestion from "./AddQuestion";
 import {Blanks} from "./Categories/Blanks/Blanks";
 import DropDownSelect from "./Categories/Select-From-dropdown/DropDown";
@@ -186,8 +187,27 @@ class Main extends Component {
           />
         </div>
       );
+    }else if(item.category === CategoryTypes.SEQUENCE_IN_ORDER){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <SequenceinOrder
+            deleteQuestion={this.props.deleteQuestion}
+            updateQuestion={this.props.updateQuestion}
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
     }
-    });
+    
+    })
+    ;
     return result;
   };
 

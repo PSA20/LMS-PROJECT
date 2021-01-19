@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Radio,  Card, Modal } from 'antd';
-import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
+// import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
 import EditMultipleChoice from "./EditMultipleChoice";
 export default class MultipleChoice extends Component {
     constructor(props) {
@@ -25,8 +25,9 @@ export default class MultipleChoice extends Component {
     onDelete=()=>{
       this.props.deleteQuestion(this.props.data.id);
     }
-      onChange = e => {
-        //console.log('radio checked', e.target.value);
+
+    onChange = e => {
+        console.log('radio checked', e.target.value);
         this.setState({
           value: e.target.value,
         });
@@ -37,13 +38,13 @@ export default class MultipleChoice extends Component {
           height: '30px',
           lineHeight: '30px',
         };
-        const { value } = this.state;
+        // const { value } = this.state;
         return (
             <div  className="col-12 col-sm-10 offset-sm-1">
                 <Card style={{backgroundColor:this.props.color}}
                   >
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
-                <Radio.Group >
+                <Radio.Group onChange={this.onChange}>
                     {this.props.data.options.map(index=>{
                       
                         return(

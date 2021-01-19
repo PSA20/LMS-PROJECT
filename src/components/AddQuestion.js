@@ -7,6 +7,7 @@ import {MakeFillInTheBlanks} from "./Categories/Blanks/MakeFillInTheBlanks";
 import MakeMultipleCheckbox from "./Categories/MultipleCheckbox/MakeMultipleCheckbox";
 import MakeDropDown from "./Categories/Select-From-dropdown/MakeDropDown";
 import MakeTrueFalse from "./Categories/TrueAndFalse/MakeTrueFalse";
+import Sequenceinorder from "./Categories/SequenceInOrder/MakeSequenceInOrder";
 import * as CategoryTypes from "../util/Categories";
 
 export default class AddQuestion extends Component {
@@ -64,6 +65,11 @@ export default class AddQuestion extends Component {
               Multiple Response
      
           </Menu.Item>
+          <Menu.Item onClick={()=>{this.onCatChange(CategoryTypes.SEQUENCE_IN_ORDER);}}>
+          
+              Sequence In Order
+     
+          </Menu.Item>
         </Menu>
       );
    }
@@ -83,6 +89,9 @@ export default class AddQuestion extends Component {
        }
        else if (this.state.catergory === CategoryTypes.MULTIPLE_CHECKBOX){
         return (<MakeMultipleCheckbox addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+       }
+       else if (this.state.catergory === CategoryTypes.SEQUENCE_IN_ORDER){
+        return (<Sequenceinorder addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }
        return null;
    }
