@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import {Modal, Card, Menu, Dropdown} from "antd";
+import {Modal, Card, Menu, Dropdown, Button} from "antd";
 import { EditTwoTone, DeleteTwoTone} from "@ant-design/icons";
 import EditDropDown from "./EditDropDown";
 export default class DropDownSelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
-         
+            val: NaN,
             visible: false,
           };
     }
@@ -30,7 +30,34 @@ export default class DropDownSelect extends Component {
         return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
                !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
       }
+    onClickHandler = ({ key }) =>{
+      let ca = this.props.data.options[key]
+      // this.setState({val:""})
+      console.log(key, ca)
+    }
 
+
+
+      menu =(options, ans)=> {
+        const optionsArr = options.split(",");
+           return <Menu onClick={this.onClickHandler}>  {optionsArr.map((item,index)=>{
+               // if(index === ans){
+               //     return   <Menu.Item key={index} danger>{item}</Menu.Item>;
+               // }else{
+                   return(
+
+                         <Menu.Item key={index}>
+                         
+                             {item}
+                         
+                         </Menu.Item>
+                       
+                       
+                     );
+               }
+           // }
+           )}</Menu>;
+    };
     onRenderDropdownQuestion=(quesNo, data)=> {
         const dataArray = data.description.split("Dropdown#");
         let ansIndex=0;
@@ -45,9 +72,12 @@ export default class DropDownSelect extends Component {
                             ansIndex++;
                             let count=ansIndex-1;
                         return(<Dropdown overlay={this.menu(data.options[count], data.ans[count])}>
-                            <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                            {/* <a className="ant-dropdown-link"  onClick={e => e.preventDefault()}>
                               -Select- 
-                            </a>
+                            </a> */}
+                            <Button className="ant-dropdown-link"  onClick={e => e.preventDefault()}>
+                              -Select- 
+                            </Button>
                             {/* on click event should have to save the value and the index of the dropdown and the
                             name -SELECT- have to be changed according to the options... */}
                           </Dropdown>);    
@@ -67,26 +97,7 @@ export default class DropDownSelect extends Component {
             })}
         </p>);
     }
-     menu =(options, ans)=> {
-         const optionsArr = options.split(",");
-            return <Menu>  {optionsArr.map((item,index)=>{
-                if(index === ans){
-                    return   <Menu.Item key={index} danger>{item}</Menu.Item>;
-                }else{
-                    return(
 
-                          <Menu.Item key={index}>
-                          
-                              {item}
-                          
-                          </Menu.Item>
-                        
-                        
-                      );
-                }
-            }
-            )}</Menu>;
-     };
     render() {
         return (
             <div className="col-12 col-sm-10 offset-sm-1">

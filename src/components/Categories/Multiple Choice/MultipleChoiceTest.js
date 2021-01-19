@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Radio,  Card, Modal } from 'antd';
-// import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
-import EditMultipleChoice from "./EditMultipleChoice";
+import { Radio,  Card} from 'antd';
 export default class MultipleChoice extends Component {
     constructor(props) {
         super(props);
@@ -28,6 +26,10 @@ export default class MultipleChoice extends Component {
 
     onChange = e => {
         console.log('radio checked', e.target.value);
+        console.log(this.props.data)
+        //  the state.value holds the value that has been chosen by the user...
+        // either we can compare them here and then store them as yes or no or else can store the real ans and user ans
+        // then we can compare the list after clicking the submit button...
         this.setState({
           value: e.target.value,
         });
@@ -53,20 +55,8 @@ export default class MultipleChoice extends Component {
                           </Radio>
                         );
                     })}
-           
-                      
           </Radio.Group>
                 </Card>
-                <Modal
-              style={{ width: 1000 }}
-              title="Edit Question"
-              visible={this.state.visible}
-              onCancel={this.handleCancel}
-              width={1200}
-              footer={null}
-            >
-            <EditMultipleChoice updateQuestion={this.props.updateQuestion} question={this.props.data} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
-            </Modal>
             </div>
        
         );

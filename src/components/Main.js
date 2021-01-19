@@ -227,6 +227,7 @@ class Main extends Component {
             <br />
             <NavLink to="/test">TEST START</NavLink>
             <hr />
+            <NavLink to="/test123">TEST MYY</NavLink>
             <br />
           </div>
           
