@@ -26,7 +26,8 @@ export default class MakeMultipleCheckbox extends Component {
     if(this.props.description){
         this.setState({description: this.props.question.description,
             options: this.props.question.options,
-            value: this.props.question.ans})
+            value: this.props.question.ans,
+            addorupdate : "Update Question"})
     }
   }
 
@@ -90,7 +91,8 @@ export default class MakeMultipleCheckbox extends Component {
     );
     if (result.error) {
       this.setState({ optionValueError: result.error.details[0].message });
-    } else {
+    } 
+    else {
       const found = this.state.options.some(
         (item) => item.toUpperCase() === this.state.optionValue.toUpperCase()
       );
@@ -105,13 +107,41 @@ export default class MakeMultipleCheckbox extends Component {
     }
   };
 
+  onAddorUpdate = (ans)=>{
+    if(this.state.addorupdate === "Update Question"){
+      console.log("Update function is called")
+      // this.setState({ descriptionError: "", optionsError: "" });
+      const data={category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans,id:this.props.question.id};
+      this.props.updateQuestion(data)
+    }
+    else{
+      console.log("ADD QUESTION function is called")
+      const data={category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans};
+      this.props.addQuestion(data)
+    }
+  }
+
+
   onDelete = (option) => {
     let options = this.state.options;
+    let ansans = this.state.value
+    console.log(options, this.state)
     const index = options.indexOf(option);
+    const indexans = ansans.indexOf(option);
+    // if(ansans.includes(option)){
+      // console.log("indexans  "+indexans)
+    if (indexans > -1) {
+      // console.log("ASDFASDFADFADFDFS")
+        ansans.splice(indexans, 1);
+    }
+    
     if (index > -1) {
       options.splice(index, 1);
     }
-    this.setState({ options: options });
+    // console.log(this.state.value)
+    // console.log("aksjhdbfallealleallealle"+ansans)
+    this.setState({ options: options, value:ansans });
+    // console.log(this.state.value)
   };
   
 
@@ -123,7 +153,7 @@ export default class MakeMultipleCheckbox extends Component {
       lineHeight: "30px",
       color:"black"
     };
-    const { value } = this.state;
+    // const { value } = this.state;
     return this.state.options.map((item) => {
       return (
         <div style={{ marginTop: 7 }} id={item} className="row">
@@ -176,8 +206,9 @@ export default class MakeMultipleCheckbox extends Component {
           console.log(this.state.value)
           let ans=[];
           ans = this.state.value;
-          const data={id: ans[0],category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans};
-          this.props.addQuestion(data);
+          // const data={id: ans[0],category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans};
+          // this.props.addQuestion(data);
+          this.onAddorUpdate(ans)
           this.props.handleOk();
         } else {
           this.setState({ optionsError: "Please Select Atleast One Option." });
@@ -191,12 +222,12 @@ export default class MakeMultipleCheckbox extends Component {
     }
   };
   render() { 
-    const radioStyle = {
-      display: "inline-block",
-      height: "30px",
-      lineHeight: "30px",
-    };
-    const { value } = this.state;
+    // const radioStyle = {
+    //   display: "inline-block",
+    //   height: "30px",
+    //   lineHeight: "30px",
+    // };
+    // const { value } = this.state;
     return (
       <>
         <div className="row">
@@ -274,7 +305,8 @@ export default class MakeMultipleCheckbox extends Component {
               type="primary"
               style={{marginTop: 7}}
             >
-              Add Question
+              {/* Add Question */}
+              {this.state.addorupdate}
             </Button>
           </div>
         </div>
@@ -282,3 +314,6 @@ export default class MakeMultipleCheckbox extends Component {
     );
   }
 }
+
+
+// while editing the question the checked boxes are not checked soo make sure they are checked

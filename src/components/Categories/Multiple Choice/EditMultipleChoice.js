@@ -158,12 +158,12 @@
 //     }
 //   };
 //   render() { 
-//     const radioStyle = {
-//       display: "inline-block",
-//       height: "30px",
-//       lineHeight: "30px",
-//     };
-//     const { value } = this.state;
+//     // const radioStyle = {
+//     //   display: "inline-block",
+//     //   height: "30px",
+//     //   lineHeight: "30px",
+//     // };
+//     // const { value } = this.state;
 //     return (
 //       <>
 //         <div className="row">

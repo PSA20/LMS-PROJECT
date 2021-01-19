@@ -23,7 +23,12 @@ export const Questions = (
                 description: "Is Trump President of America.",
                 options: [],
                 ans: [false],
-              },
+              },{       id:"ale",
+                category: "Multiple Checkbox",
+                description: "From the below options select the states in INDIA",
+                options: ["New York", "Telangana",  "Nepal","Kerala"],
+                ans: ["Telangana", "Kerala"],
+              }
               
     ],color: "white",score:1,time:60
   },

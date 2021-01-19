@@ -20,13 +20,17 @@ export default class MakeMultipleChoice extends Component {
       options: [],
       optionsError: "",
       value: 0,
+
+      addorupdate: "Add Question"
     };
   }
   componentDidMount() {
     if(this.props.description){
       this.setState({description: this.props.question.description,
           options: this.props.question.options,
-          value: this.props.question.ans})
+          value: this.props.question.ans[0],
+          addorupdate:"Update Question"},
+          )
   }
   }
 
@@ -83,6 +87,20 @@ export default class MakeMultipleChoice extends Component {
       }
     }
   };
+
+  onAddorUpdate = (ans)=>{
+    if(this.state.addorupdate === "Update Question"){
+      console.log("Update function is called")
+      // this.setState({ descriptionError: "", optionsError: "" });
+      const data={category: "Multiple Choice", description: this.state.description, options: this.state.options, ans: ans,id:this.props.question.id};
+      this.props.updateQuestion(data)
+    }
+    else{
+      console.log("ADD QUESTION function is called")
+      const data={category: "Multiple Choice", description: this.state.description, options: this.state.options, ans: ans};
+      this.props.addQuestion(data)
+    }
+  }
 
   onDelete = (option) => {
     let options = this.state.options;
@@ -147,8 +165,9 @@ export default class MakeMultipleChoice extends Component {
           // Closing modal
           const ans=[];
           ans[0]=this.state.value;
-          const data={category: "Multiple Choice", description: this.state.description, options: this.state.options, ans: ans};
-          this.props.addQuestion(data);
+          // const data={category: "Multiple Choice", description: this.state.description, options: this.state.options, ans: ans};
+          // this.props.addQuestion(data);
+          this.onAddorUpdate(ans)
           this.props.handleOk();
         } else {
           this.setState({ optionsError: "Please Select Atleast One Option." });
@@ -162,12 +181,12 @@ export default class MakeMultipleChoice extends Component {
     }
   };
   render() { 
-    const radioStyle = {
-      display: "inline-block",
-      height: "30px",
-      lineHeight: "30px",
-    };
-    const { value } = this.state;
+    // const radioStyle = {
+    //   display: "inline-block",
+    //   height: "30px",
+    //   lineHeight: "30px",
+    // };
+    // const { value } = this.state;
     return (
       <>
         <div className="row">
@@ -245,7 +264,8 @@ export default class MakeMultipleChoice extends Component {
               type="primary"
               style={{marginTop: 7}}
             >
-              Add Question
+              {/* Add Question */}
+              {this.state.addorupdate}
             </Button>
           </div>
         </div>

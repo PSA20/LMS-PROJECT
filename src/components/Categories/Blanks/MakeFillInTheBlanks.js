@@ -16,7 +16,7 @@ export  const MakeFillInTheBlanks = (props) => {
         description: "",
         options: [],
         ans: [],
-        
+        addorupdate:"Add Question",
         descriptionError: "",
         blankValue: "",
         bankValueError: "",
@@ -29,13 +29,13 @@ export  const MakeFillInTheBlanks = (props) => {
           description: props.data.description,
           options: props.data.ans,
           ans: [],
-          
+          addorupdate:"Update Question",
           descriptionError: "",
           blankValue: "",
           bankValueError: "",
       })
       }
-    },[props.description, props.data.description, props.data.ans]);
+    },[props.description, props.data.description, props.data.ans, props.addorupdate]);
   
 
     const deleteBlankInDescription=(index)=>{
@@ -121,7 +121,7 @@ export  const MakeFillInTheBlanks = (props) => {
 const         onAddBlank=()=>{
     if(question.blankValue){
         const found = question.options.some(
-            (item) => item.toUpperCase() == question.blankValue.toUpperCase()
+            (item) => item.toUpperCase() === question.blankValue.toUpperCase()
           );
           if (!found) {
               let updateDesc= question.description;
@@ -139,6 +139,19 @@ const         onAddBlank=()=>{
     }
 };
 
+const onAddorUpdate = (ans)=>{
+  if(question.addorupdate === "Update Question"){
+    console.log("Update function is called")
+    // this.setState({ descriptionError: "", optionsError: "" });
+    const data={category: "Fill in the Blanks", description: question.description, options: [], ans: ans, id: props.data.id};
+    props.updateQuestion(data)
+  }
+  else{
+    console.log("ADD QUESTION function is called")
+    const data={category: "Fill in the Blanks", description: question.description, options: [], ans: ans};
+    props.addQuestion(data)
+  }
+}
 
 const onAddQuestion = () => {
     if (question.options.length > 0) {
@@ -159,8 +172,8 @@ const onAddQuestion = () => {
           // Closing modal
           const ans=question.options;
          
-          const data={category: "Fill in the Blanks", description: question.description, options: [], ans: ans};
-          props.addQuestion(data);
+          // const data={category: "Fill in the Blanks", description: question.description, options: [], ans: ans};
+          onAddorUpdate(ans);
           props.handleOk();
     
 
