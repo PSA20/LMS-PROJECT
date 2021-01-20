@@ -18,7 +18,7 @@ const myIncludes=(str)=>{
     return false;
 };
 
-export const Blanks = (props) => {
+export const BlanksTest = (props) => {
  // console.log("props: ",props.data);
   const [visible, toggleModal] = useState(false);
 
@@ -187,3 +187,6 @@ export const Blanks = (props) => {
     </div>
   );
 };
+
+
+export default BlanksTest

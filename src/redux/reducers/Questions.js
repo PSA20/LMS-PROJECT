@@ -32,7 +32,7 @@ export const Questions = (
               category: "Sequence In Order",
               description: "From the below options place them in alphabetical order ",
               options: ["Dino", "From",  "Apple","Cat"],
-              ans: ["Apple", "Cat", "Dino", "from"],
+              ans: ["Apple", "Cat", "Dino", "From"],
             }
               
     ],color: "white",score:1,time:60

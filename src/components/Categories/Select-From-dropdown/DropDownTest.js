@@ -6,7 +6,7 @@ export default class DropDownSelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            val: NaN,
+            val: [],
             visible: false,
           };
     }
@@ -30,23 +30,38 @@ export default class DropDownSelect extends Component {
         return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
                !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
       }
-    onClickHandler = ({ key }) =>{
-      let ca = this.props.data.options[key]
-      // this.setState({val:""})
-      console.log(key, ca)
+    onClickHandler = (count, e) =>{
+      console.log(this.state.val)
+      let ca = this.props.data.options[count].split(",")
+      let ans = []
+      ans= ca[e.key]
+      // if(this.state.val[count]){
+
+      // }
+      console.log( ca[e.key], e)
+      console.log(ans)
+      this.setState({val:this.state.val.concat({count, ans})})
+      
+      console.log(this.state.val)
     }
+    // onClickHandler = ({key}) =>{
+    //   let ca = this.props.data.options[key]
+    //   // this.setState({val:""})
+    //   console.log( key,ca)
+    //   // console.log(e.target)
+    // }
 
 
 
-      menu =(options, ans)=> {
+      menu =(options, ans, count)=> {
         const optionsArr = options.split(",");
-           return <Menu onClick={this.onClickHandler}>  {optionsArr.map((item,index)=>{
+           return <Menu onClick={(e)=>{this.onClickHandler(count, e)}}>  {optionsArr.map((item,index)=>{
                // if(index === ans){
                //     return   <Menu.Item key={index} danger>{item}</Menu.Item>;
                // }else{
                    return(
 
-                         <Menu.Item key={index}>
+                         <Menu.Item key={index} >
                          
                              {item}
                          
@@ -71,7 +86,7 @@ export default class DropDownSelect extends Component {
                         if(this.isNumeric(item2[0])){
                             ansIndex++;
                             let count=ansIndex-1;
-                        return(<Dropdown overlay={this.menu(data.options[count], data.ans[count])}>
+                        return(<Dropdown overlay={this.menu(data.options[count], data.ans[count], count)}>
                             {/* <a className="ant-dropdown-link"  onClick={e => e.preventDefault()}>
                               -Select- 
                             </a> */}

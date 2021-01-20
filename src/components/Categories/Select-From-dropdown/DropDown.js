@@ -36,15 +36,16 @@ export default class DropDownSelect extends Component {
         let ansIndex=0;
         return(<p style={{ fontSize: 17}}>{quesNo}. {"  "}
             {dataArray.map((item, index)=>{
-               // console.log("item: ", item);
+               console.log("item: ", item);
                 if(item.includes("#")){
                     const deepItem=item.split("#");
-                    // console.log("deepItem: ", deepItem);
+                    console.log("deepItem: ", deepItem);
                      return deepItem.map((item2)=>{
                         if(this.isNumeric(item2[0])){
                             ansIndex++;
                             let count=ansIndex-1;
-                        return(<Dropdown overlay={this.menu(data.options[count], data.ans[count])}>
+                            // console.log(count)
+                        return(<Dropdown overlay={this.menu(data.options[count], data.ans[count], count)}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                               -Select- 
                             </a>
@@ -65,7 +66,8 @@ export default class DropDownSelect extends Component {
             })}
         </p>);
     }
-     menu =(options, ans)=> {
+     menu =(options, ans, count)=> {
+       console.log(options)
          const optionsArr = options.split(",");
             return <Menu>  {optionsArr.map((item,index)=>{
                 if(index === ans){

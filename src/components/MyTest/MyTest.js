@@ -4,8 +4,133 @@ import {  withRouter } from "react-router-dom";
 import Header from "../Header";
 import Countdown from "react-countdown";
 import {  Divider } from "antd";
+import * as CategoryTypes from '../../util/Categories';
+import MultipleChoiceTest from "../Categories/Multiple Choice/MultipleChoiceTest";
+import BlanksTest from "../Categories/Blanks/BlanksTest";
+import DropDownTest from "../Categories/Select-From-dropdown/DropDownTest";
+import TrueAndFalseTest from "../Categories/TrueAndFalse/TrueAndFalseTest";
+import MultipleCheckboxTest from "../Categories/MultipleCheckbox/MultipleCheckboxTest";
+import SequenceInTest from "../Categories/SequenceInOrder/SequenceInTest";
+// import MultipleC from "../Categories/Multip"
 
 class MyTest extends Component{
+
+
+  renderQuestionRows = () => {
+    //<MultipleChoice quesNo={1} data={data} />
+    //    const ques = this.props.questions;
+    //console.log("ques.ques: ",this.props.questions.questions);
+
+    const result = this.props.questions.questions.map((item, index) => {
+      //console.log("item ",item);
+      index++;
+      //console.log("item: ", item.category)
+      if(item.category === CategoryTypes.MULTIPLE_CHOICE){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <MultipleChoiceTest
+            color={this.props.questions.color}
+            // actions={[
+                    
+            //   <EditTwoTone onClick={()=>{(new MultipleChoice()).showModal();}} twoToneColor="#52c41a"   key="edit" />,
+            //   <DeleteTwoTone onClick={()=>{this.onDelete();}} twoToneColor="#eb2f96" key="del"/>,
+            // ]}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }else if(item.category === CategoryTypes.FILL_IN_THE_BLANKS){
+     // console.log("sdfsd");
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <BlanksTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }else if(item.category === CategoryTypes.SELECT_FROM_DROPDOWN){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <DropDownTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }else if(item.category === CategoryTypes.TRUE_AND_FALSE){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <TrueAndFalseTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      )
+      ;
+    }
+    else if(item.category === CategoryTypes.MULTIPLE_CHECKBOX){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <MultipleCheckboxTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
+    else if(item.category === CategoryTypes.SEQUENCE_IN_ORDER){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <SequenceInTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
+    })
+    ;
+    return result;
+  };
+
+
     render(){
         console.log(this.props.questions.time)
         return(

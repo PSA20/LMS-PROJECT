@@ -18,9 +18,12 @@ export default class MakeMultipleCheckbox extends Component {
       descriptionError: "",
       optionValue: "",
       optionValueError: "",
+      AnsValueError: "",
       addorupdate : "Add Question",
       options: [],
+      Answers:[],
       optionsError: "",
+      AnsValue:"",
       value: [],
     };
   }
@@ -81,6 +84,13 @@ export default class MakeMultipleCheckbox extends Component {
     //for (let item of result.error.details) errors[item.path[0]] = item.message; //in details array, there are 2 properties,path and message.path is the name of the input, message is the error message for that input.
     // console.log("errors: ", errors);
   };
+  onChangeAnsField = (val) => {
+    // console.log(val.target.value);
+    
+    const value = val.target.value;
+    this.setState({ AnsValue: value });
+    // console.log(this.state.AnsValue)
+  };
 
   onChangeDescription = (e) => {
     const value = e.target.value;
@@ -108,25 +118,53 @@ export default class MakeMultipleCheckbox extends Component {
       }
     }
   };
+  onAddAnswer = () => {
+    const result = Joi.validate(
+      { option: this.state.AnsValue },
+      Schemas.option
+    );
+    if(this.state.options.includes(this.state.AnsValue)){
+      if (result.error) {
+        this.setState({ AnsValueError: result.error.details[0].message });
+      } 
+      else {
+        const found = this.state.Answers.some(
+          (item) => item.toUpperCase() === this.state.AnsValue.toUpperCase()
+        );
+        if (!found) {
+          this.setState({
+            Answers: this.state.Answers.concat(this.state.AnsValue),
+            AnsValueError: "",
+          });
+        } else {
+          this.setState({ AnsValueError: "Already exists" });
+        }
+      }
+    }
+    else{
+      this.setState({ AnsValueError: "Answer value is not present in Options" });
+    }
+    
+  };
 
   onAddorUpdate = (ans)=>{
     if(this.state.addorupdate === "Update Question"){
       console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans,id:this.props.question.id};
+      const data={category: "Sequence In Order", description: this.state.description, options: this.state.options, ans: ans,id:this.props.question.id};
       this.props.updateQuestion(data)
     }
     else{
       console.log("ADD QUESTION function is called")
-      const data={category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans};
+      const data={category: "Sequence In Order", description: this.state.description, options: this.state.options, ans: ans};
       this.props.addQuestion(data)
     }
   }
 
 
-  onDelete = (option) => {
-    let options = this.state.options;
-    let ansans = this.state.value
+  onDelete = (optionsorans,option) => {
+    let options = optionsorans;
+    let ansans = this.state.Answers
     console.log(options, this.state)
     const index = options.indexOf(option);
     const indexans = ansans.indexOf(option);
@@ -142,12 +180,12 @@ export default class MakeMultipleCheckbox extends Component {
     }
     // console.log(this.state.value)
     // console.log("aksjhdbfallealleallealle"+ansans)
-    this.setState({ options: options, value:ansans });
+    this.setState({ options: options, Answers:ansans });
     // console.log(this.state.value)
   };
   
 
-  renderOptions = () => {
+  renderOptions = (optionsorans) => {
    
     const radioStyle = {
       display: "inline-block",
@@ -156,20 +194,10 @@ export default class MakeMultipleCheckbox extends Component {
       color:"black"
     };
     // const { value } = this.state;
-    return this.state.options.map((item) => {
+    return optionsorans.map((item) => {
       return (
         <div style={{ marginTop: 7 }} id={item} className="row">
           <div className="col-5 col-sm-5 offset-sm-1">
-            {/* <Radio.Group onChange={this.onChange} value={value}>
-              <Radio style={radioStyle} value={item}>
-                {item}
-              </Radio>
-            </Radio.Group> */}
-            {/* <Checkbox.Group style={{ width: '100%' }} >
-            <Row>
-                <Checkbox style={radioStyle} value={item} onChange={this.onChangeC}>{item}</Checkbox>
-            </Row>
-            </Checkbox.Group> */}
             <div className={classes.MyListDiv}>
                         <List.Item
                         id={item}
@@ -179,18 +207,46 @@ export default class MakeMultipleCheckbox extends Component {
                     </div>
           </div>
           <div className="col-2 col-sm-1 ">
-            <Button onClick={() => this.onDelete(item)}>
+            <Button onClick={() => this.onDelete(optionsorans,item)}>
               {" "}
               <span>
                 <DeleteTwoTone twoToneColor="#eb2f96" />
               </span>
             </Button>
           </div>
-          {/* <div className="col-2 col-sm-1 ">
-       
-         <Button> <span><EditTwoTone twoToneColor="#52c41a" /></span></Button>
-     
-        </div> */}
+        </div>
+      );
+    });
+  };
+  renderAnswers = () => {
+   
+    const radioStyle = {
+      display: "inline-block",
+      height: "30px",
+      lineHeight: "30px",
+      color:"black"
+    };
+    // const { value } = this.state;
+    return this.state.Answers.map((item) => {
+      return (
+        <div style={{ marginTop: 7 }} id={item} className="row">
+          <div className="col-5 col-sm-5 offset-sm-1">
+            <div className={classes.MyListDiv}>
+                        <List.Item
+                        id={item}
+                    // title="HEYY"
+                    // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                   >{item}</List.Item>
+                    </div>
+          </div>
+          <div className="col-2 col-sm-1 ">
+            <Button onClick={() => this.onDelete(this.state.Answers,item)}>
+              {" "}
+              <span>
+                <DeleteTwoTone twoToneColor="#eb2f96" />
+              </span>
+            </Button>
+          </div>
         </div>
       );
     });
@@ -209,12 +265,14 @@ export default class MakeMultipleCheckbox extends Component {
         });
       } else {
         this.setState({ descriptionError: "", optionsError: "" });
-        if (this.state.value[0]) {
+        // if (this.state.value[0]) {
+          if (this.state.Answers[0]) {
           //      ADD to DATABASE
           // Closing modal
           console.log(this.state.value)
           let ans=[];
-          ans = this.state.value;
+          // ans = this.state.value;
+          ans = this.state.Answers
           // const data={id: ans[0],category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans};
           // this.props.addQuestion(data);
           this.onAddorUpdate(ans)
@@ -279,16 +337,56 @@ export default class MakeMultipleCheckbox extends Component {
             </Button>
           </div>
         </div>
+        <br />
+        <p style={errorStyleText}>{this.state.optionValueError}</p>
+        <br />
+        <div className="row">
+          <div className="col-12 col-sm-5 offset-sm-1">
+            <Input
+              placeholder="Enter Answer Here"
+              value={this.state.AnsValue}
+              onChange={(val) => {
+                this.onChangeAnsField(val);
+              }}
+            />
+          </div>
+          <div className="col-12 col-sm-3">
+            <Button
+              className="add-option"
+              style={{ marginLeft: 0 }}
+              block
+              type="primary"
+              success
+              onClick={this.onAddAnswer}
+            >
+              {" "}
+              Add Answers in Order
+            </Button>
+          </div>
+        </div>
         <div className="row">
           <div className="col-12 col-sm-10 offset-sm-1">
-            <p style={errorStyleText}>{this.state.optionValueError}</p>
+            
+            <p style={errorStyleText}>{this.state.AnsValueError}</p>
             <br />
             <p>** Please Enter the options in a sequence **</p>
           </div>
         </div>
 
         <br />
-        {this.renderOptions()}
+        <div className={classes.DivinCol}>
+          <div>
+          <h2>Options</h2>
+        {this.renderOptions(this.state.options)}
+          </div>
+        <div>
+        <h2>Answers in order</h2>
+        {this.renderAnswers()}
+        </div>
+        
+        </div>
+        
+        
         <div className="row">
           <div className="col-12 col-sm-12 offset-sm-1">
             <p style={errorStyleText}> {this.state.optionsError} </p>

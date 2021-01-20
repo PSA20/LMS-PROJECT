@@ -9,7 +9,7 @@ import "./css/main.css";
 // import Options from "./Options";
 import MultipleChoice from "./Categories/Multiple Choice/MultipleChoiceTest";
 // import AddQuestion from "./AddQuestion";
-import {Blanks} from "./Categories/Blanks/BlanksTest";
+import BlanksTest from "./Categories/Blanks/BlanksTest";
 import DropDownSelect from "./Categories/Select-From-dropdown/DropDownTest";
 import TrueAndFalse from "./Categories/TrueAndFalse/TrueAndFalseTest";
 import * as CategoryTypes from "../util/Categories"; 
@@ -123,7 +123,7 @@ class Main extends Component {
           // key={item}
           className="row"
         >
-          <Blanks 
+          <BlanksTest 
             color={this.props.questions.color}
             quesNo={index}
             data={item}
