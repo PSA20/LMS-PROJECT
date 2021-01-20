@@ -29,9 +29,10 @@ export default class MakeMultipleCheckbox extends Component {
   }
   componentDidMount() {
     if(this.props.description){
+      console.log(this.props.question)
         this.setState({description: this.props.question.description,
             options: this.props.question.options,
-            value: this.props.question.ans,
+            Answers: this.props.question.ans,
             addorupdate : "Update Question"})
     }
   }
@@ -186,14 +187,6 @@ export default class MakeMultipleCheckbox extends Component {
   
 
   renderOptions = (optionsorans) => {
-   
-    const radioStyle = {
-      display: "inline-block",
-      height: "30px",
-      lineHeight: "30px",
-      color:"black"
-    };
-    // const { value } = this.state;
     return optionsorans.map((item) => {
       return (
         <div style={{ marginTop: 7 }} id={item} className="row">
@@ -219,14 +212,6 @@ export default class MakeMultipleCheckbox extends Component {
     });
   };
   renderAnswers = () => {
-   
-    const radioStyle = {
-      display: "inline-block",
-      height: "30px",
-      lineHeight: "30px",
-      color:"black"
-    };
-    // const { value } = this.state;
     return this.state.Answers.map((item) => {
       return (
         <div style={{ marginTop: 7 }} id={item} className="row">
@@ -234,8 +219,6 @@ export default class MakeMultipleCheckbox extends Component {
             <div className={classes.MyListDiv}>
                         <List.Item
                         id={item}
-                    // title="HEYY"
-                    // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                    >{item}</List.Item>
                     </div>
           </div>
@@ -271,10 +254,7 @@ export default class MakeMultipleCheckbox extends Component {
           // Closing modal
           console.log(this.state.value)
           let ans=[];
-          // ans = this.state.value;
           ans = this.state.Answers
-          // const data={id: ans[0],category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans};
-          // this.props.addQuestion(data);
           this.onAddorUpdate(ans)
           this.props.handleOk();
         } else {
@@ -284,17 +264,10 @@ export default class MakeMultipleCheckbox extends Component {
         
       }
     } else {
-      // options error : no option present
       this.setState({ optionsError: "Please add atleast one option" });
     }
   };
   render() { 
-    // const radioStyle = {
-    //   display: "inline-block",
-    //   height: "30px",
-    //   lineHeight: "30px",
-    // };
-    // const { value } = this.state;
     return (
       <>
         <div className="row">
@@ -421,6 +394,3 @@ export default class MakeMultipleCheckbox extends Component {
     );
   }
 }
-
-
-// while editing the question the checked boxes are not checked soo make sure they are checked

@@ -49,8 +49,8 @@ class SequenceInOrder extends Component{
                     <div className={classes.MyListDiv}>
                         <List.Item
                     
-                    title="HEYY"
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                    // title="HEYY"
+                    // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                    >{index}</List.Item>
                     </div>
                     
