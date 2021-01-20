@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input,  Button, Divider, Checkbox, Row, List } from "antd";
+import { Input,  Button, Divider, List } from "antd";
 import { DeleteTwoTone } from "@ant-design/icons";
 import Joi from "joi-browser";
 import * as Schemas from "../../Schemas/Mcqs";
@@ -369,7 +369,7 @@ export default class MakeMultipleCheckbox extends Component {
             
             <p style={errorStyleText}>{this.state.AnsValueError}</p>
             <br />
-            <p>** Please Enter the options in a sequence **</p>
+            <p>** Please Enter the Answers in correct sequence **</p>
           </div>
         </div>
 
