@@ -13,6 +13,7 @@ import AddQuestion from "./AddQuestion";
 import {Blanks} from "./Categories/Blanks/Blanks";
 import DropDownSelect from "./Categories/Select-From-dropdown/DropDown";
 import TrueAndFalse from "./Categories/TrueAndFalse/TrueAndFalse";
+import MatchingWords from "./Categories/MatchingWords/MatchingWords";
 import * as CategoryTypes from "../util/Categories"; 
 import { NavLink } from 'react-router-dom';
 import {
@@ -196,6 +197,24 @@ class Main extends Component {
           className="row"
         >
           <SequenceinOrder
+            deleteQuestion={this.props.deleteQuestion}
+            updateQuestion={this.props.updateQuestion}
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
+    else if(item.category === CategoryTypes.MATCHING_WORDS){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <MatchingWords
             deleteQuestion={this.props.deleteQuestion}
             updateQuestion={this.props.updateQuestion}
             color={this.props.questions.color}

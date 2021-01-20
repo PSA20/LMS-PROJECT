@@ -5,3 +5,4 @@ export const TRUE_AND_FALSE= "True and False";
 export const MULTIPLE_SELECT= "Multiple Select";
 export const MULTIPLE_CHECKBOX= "Multiple Checkbox";
 export const SEQUENCE_IN_ORDER= "Sequence In Order";
+export const MATCHING_WORDS="Matching Words";

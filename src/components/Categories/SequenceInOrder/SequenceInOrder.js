@@ -43,21 +43,30 @@ class SequenceInOrder extends Component{
                   ]}>
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
             {/* </div> */}
-            <List itemLayout="horizontal" >
+            <div className={classes.DivinCol}>
+                <div>
+                  <h6>Options</h6>
+                <List itemLayout="horizontal" >
             {this.props.data.options.map(index=>{
                 return(
                     <div className={classes.MyListDiv}>
-                        <List.Item
-                    
-                    // title="HEYY"
-                    // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                   >{index}</List.Item>
+                        <List.Item>{index}</List.Item>
                     </div>
-                    
-            )
-                  
-            })}
+            )})}
             </List>
+                </div>
+                <div>
+                  <h6>Answers</h6>
+                <List itemLayout="horizontal" >
+            {this.props.data.ans.map(index=>{
+                return(
+                    <div className={classes.MyListDiv}>
+                        <List.Item>{index}</List.Item>
+                    </div>
+            )  })}
+            </List>
+                </div>
+            </div>
             </Card>
             <Modal
               style={{ width: 1000 }}

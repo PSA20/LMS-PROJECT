@@ -7,7 +7,8 @@ import {MakeFillInTheBlanks} from "./Categories/Blanks/MakeFillInTheBlanks";
 import MakeMultipleCheckbox from "./Categories/MultipleCheckbox/MakeMultipleCheckbox";
 import MakeDropDown from "./Categories/Select-From-dropdown/MakeDropDown";
 import MakeTrueFalse from "./Categories/TrueAndFalse/MakeTrueFalse";
-import Sequenceinorder from "./Categories/SequenceInOrder/MakeSequenceInOrder";
+import MakeSequenceinorder from "./Categories/SequenceInOrder/MakeSequenceInOrder";
+import MakeMatchingWords from "./Categories/MatchingWords/MakeMatchingWords";
 import * as CategoryTypes from "../util/Categories";
 
 export default class AddQuestion extends Component {
@@ -70,6 +71,11 @@ export default class AddQuestion extends Component {
               Sequence In Order
      
           </Menu.Item>
+          <Menu.Item onClick={()=>{this.onCatChange(CategoryTypes.MATCHING_WORDS);}}>
+          
+              Matching Words
+     
+          </Menu.Item>
         </Menu>
       );
    }
@@ -91,7 +97,10 @@ export default class AddQuestion extends Component {
         return (<MakeMultipleCheckbox addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }
        else if (this.state.catergory === CategoryTypes.SEQUENCE_IN_ORDER){
-        return (<Sequenceinorder addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+        return (<MakeSequenceinorder addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+       }
+       else if (this.state.catergory === CategoryTypes.MATCHING_WORDS){
+        return (<MakeMatchingWords addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }
        return null;
    }

@@ -33,7 +33,13 @@ export const Questions = (
               description: "From the below options place them in alphabetical order ",
               options: ["Dino", "From",  "Apple","Cat"],
               ans: ["Apple", "Cat", "Dino", "From"],
-            }
+            },{       id:"maaa",
+            category: "Matching Words",
+            description: "From the below options Match them correctly ",
+            leftoptions: ["A","B","C","D"],
+            rightoptions: ["Cat", "Dino", "Apple", "Banana"],
+            ans: ["Apple", "Banana", "Cat", "Dino"],
+          }
               
     ],color: "white",score:1,time:60
   },
