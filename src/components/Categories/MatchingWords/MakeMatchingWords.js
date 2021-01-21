@@ -44,33 +44,6 @@ export default class MakeMatchingWords extends Component {
             addorupdate : "Update Question"})
     }
   }
-
-  // onChangeC = (checkedValues) => {
-  //   console.log('checked = ', checkedValues.target.value);
-  //   console.log("valuee", this.state.value);
-  //   let uncheck = checkedValues.target.value
-  //   let myvalues = this.state.value
-  //   if(myvalues.includes(uncheck)){
-  //       const index = myvalues.indexOf(uncheck);
-  //       if (index > -1) {
-  //       myvalues.splice(index, 1);
-  //       }
-  //   this.setState({ value: myvalues });
-  // }
-  //   else{
-  //       this.setState({
-  //           value: this.state.value.concat(uncheck)
-  //         });
-  //   }
-    
-  // }
-//   onChange = (e) => {
-//     console.log("checked", this.state.value);
-//     this.setState({
-//         value: this.state.value.concat(e.target.value)
-//       });
-    
-//   };
   onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -194,7 +167,15 @@ export default class MakeMatchingWords extends Component {
     }
   }
 
+  onDeleteLeft = (option)=>{
+    let leftoptions = this.state.leftoptions;
+    const index = leftoptions.indexOf(option);
+    if (index > -1) {
+      leftoptions.splice(index, 1);
+    }
+    this.setState({ leftoptions: leftoptions})
 
+  }
   onDelete = (optionsorans,option) => {
     let options = optionsorans;
     let ansans = this.state.Answers
@@ -218,7 +199,7 @@ export default class MakeMatchingWords extends Component {
   };
   
 
-  renderOptions = (optionsorans) => {
+  renderAnswers = (optionsorans) => {
     return optionsorans.map((item) => {
       return (
         <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
@@ -230,7 +211,7 @@ export default class MakeMatchingWords extends Component {
                     </div>
           </div>
           <div className="col-2 col-sm-1 ">
-            <Button onClick={() => this.onDelete(optionsorans,item)}>
+            <Button onClick={() => this.onDelete(this.state.options,item)}>
               {/* {" "} */}
               <span>
                 <DeleteTwoTone  twoToneColor="#eb2f96" />
@@ -241,8 +222,8 @@ export default class MakeMatchingWords extends Component {
       );
     });
   };
-  renderAnswers = () => {
-    return this.state.Answers.map((item) => {
+  renderOptions = (leftoptions) => {
+    return leftoptions.map((item) => {
       return (
         <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
          <div className="col-5 col-sm-6 offset-sm-1">
@@ -254,7 +235,7 @@ export default class MakeMatchingWords extends Component {
                     </div>
           </div>
           <div className="col-2 col-sm-1 ">
-            <Button onClick={() => this.onDelete(this.state.Answers,item)}>
+            <Button onClick={() => this.onDeleteLeft(item)}>
               {" "}
               <span>
                 <DeleteTwoTone twoToneColor="#eb2f96" />
@@ -300,9 +281,6 @@ export default class MakeMatchingWords extends Component {
   };
 
 
-
-
-//   please continue from here you have to add the left options text area and also arrange them in a row not as col...
 //  Add database connection.....
 
 
@@ -434,14 +412,14 @@ export default class MakeMatchingWords extends Component {
           </div>
           <div>
           <h6>Right Options</h6>
-        {this.renderOptions(this.state.options)}
+        {this.renderAnswers(this.state.options)}
           </div>
         
         </div>
         <br />
         <div className="col" style={{paddingLeft:"40%"}}>
         <h6>Answers in order</h6>
-        {this.renderAnswers()}
+        {this.renderAnswers(this.state.Answers)}
         </div>
         
         

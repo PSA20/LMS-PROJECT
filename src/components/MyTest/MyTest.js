@@ -11,6 +11,7 @@ import DropDownTest from "../Categories/Select-From-dropdown/DropDownTest";
 import TrueAndFalseTest from "../Categories/TrueAndFalse/TrueAndFalseTest";
 import MultipleCheckboxTest from "../Categories/MultipleCheckbox/MultipleCheckboxTest";
 import SequenceInTest from "../Categories/SequenceInOrder/SequenceInTest";
+import MatchingWordsTest from "../Categories/MatchingWords/MatchingWordsTest";
 // import MultipleC from "../Categories/Multip"
 
 class MyTest extends Component{
@@ -118,6 +119,22 @@ class MyTest extends Component{
           className="row"
         >
           <SequenceInTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
+    else if(item.category === CategoryTypes.MATCHING_WORDS){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <MatchingWordsTest
             color={this.props.questions.color}
             quesNo={index}
             data={item}

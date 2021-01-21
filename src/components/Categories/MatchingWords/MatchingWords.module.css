@@ -5,12 +5,34 @@
     height: 50px;
     width: 300px;
     /* border: 2px; */
-    /* overflow-wrap: break-word; */
     overflow: scroll;
     border-color: rgb(199, 199, 199);
     margin: 9px ;
     background-color: rgb(233, 233, 233);
-    /* padding-left: 10px; */
+    padding-left: 15px;
+}
+.MyListDivTest{
+    height: 50px;
+    width: 300px;
+    /* border: 2px; */
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+    border-color: rgb(199, 199, 199);
+    margin: 9px ;
+    background-color: rgb(169, 245, 255);
+    padding-left: 15px;
+}
+.MyListDiv2{
+    height: 50px;
+    width: 300px;
+    /* border: 2px; */
+    overflow: scroll;
+    border-color: rgb(199, 199, 199);
+    margin: 9px ;
+    background-color: rgb(169, 245, 255);
+    padding-left: 15px;
+    padding-top: 10px;
 }
 
 
