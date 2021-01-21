@@ -27,11 +27,11 @@ class SequenceInOrder extends Component{
       this.props.deleteQuestion(this.props.data.id);
     }
     render(){
-        const ListStyle = {
-            display: 'block',
-            height: '30px',
-            lineHeight: '30px',
-          };
+        // const ListStyle = {
+        //     display: 'block',
+        //     height: '30px',
+        //     lineHeight: '30px',
+        //   };
         return(
             // <div>
                  <div  className="col-12 col-sm-10 offset-sm-1">

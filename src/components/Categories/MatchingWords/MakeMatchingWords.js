@@ -105,6 +105,8 @@ export default class MakeMatchingWords extends Component {
     const value = e.target.value;
     this.setState({ description: value });
   };
+
+
   onAddLeftOption = () => {
     const result = Joi.validate(
       { option: this.state.leftoptionValue },
@@ -114,8 +116,8 @@ export default class MakeMatchingWords extends Component {
       this.setState({ leftoptionValueError: result.error.details[0].message });
     } 
     else {
-      const found = this.state.options.some(
-        (item) => item.toUpperCase() === this.state.optionValue.toUpperCase()
+      const found = this.state.leftoptions.some(
+        (item) => item.toUpperCase() === this.state.leftoptionValue.toUpperCase()
       );
       if (!found) {
         this.setState({
@@ -182,12 +184,12 @@ export default class MakeMatchingWords extends Component {
     if(this.state.addorupdate === "Update Question"){
       console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Sequence In Order", description: this.state.description, options: this.state.options, ans: ans,id:this.props.question.id};
+      const data={category: "Matching Words", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans,id:this.props.question.id};
       this.props.updateQuestion(data)
     }
     else{
       console.log("ADD QUESTION function is called")
-      const data={category: "Sequence In Order", description: this.state.description, options: this.state.options, ans: ans};
+      const data={category: "Matching Words", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans};
       this.props.addQuestion(data)
     }
   }
@@ -219,21 +221,19 @@ export default class MakeMatchingWords extends Component {
   renderOptions = (optionsorans) => {
     return optionsorans.map((item) => {
       return (
-        <div style={{ marginTop: 7 }} id={item} className="row">
-          <div className="col-5 col-sm-5 offset-sm-1">
+        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
+          <div className="col-5 col-sm-6 offset-sm-1">
             <div className={classes.MyListDiv}>
                         <List.Item
                         id={item}
-                    title="HEYY"
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                    >{item}</List.Item>
                     </div>
           </div>
           <div className="col-2 col-sm-1 ">
             <Button onClick={() => this.onDelete(optionsorans,item)}>
-              {" "}
+              {/* {" "} */}
               <span>
-                <DeleteTwoTone twoToneColor="#eb2f96" />
+                <DeleteTwoTone  twoToneColor="#eb2f96" />
               </span>
             </Button>
           </div>
@@ -244,8 +244,9 @@ export default class MakeMatchingWords extends Component {
   renderAnswers = () => {
     return this.state.Answers.map((item) => {
       return (
-        <div style={{ marginTop: 7 }} id={item} className="row">
-          <div className="col-5 col-sm-5 offset-sm-1">
+        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
+         <div className="col-5 col-sm-6 offset-sm-1">
+          {/* <div > */}
             <div className={classes.MyListDiv}>
                         <List.Item
                         id={item}
@@ -311,7 +312,7 @@ export default class MakeMatchingWords extends Component {
     return (
       <>
         <div className="row">
-          <div className="col-12 col-sm-10 offset-sm-1">
+          <div className="col-12 col-sm-11 offset-sm-1">
             <TextArea
               placeholder="Enter Your Question"
               value={this.state.description}
@@ -326,10 +327,40 @@ export default class MakeMatchingWords extends Component {
           </div>
         </div>
         <br />
+
+      <div className={classes.BoxOrderDiv}>
+
+      
         <div className="row">
-          <div className="col-12 col-sm-5 offset-sm-1">
+          <div className="col-12 col-sm-7 offset-sm-1">
             <Input
-              placeholder="Enter Option Here"
+            style ={{width:"250px"}}
+              placeholder="Enter Left Option Here"
+              value={this.state.leftoptionValue}
+              onChange={(val) => {
+                this.onChangeLeftField(val);
+              }}
+            />
+          </div>
+          <div className="col-12 col-sm-3">
+            <Button
+              className="add-option"
+              style={{ marginLeft: 0, width:"100px" }}
+              // block
+              type="primary"
+              success
+              onClick={this.onAddLeftOption}
+            >
+              {" "}
+              Add Left
+            </Button>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 col-sm-7 offset-sm-1">
+            <Input
+            style ={{width:"250px"}}
+              placeholder="Enter Right Option Here"
               value={this.state.optionValue}
               onChange={(val) => {
                 this.onChangeOptionField(val);
@@ -339,23 +370,24 @@ export default class MakeMatchingWords extends Component {
           <div className="col-12 col-sm-3">
             <Button
               className="add-option"
-              style={{ marginLeft: 0 }}
-              block
+              style={{ marginLeft: 0, width:"100px" }}
+              // block
               type="primary"
               success
               onClick={this.onAddOption}
             >
               {" "}
-              Add Option
+              Add Right
             </Button>
           </div>
         </div>
-        <br />
-        <p style={errorStyleText}>{this.state.optionValueError}</p>
-        <br />
-        <div className="row">
+        
+        </div>
+              <br />
+          <div className="row" style={{width:"600px", margin:"0 auto"}}>
           <div className="col-12 col-sm-5 offset-sm-1">
             <Input
+            style ={{width:"250px"}}
               placeholder="Enter Answer Here"
               value={this.state.AnsValue}
               onChange={(val) => {
@@ -366,38 +398,52 @@ export default class MakeMatchingWords extends Component {
           <div className="col-12 col-sm-3">
             <Button
               className="add-option"
-              style={{ marginLeft: 0 }}
-              block
+              style={{ marginLeft: 0, width:"105px" }}
+              // block
               type="primary"
               success
               onClick={this.onAddAnswer}
             >
               {" "}
-              Add Answers in Order
+              Add Answers
             </Button>
           </div>
         </div>
+        
+
+        <p style={errorStyleText}>{this.state.optionValueError}</p>
+        <br />
+       
+        
+
+
         <div className="row">
           <div className="col-12 col-sm-10 offset-sm-1">
             
             <p style={errorStyleText}>{this.state.AnsValueError}</p>
-            <br />
+            {/* <br /> */}
             <p>** Please Enter the Answers in correct sequence **</p>
           </div>
         </div>
 
         <br />
         <div className={classes.DivinCol}>
+        <div>
+          <h6>Left Options</h6>
+        {this.renderOptions(this.state.leftoptions)}
+          </div>
           <div>
-          <h2>Right Options</h2>
+          <h6>Right Options</h6>
         {this.renderOptions(this.state.options)}
           </div>
-        <div>
-        <h2>Answers in order</h2>
+        
+        </div>
+        <br />
+        <div className="col" style={{paddingLeft:"40%"}}>
+        <h6>Answers in order</h6>
         {this.renderAnswers()}
         </div>
         
-        </div>
         
         
         <div className="row">
