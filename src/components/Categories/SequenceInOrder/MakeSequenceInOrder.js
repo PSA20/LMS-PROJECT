@@ -37,25 +37,25 @@ export default class MakeMultipleCheckbox extends Component {
     }
   }
 
-  onChangeC = (checkedValues) => {
-    console.log('checked = ', checkedValues.target.value);
-    console.log("valuee", this.state.value);
-    let uncheck = checkedValues.target.value
-    let myvalues = this.state.value
-    if(myvalues.includes(uncheck)){
-        const index = myvalues.indexOf(uncheck);
-        if (index > -1) {
-        myvalues.splice(index, 1);
-        }
-    this.setState({ value: myvalues });
-  }
-    else{
-        this.setState({
-            value: this.state.value.concat(uncheck)
-          });
-    }
+  // onChangeC = (checkedValues) => {
+  //   console.log('checked = ', checkedValues.target.value);
+  //   console.log("valuee", this.state.value);
+  //   let uncheck = checkedValues.target.value
+  //   let myvalues = this.state.value
+  //   if(myvalues.includes(uncheck)){
+  //       const index = myvalues.indexOf(uncheck);
+  //       if (index > -1) {
+  //       myvalues.splice(index, 1);
+  //       }
+  //   this.setState({ value: myvalues });
+  // }
+  //   else{
+  //       this.setState({
+  //           value: this.state.value.concat(uncheck)
+  //         });
+  //   }
     
-  }
+  // }
 //   onChange = (e) => {
 //     console.log("checked", this.state.value);
 //     this.setState({
@@ -286,9 +286,12 @@ export default class MakeMultipleCheckbox extends Component {
           </div>
         </div>
         <br />
+        <div className={classes.BoxOrderDiv}>
         <div className="row">
-          <div className="col-12 col-sm-5 offset-sm-1">
+          <div className="col-12 col-sm-7 offset-sm-1">
+          {/* <div> */}
             <Input
+            style ={{width:"250px"}}
               placeholder="Enter Option Here"
               value={this.state.optionValue}
               onChange={(val) => {
@@ -299,7 +302,7 @@ export default class MakeMultipleCheckbox extends Component {
           <div className="col-12 col-sm-3">
             <Button
               className="add-option"
-              style={{ marginLeft: 0 }}
+              style={{ marginLeft: 0, width:"100px" }}
               block
               type="primary"
               success
@@ -314,8 +317,9 @@ export default class MakeMultipleCheckbox extends Component {
         <p style={errorStyleText}>{this.state.optionValueError}</p>
         <br />
         <div className="row">
-          <div className="col-12 col-sm-5 offset-sm-1">
+          <div className="col-12 col-sm-7 offset-sm-1">
             <Input
+              style ={{width:"250px"}}
               placeholder="Enter Answer Here"
               value={this.state.AnsValue}
               onChange={(val) => {
@@ -326,17 +330,19 @@ export default class MakeMultipleCheckbox extends Component {
           <div className="col-12 col-sm-3">
             <Button
               className="add-option"
-              style={{ marginLeft: 0 }}
+              style={{ marginLeft: 0, width:"105px" }}
               block
               type="primary"
               success
               onClick={this.onAddAnswer}
             >
               {" "}
-              Add Answers in Order
+              Add Answers
             </Button>
           </div>
         </div>
+        </div>
+        
         <div className="row">
           <div className="col-12 col-sm-10 offset-sm-1">
             

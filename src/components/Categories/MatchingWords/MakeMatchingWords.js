@@ -45,25 +45,25 @@ export default class MakeMatchingWords extends Component {
     }
   }
 
-  onChangeC = (checkedValues) => {
-    console.log('checked = ', checkedValues.target.value);
-    console.log("valuee", this.state.value);
-    let uncheck = checkedValues.target.value
-    let myvalues = this.state.value
-    if(myvalues.includes(uncheck)){
-        const index = myvalues.indexOf(uncheck);
-        if (index > -1) {
-        myvalues.splice(index, 1);
-        }
-    this.setState({ value: myvalues });
-  }
-    else{
-        this.setState({
-            value: this.state.value.concat(uncheck)
-          });
-    }
+  // onChangeC = (checkedValues) => {
+  //   console.log('checked = ', checkedValues.target.value);
+  //   console.log("valuee", this.state.value);
+  //   let uncheck = checkedValues.target.value
+  //   let myvalues = this.state.value
+  //   if(myvalues.includes(uncheck)){
+  //       const index = myvalues.indexOf(uncheck);
+  //       if (index > -1) {
+  //       myvalues.splice(index, 1);
+  //       }
+  //   this.setState({ value: myvalues });
+  // }
+  //   else{
+  //       this.setState({
+  //           value: this.state.value.concat(uncheck)
+  //         });
+  //   }
     
-  }
+  // }
 //   onChange = (e) => {
 //     console.log("checked", this.state.value);
 //     this.setState({
