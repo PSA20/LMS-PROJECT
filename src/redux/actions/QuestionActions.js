@@ -1,5 +1,5 @@
 import * as ActionTypes from "../types/Questions";
-
+import axios from "axios";
 export const addQuestion = (question) => ({
   type: ActionTypes.ADD_QUESTION,
   payload: question,
@@ -27,3 +27,13 @@ export const changeScore = (score) => ({
      type: ActionTypes.UPDATE_QUESTION,
      payload: question,
  });
+
+ export const initquestions = () =>{
+   axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json")
+   .then(res=>{
+     console.log(res)
+   })
+   .catch(err=>{
+     console.log(err)
+   })
+ }

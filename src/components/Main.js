@@ -23,6 +23,7 @@ import {
   changeScore,
   changeTime,
   updateQuestion,
+  initquestions,
 } from "../redux/actions/QuestionActions";
 
 
@@ -41,6 +42,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeTime: (time) => {
     dispatch(changeTime(time));
   },
+  initquestions:()=>{ dispatch(initquestions());}
 });
 const mapStateToProps = (state) => {
   return {
@@ -60,6 +62,7 @@ class Main extends Component {
   }
   componentDidMount() {
     // this.props.addQuestion();
+    initquestions()
   }
   onChangeTime = (value) => {
     const reg = /^-?(0|[1-9][0-9]*)(\.[0-9]*)?$/;

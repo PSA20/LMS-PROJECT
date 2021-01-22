@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Card } from "antd";
-import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
-import {EditFillInTheBlanks} from "./EditFillInTheBlanks";
+// import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
+// import {EditFillInTheBlanks} from "./EditFillInTheBlanks";
 const blankString = "____";
 
 
@@ -20,22 +20,22 @@ const myIncludes=(str)=>{
 
 export const BlanksTest = (props) => {
  // console.log("props: ",props.data);
-  const [visible, toggleModal] = useState(false);
+  // const [visible, toggleModal] = useState(false);
 
-  const showModal = () => {
-    toggleModal(true);
-  };
+  // const showModal = () => {
+  //   toggleModal(true);
+  // };
 
-  const handleOk = () => {
-    toggleModal(false);
-  };
+  // const handleOk = () => {
+  //   toggleModal(false);
+  // };
 
-  const handleCancel = () => {
-    toggleModal(false);
-  };
-  const onDelete = () => {
-    props.deleteQuestion(props.data.id);
-  };
+  // const handleCancel = () => {
+  //   toggleModal(false);
+  // };
+  // const onDelete = () => {
+  //   props.deleteQuestion(props.data.id);
+  // };
   var numOfBlanks;
   const makeNumberedBlanks = (sen) => {
     const words = sen.split('____');
@@ -51,113 +51,115 @@ export const BlanksTest = (props) => {
       
     }
     numOfBlanks = c-1;
+    console.log(mod)
     return mod;
+    
   };
   
-  const makeDescription = (desc) => {
-    //console.log("ans: ",props.data.ans[0]);
-    const array = desc.split(" ");
-    let count = 0;
-    const result = array.map((item, index) => {
-      // console.log(index);
-      if((myIncludes(item)) &&  item.includes("____")){
-        console.log("found: ", item);
-        if (item[item.length - 1] === ".") {
+  // const makeDescription = (desc) => {
+  //   //console.log("ans: ",props.data.ans[0]);
+  //   const array = desc.split(" ");
+  //   let count = 0;
+  //   const result = array.map((item, index) => {
+  //     // console.log(index);
+  //     if((myIncludes(item)) &&  item.includes("____")){
+  //       console.log("found: ", item);
+  //       if (item[item.length - 1] === ".") {
             
-            count=count+1
-          return (
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
-              {props.data.ans[count-1]}
+  //           count=count+1
+  //         return (
+  //           <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+  //             {props.data.ans[count-1]}
               
               
-            </span>
-          );
-        } else if (item[0] === ".") {
-            console.log("found");
-            count=count+1;
-            return (
-                <span style={{ color: "#1890ff", textDecoration: "underline" }}>.{" "} 
-                  {props.data.ans[count-1]}
+  //           </span>
+  //         );
+  //       } else if (item[0] === ".") {
+  //           console.log("found");
+  //           count=count+1;
+  //           return (
+  //               <span style={{ color: "#1890ff", textDecoration: "underline" }}>.{" "} 
+  //                 {props.data.ans[count-1]}
                   
-                </span>
-              );
-        }else if (item[item.length - 1] === ",") {
-            count=count+1;
-            return (
-              <span style={{ color: "#1890ff", textDecoration: "underline" }}>
-                {props.data.ans[count-1]}
-                {","}
+  //               </span>
+  //             );
+  //       }else if (item[item.length - 1] === ",") {
+  //           count=count+1;
+  //           return (
+  //             <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+  //               {props.data.ans[count-1]}
+  //               {","}
                 
-              </span>
-            );
-          } else if (item[0] === ",") {
-            count=count+1;
-              return (
-                  <span style={{ color: "#1890ff", textDecoration: "underline" }}>,{" "} 
-                    {props.data.ans[count-1]}
+  //             </span>
+  //           );
+  //         } else if (item[0] === ",") {
+  //           count=count+1;
+  //             return (
+  //                 <span style={{ color: "#1890ff", textDecoration: "underline" }}>,{" "} 
+  //                   {props.data.ans[count-1]}
                     
-                  </span>
-                );
-          }
+  //                 </span>
+  //               );
+  //         }
           
-      }else{ 
-      if (item === blankString) {
-        count=count+1;
-        return (
-          <span style={{ color: "#1890ff", textDecoration: "underline" }}>
-            {props.data.ans[count-1]}{" "}
+  //     }else{ 
+  //     if (item === blankString) {
+  //       count=count+1;
+  //       return (
+  //         <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+  //           {props.data.ans[count-1]}{" "}
            
-          </span>
-        );
-      } else if (item !== blankString) {
-        return <span>{item} </span>;
-      }
+  //         </span>
+  //       );
+  //     } else if (item !== blankString) {
+  //       return <span>{item} </span>;
+  //     }
     
-    }if(item.includes(".")){
-        count=count+1;
-        const arr= item.split(".");
-        if(arr[0]===blankString){
-            return(<>
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
-            {props.data.ans[count-1]}
+  //   }if(item.includes(".")){
+  //       count=count+1;
+  //       const arr= item.split(".");
+  //       if(arr[0]===blankString){
+  //           return(<>
+  //           <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+  //           {props.data.ans[count-1]}
             
-          </span>. {arr[1]} {" "}</>);
-        }else{
-            return(
-            <>{arr[0]}.
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
-            {props.data.ans[count-1]} {" "}
+  //         </span>. {arr[1]} {" "}</>);
+  //       }else{
+  //           return(
+  //           <>{arr[0]}.
+  //           <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+  //           {props.data.ans[count-1]} {" "}
             
-          </span>
-          </>);
-        }
-    }
-    if(item.includes(",")){
-        count=count+1;
-        const arr= item.split(",");
-        if(arr[0]===blankString){
-            return(<>
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
-            {props.data.ans[count-1]}
+  //         </span>
+  //         </>);
+  //       }
+  //   }
+  //   if(item.includes(",")){
+  //       count=count+1;
+  //       const arr= item.split(",");
+  //       if(arr[0]===blankString){
+  //           return(<>
+  //           <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+  //           {props.data.ans[count-1]}
             
-          </span>, {arr[1]} {" "}</>);
-        }else{
-            return(
-            <>{arr[0]},
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
-            {props.data.ans[count-1]} {" "}
+  //         </span>, {arr[1]} {" "}</>);
+  //       }else{
+  //           return(
+  //           <>{arr[0]},
+  //           <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+  //           {props.data.ans[count-1]} {" "}
             
-          </span>
-          </>);
-        }
-    }
+  //         </span>
+  //         </>);
+  //       }
+  //   }
      
-    });
+  //   });
 
 
-     //console.log("last result");
-    return result;
-  };
+  //    //console.log("last result");
+  //   return result;
+  // };
   return (
     <div className="col-12 col-sm-10 offset-sm-1">
       <Card
@@ -174,16 +176,16 @@ export const BlanksTest = (props) => {
         })}
         </div>
       </Card>
-      <Modal
+      {/* <Modal
         style={{ width: 1000 }}
         title="Edit Question"
         visible={visible}
         onCancel={() => handleCancel()}
         width={1200}
         footer={null}
-      >
-         <EditFillInTheBlanks updateQuestion={props.updateQuestion} data={props.data} handleOk={handleOk} handleCancel={handleCancel}/> 
-      </Modal>
+      > */}
+         {/* <EditFillInTheBlanks updateQuestion={props.updateQuestion} data={props.data} handleOk={handleOk} handleCancel={handleCancel}/>  */}
+      {/* </Modal> */}
     </div>
   );
 };

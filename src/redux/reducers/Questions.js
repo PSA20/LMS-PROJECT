@@ -1,5 +1,7 @@
 import * as types from "../types/Questions";
 
+
+
 export const Questions = (
   state = {
     questions: [
@@ -52,6 +54,9 @@ export const Questions = (
        console.log(state.questions)
       // return { ...state, questions: state.questions.concat(action.payload) };
       return {...state, questions: [...state.questions, action.payload]}
+    // case types.INIT_QUESTIONS:
+    //   axios.
+
     case types.DELETE_QUESTION:
         const newArray= state.questions.filter(item=>{return item.id!==action.payload});
         return { ...state, questions: newArray};
