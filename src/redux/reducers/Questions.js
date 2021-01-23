@@ -41,7 +41,13 @@ export const Questions = (
             leftoptions: ["A","B","C","D"],
             rightoptions: ["Cat", "Dino", "Apple", "Banana"],
             ans: ["Apple", "Banana", "Cat", "Dino"],
-          }
+          },{       id:"match",
+          category: "Match Drag",
+          description: "From the below options Drag and drop in correact positions ",
+          leftoptions: ["A","B","C","D"],
+          rightoptions: ["Cat", "Dino", "Apple", "Banana"],
+          ans: ["Apple", "Banana", "Cat", "Dino"],
+        }
               
     ],color: "white",score:1,time:60
   },

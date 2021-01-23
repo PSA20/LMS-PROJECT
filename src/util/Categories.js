@@ -6,3 +6,4 @@ export const MULTIPLE_SELECT= "Multiple Select";
 export const MULTIPLE_CHECKBOX= "Multiple Checkbox";
 export const SEQUENCE_IN_ORDER= "Sequence In Order";
 export const MATCHING_WORDS="Matching Words";
+export const MATCH_DRAG="Match Drag";

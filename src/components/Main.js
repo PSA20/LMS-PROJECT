@@ -14,6 +14,7 @@ import {Blanks} from "./Categories/Blanks/Blanks";
 import DropDownSelect from "./Categories/Select-From-dropdown/DropDown";
 import TrueAndFalse from "./Categories/TrueAndFalse/TrueAndFalse";
 import MatchingWords from "./Categories/MatchingWords/MatchingWords";
+import MatchDrag from "./Categories/MatchDrag/MatchDrag";
 import * as CategoryTypes from "../util/Categories"; 
 import { NavLink } from 'react-router-dom';
 import {
@@ -227,6 +228,24 @@ class Main extends Component {
         </div>
       );
     }
+    else if(item.category === CategoryTypes.MATCH_DRAG){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <MatchDrag
+            deleteQuestion={this.props.deleteQuestion}
+            updateQuestion={this.props.updateQuestion}
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
     
     })
     ;
@@ -247,9 +266,9 @@ class Main extends Component {
             <AddQuestion addQuestion={this.props.addQuestion} />
             
             <br />
-            <NavLink to="/test">TEST START</NavLink>
+            {/* <NavLink to="/test">TEST START</NavLink> */}
             <hr />
-            <NavLink to="/test123">TEST MYY</NavLink>
+            <NavLink to="/test123">TEST START</NavLink>
             <br />
           </div>
           

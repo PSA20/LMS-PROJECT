@@ -12,6 +12,7 @@ import TrueAndFalseTest from "../Categories/TrueAndFalse/TrueAndFalseTest";
 import MultipleCheckboxTest from "../Categories/MultipleCheckbox/MultipleCheckboxTest";
 import SequenceInTest from "../Categories/SequenceInOrder/SequenceInTest";
 import MatchingWordsTest from "../Categories/MatchingWords/MatchingWordsTest";
+import MatchDragTest from "../Categories/MatchDrag/MatchDragTest";
 // import MultipleC from "../Categories/Multip"
 
 class MyTest extends Component{
@@ -135,6 +136,22 @@ class MyTest extends Component{
           className="row"
         >
           <MatchingWordsTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
+    else if(item.category === CategoryTypes.MATCH_DRAG){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <MatchDragTest
             color={this.props.questions.color}
             quesNo={index}
             data={item}
