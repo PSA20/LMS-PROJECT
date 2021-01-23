@@ -36,7 +36,7 @@ export default class MakeMatchDrag extends Component {
   }
   componentDidMount() {
     if(this.props.description){
-      console.log(this.props.question)
+      // console.log(this.props.question)
         this.setState({description: this.props.question.description,
             options: this.props.question.rightoptions,
             leftoptions: this.props.question.leftoptions,
@@ -45,33 +45,33 @@ export default class MakeMatchDrag extends Component {
     }
   }
   onFinish = (values) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
   };
 
   onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
   };
 
   onChangeOptionField = (val) => {
-    console.log(val.target.value);
+    // console.log(val.target.value);
     
     const value = val.target.value;
     this.setState({ optionValue: value });
-    console.log(this.state.optionValue)
+    // console.log(this.state.optionValue)
   };
   onChangeAnsField = (val) => {
-    // console.log(val.target.value);
+    // // console.log(val.target.value);
     
     const value = val.target.value;
     this.setState({ AnsValue: value });
-    // console.log(this.state.AnsValue)
+    // // console.log(this.state.AnsValue)
   };
   onChangeLeftField = (val) => {
-    // console.log(val.target.value);
+    // // console.log(val.target.value);
     
     const value = val.target.value;
     this.setState({ leftoptionValue: value });
-    // console.log(this.state.AnsValue)
+    // // console.log(this.state.AnsValue)
   };
 
   onChangeDescription = (e) => {
@@ -155,13 +155,13 @@ export default class MakeMatchDrag extends Component {
 
   onAddorUpdate = (ans)=>{
     if(this.state.addorupdate === "Update Question"){
-      console.log("Update function is called")
+      // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
       const data={category: "Match Drag", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans,id:this.props.question.id};
       this.props.updateQuestion(data)
     }
     else{
-      console.log("ADD QUESTION function is called")
+      // console.log("ADD QUESTION function is called")
       const data={category: "Match Drag", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans};
       this.props.addQuestion(data)
     }
@@ -179,23 +179,23 @@ export default class MakeMatchDrag extends Component {
   onDelete = (optionsorans,option) => {
     let options = optionsorans;
     let ansans = this.state.Answers
-    console.log(options, this.state)
+    // console.log(options, this.state)
     const index = options.indexOf(option);
     const indexans = ansans.indexOf(option);
     // if(ansans.includes(option)){
-      // console.log("indexans  "+indexans)
+      // // console.log("indexans  "+indexans)
     if (indexans > -1) {
-      // console.log("ASDFASDFADFADFDFS")
+      // // console.log("ASDFASDFADFADFDFS")
         ansans.splice(indexans, 1);
     }
     
     if (index > -1) {
       options.splice(index, 1);
     }
-    // console.log(this.state.value)
-    // console.log("aksjhdbfallealleallealle"+ansans)
+    // // console.log(this.state.value)
+    // // console.log("aksjhdbfallealleallealle"+ansans)
     this.setState({ options: options, Answers:ansans });
-    // console.log(this.state.value)
+    // // console.log(this.state.value)
   };
   
 
@@ -264,7 +264,7 @@ export default class MakeMatchDrag extends Component {
           if (this.state.Answers[0]) {
           //      ADD to DATABASE
           // Closing modal
-          console.log(this.state.value)
+          // console.log(this.state.value)
           let ans=[];
           ans = this.state.Answers
           this.onAddorUpdate(ans)

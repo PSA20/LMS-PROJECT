@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card,  List } from 'antd';
+import { Card} from 'antd';
 import classes from "./MatchDrag.module.css";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 class MatchDragTest extends Component{
