@@ -29,17 +29,17 @@ class MatchDragTest extends Component{
         if (!result.destination) return;
         const items = this.state.leftoptions
         const right = this.state.mydata
-        if(right.includes(result.destination.droppableId) && right.includes(result.source.droppableId)){
-            const arr = this.state.arr
-            // const [reorderedItem] = arr.splice(result.source.index, 1);
-            // arr.splice(result.destination.index, 0, reorderedItem);
-            let temp = arr[result.source.index]
-            arr[result.source.index] = arr[result.destination.index]
-            arr[result.destination.index] = temp
-            this.setState({arr: arr})
-        }
+        // if(right.includes(result.destination.droppableId) && right.includes(result.source.droppableId)){
+        //     const arr = this.state.arr
+        //     // const [reorderedItem] = arr.splice(result.source.index, 1);
+        //     // arr.splice(result.destination.index, 0, reorderedItem);
+        //     let temp = arr[result.source.index]
+        //     arr[result.source.index] = arr[result.destination.index]
+        //     arr[result.destination.index] = temp
+        //     this.setState({arr: arr})
+        // }
         // // console.log(items.includes(result.source.droppableId))
-        else if(items.includes(result.source.droppableId) && right.includes(result.destination.droppableId)){
+        if(items.includes(result.source.droppableId) && right.includes(result.destination.droppableId)){
             const srcindex = items.indexOf(result.source.droppableId);
             
             
@@ -167,7 +167,7 @@ class MatchDragTest extends Component{
                                      
                                             <div className={classes.DivinCol2}>
                                             <div className={classes.MyListDrop}>
-                                                <p  style={{textAlign:"center"}}>{index}</p>
+                                                <p  style={{textAlign:"center"}}>{}</p>
                                              </div>
                                              {renderdataa}
                                                 {/* <Draggable key = {index} draggableId={index} index= {x.data.indexOf(index)}>
