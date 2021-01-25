@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card,  List, Button } from 'antd';
+import { Card, Button } from 'antd';
 import classes from './SequenceInOrder.module.css';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 class SequenceInTest extends Component{

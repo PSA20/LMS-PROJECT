@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {  withRouter } from "react-router-dom";
 import Header from "../Header";
-import Countdown from "react-countdown";
+// import Countdown from "react-countdown";
 import {  Divider } from "antd";
 import * as CategoryTypes from '../../util/Categories';
 import * as actions from "../../redux/actions/QuestionActions";
