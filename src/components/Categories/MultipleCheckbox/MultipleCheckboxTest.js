@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card,Checkbox, Row } from 'antd';
+import {Card,Checkbox, Row, Button } from 'antd';
 class MultipleCheckboxTest extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +28,29 @@ class MultipleCheckboxTest extends Component {
         }
         console.log("valuee", this.state.value);
     }    
+    onClickHandler = ()=>{
+        const userans = this.state.value.sort();
+        const ansans = this.props.data.ans.sort();
+        let yesorno = false
+        if(userans.length !== ansans.length){
+            yesorno = false
+        }
+        else{
+            for(var i = 0; i<userans.length;i++){
+                if(userans[i] === ansans[i]){
+                    yesorno = true
+                }
+                else{
+                    yesorno = false
+                    break;
+                }
+            }
+        }
+      const data = {queNo: this.props.quesNo, userAns: userans, correctans:ansans, val:yesorno}
+      this.props.userAnsList(data)
+      this.props.nextQue()
 
+    }
 
     render(){
         console.log("heuu im form render")
@@ -60,6 +82,7 @@ class MultipleCheckboxTest extends Component {
                       
           </Checkbox.Group>
                 </Card>
+                <Button type="primary" style={{float:"right"}} onClick={this.onClickHandler}>Next</Button>
             </div>
         )
     }

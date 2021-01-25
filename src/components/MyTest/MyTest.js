@@ -109,6 +109,8 @@ class MyTest extends Component{
             color={this.props.questions.color}
             quesNo={index}
             data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
           />
         </div>
       )
@@ -126,6 +128,8 @@ class MyTest extends Component{
             color={this.props.questions.color}
             quesNo={index}
             data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
           />
         </div>
       );

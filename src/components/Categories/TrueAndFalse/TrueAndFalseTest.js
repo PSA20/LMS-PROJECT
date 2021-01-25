@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {  Card, Radio} from "antd";
+import {  Card, Radio, Button} from "antd";
 // import { EditTwoTone, DeleteTwoTone } from "@ant-design/icons";
 // import EditTrueFalse from "./EditTrueFalse";
 export default function TrueAndFalse(props) {
@@ -10,20 +10,7 @@ export default function TrueAndFalse(props) {
         height: '30px',
         lineHeight: '30px',
       };
-      // const showModal = () => {
-      //   toggleModal(true);
-      // };
-    
-      // const handleOk = () => {
-      //   toggleModal(false);
-      // };
-    
-      // const handleCancel = () => {
-      //   toggleModal(false);
-      // };
-      // const onDelete = () => {
-      //   props.deleteQuestion(props.data.id);
-      // };
+     
       const onChange = e => {
         console.log('radio checked', e.target.value);
         setValue(e.target.value);
@@ -33,7 +20,18 @@ export default function TrueAndFalse(props) {
         // write a if statement to check the ans and verify it and change the total score if possible or store the required 
         // data such as the correct ans and the submitted ans...
       };
-      console.log(props)
+      const onClickHandler=()=>{
+        let yesorno = false
+        if(value === props.data.ans[0]){
+          yesorno = true
+        }
+      const data = {queNo: props.quesNo, userAns: value, correctans: props.data.ans[0], val:yesorno}
+      console.log(data)
+      props.userAnsList(data)
+      props.nextQue()
+      console.log("i an called nextque and updatelist");
+      }
+      // console.log(props)
     return (
         <div className="col-12 col-sm-10 offset-sm-1">
         <Card
@@ -47,7 +45,7 @@ export default function TrueAndFalse(props) {
            {props.quesNo}. {props.data.description}
           
          </p>
-         {/* <Radio.Group  value={props.data.ans[0]} onChange={onChange}> */}
+
          <Radio.Group  value={value} onChange={onChange}>
       <Radio style={radioStyle} value={true}>True</Radio>
       <Radio style={radioStyle} value={false}>False</Radio>
@@ -56,16 +54,8 @@ export default function TrueAndFalse(props) {
 </div>
 
         </Card>
-        {/* <Modal
-          style={{ width: 1000 }}
-          title="Edit Question"
-          visible={visible}
-          onCancel={() => props.handleCancel()}
-          width={1200}
-          footer={null}
-        >
-           <EditTrueFalse updateQuestion={props.updateQuestion} data={props.data} handleOk={handleOk} handleCancel={handleCancel}/> 
-        </Modal> */}
+        <Button type="primary" style={{float:"right"}} onClick={onClickHandler}>Next</Button>
+    
       </div>
     )
 }
