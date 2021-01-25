@@ -49,7 +49,8 @@ export const Questions = (
           ans: ["Apple", "Banana", "Cat", "Dino"],
         }
               
-    ],color: "white",score:1,time:60
+    ],color: "white",score:1,time:60,
+    list:[]
   },
   action
 ) => {
@@ -71,7 +72,12 @@ export const Questions = (
     case types.CHANGE_SCORE:
             return { ...state, score: action.payload}
     case types.CHANGE_TIME:
-            return { ...state, time: action.payload}   
+            return { ...state, time: action.payload}  
+    case types.USER_ANS_LIST:
+       const arr = action.payload
+       console.log(arr)
+       console.log(state.list)
+       return{...state, list:[...state.list, arr]}
     case types.UPDATE_QUESTION:
             const question=action.payload;
            // console.log("question: ",question);

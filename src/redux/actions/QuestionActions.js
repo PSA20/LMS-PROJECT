@@ -37,3 +37,8 @@ export const changeScore = (score) => ({
      console.log(err)
    })
  }
+
+ export const userAnsList = ( list )=>({
+   type: ActionTypes.USER_ANS_LIST,
+   payload: list
+ })

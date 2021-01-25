@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Radio,  Card} from 'antd';
+import { Radio,  Card, Button} from 'antd';
 export default class MultipleChoice extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 1,
+            value: "",
             visible: false,
+            ans : this.props.data.ans[0]
           };
     }
     showModal = () => {
@@ -34,6 +35,23 @@ export default class MultipleChoice extends Component {
           value: e.target.value,
         });
       };
+    onClickHandler = ()=>{
+      console.log("clicked")
+      let yesorno = false
+      const userans = this.state.value
+      const ansans = this.state.ans
+      console.log(userans, ansans)
+      if(userans === ansans){
+        yesorno = true
+      }
+      const data = {queNo: this.props.quesNo, userAns: userans, correctans:ansans, val:yesorno}
+      this.props.userAnsList(data)
+      this.props.nextQue()
+      console.log("i an called nextque and updatelist");
+      
+    }
+
+
     render() {
         const radioStyle = {
           display: 'block',
@@ -57,6 +75,7 @@ export default class MultipleChoice extends Component {
                     })}
           </Radio.Group>
                 </Card>
+                <Button type="primary" style={{float:"right"}} onClick={this.onClickHandler}>Next</Button>
             </div>
        
         );

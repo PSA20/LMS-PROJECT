@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import {Modal, Card, Menu, Dropdown, Button} from "antd";
-import { EditTwoTone, DeleteTwoTone} from "@ant-design/icons";
-import EditDropDown from "./EditDropDown";
+import {Card, Menu, Dropdown, Button} from "antd";
+// import { EditTwoTone, DeleteTwoTone} from "@ant-design/icons";
+// import EditDropDown from "./EditDropDown";
 export default class DropDownSelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
             val: [],
+            ans: [...this.props.data.ans],
+            userans: new Array(this.props.data.options.length),
             visible: false,
           };
     }
@@ -33,14 +35,16 @@ export default class DropDownSelect extends Component {
     onClickHandler = (count, e) =>{
       console.log(this.state.val)
       let ca = this.props.data.options[count].split(",")
-      let ans = []
-      ans= ca[e.key]
+      let ansa = []
+      ansa= ca[e.key]
       // if(this.state.val[count]){
-
+      let myans = this.state.userans
+      myans[count] = ansa
       // }
       console.log( ca[e.key], e)
-      console.log(ans)
-      this.setState({val:this.state.val.concat({count, ans})})
+      console.log(ansa)
+      console.log(myans)
+      this.setState({val:this.state.val.concat({count, ansa}), userans:myans})
       
       console.log(this.state.val)
     }
@@ -86,12 +90,17 @@ export default class DropDownSelect extends Component {
                         if(this.isNumeric(item2[0])){
                             ansIndex++;
                             let count=ansIndex-1;
+                            let x = "-Select"
+                            if(this.state.userans[count]){
+                              x = this.state.userans[count]
+                            }
                         return(<Dropdown overlay={this.menu(data.options[count], data.ans[count], count)}>
                             {/* <a className="ant-dropdown-link"  onClick={e => e.preventDefault()}>
                               -Select- 
                             </a> */}
                             <Button className="ant-dropdown-link"  onClick={e => e.preventDefault()}>
-                              -Select- 
+                              {/* -Select-  */}
+                              {x}
                             </Button>
                             {/* on click event should have to save the value and the index of the dropdown and the
                             name -SELECT- have to be changed according to the options... */}
@@ -112,8 +121,48 @@ export default class DropDownSelect extends Component {
             })}
         </p>);
     }
+    onClickNextHandler = ()=>{
+      console.log("clicked")
+      let yesorno = false
+      const userans = [...this.state.userans]
+      const ansans = [...this.props.data.ans]
+      console.log(ansans)
+      console.log(userans)
+      const options = [...this.props.data.options];
+      const myans = new Array(ansans.length)
+      
+      for(var j = 0; j<options.length;j++){
+        let x = options[j].split(",")
+        console.log(x)
+        myans[j] = x[ansans[j]]
+        console.log(myans)
+      }
+      if(userans.length !== myans.length){
+        yesorno = false
+      }  
+      else{ 
+  // comapring each element of array 
+        for(var i=0;i<userans.length;i++)
+        if(userans[i] === myans[i]){
+        yesorno = true
+      }
+   else{
+    yesorno = false
+  } }
+      // if(userans === ansans){
+      //   yesorno = true
+      // }
+      const data = {queNo: this.props.quesNo, userAns: userans, correctans:myans, val:yesorno}
+      console.log(data)
+      this.props.userAnsList(data)
+      this.props.nextQue()
+      // console.log("i an called nextque and updatelist");
+      
+    };
 
     render() {
+      console.log(this)
+      console.log(this.props.data.options.length)
         return (
             <div className="col-12 col-sm-10 offset-sm-1">
       <Card
@@ -122,16 +171,8 @@ export default class DropDownSelect extends Component {
       >
        {this.onRenderDropdownQuestion(this.props.quesNo, this.props.data)}
       </Card>
-      {/* <Modal
-        style={{ width: 1000 }}
-        title="Edit Question"
-        visible={this.state.visible}
-        onCancel={() => this.handleCancel()}
-        width={1200}
-        footer={null} */}
-      {/* > */}
-         {/* <EditDropDown updateQuestion={this.props.updateQuestion} data={this.props.data} handleOk={this.handleOk} handleCancel={this.handleCancel}/>  */}
-      {/* </Modal> */}
+      <Button type="primary" style={{float:"right"}} onClick={this.onClickNextHandler}>Next</Button>
+
     </div>
         )
     }

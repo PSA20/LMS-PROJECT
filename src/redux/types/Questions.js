@@ -9,3 +9,4 @@ export const CHANGE_SCORE="CHANGE_SCORE";
 export const CHANGE_TIME="CHANGE_TIME";
 
 export const INIT_QUESTIONS = "INIT_QUESTIONS";
+export const USER_ANS_LIST = "USER_ANS_LIST";

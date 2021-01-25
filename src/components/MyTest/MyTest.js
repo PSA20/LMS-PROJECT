@@ -5,6 +5,7 @@ import Header from "../Header";
 import Countdown from "react-countdown";
 import {  Divider } from "antd";
 import * as CategoryTypes from '../../util/Categories';
+import * as actions from "../../redux/actions/QuestionActions";
 import MultipleChoiceTest from "../Categories/Multiple Choice/MultipleChoiceTest";
 import BlanksTest from "../Categories/Blanks/BlanksTest";
 import DropDownTest from "../Categories/Select-From-dropdown/DropDownTest";
@@ -17,15 +18,27 @@ import MatchDragTest from "../Categories/MatchDrag/MatchDragTest";
 
 class MyTest extends Component{
 
+  state = {
+    router: React.PropTypes,
+    currentquestion:0,
+    questions:this.props.questions
+  }
+  updateCurrentNo = ()=>{
+    let x = this.state.currentquestion + 1
+    this.setState({currentquestion: x})
+  }
 
-  renderQuestionRows = () => {
+  renderQuestionRows = (item, cur) => {
     //<MultipleChoice quesNo={1} data={data} />
     //    const ques = this.props.questions;
+    console.log(this.state.questions.questions[1])
+    console.log(this.props.list)
     //console.log("ques.ques: ",this.props.questions.questions);
-
-    const result = this.props.questions.questions.map((item, index) => {
+    // const result = this.props.questions.questions.map((item, index) => {
       //console.log("item ",item);
-      index++;
+      cur++;
+      const index = cur
+      console.log(index, cur)
       //console.log("item: ", item.category)
       if(item.category === CategoryTypes.MULTIPLE_CHOICE){
       return (
@@ -43,6 +56,8 @@ class MyTest extends Component{
             //   <DeleteTwoTone onClick={()=>{this.onDelete();}} twoToneColor="#eb2f96" key="del"/>,
             // ]}
             quesNo={index}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
             data={item}
           />
         </div>
@@ -60,6 +75,8 @@ class MyTest extends Component{
             color={this.props.questions.color}
             quesNo={index}
             data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
           />
         </div>
       );
@@ -75,6 +92,8 @@ class MyTest extends Component{
             color={this.props.questions.color}
             quesNo={index}
             data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
           />
         </div>
       );
@@ -159,13 +178,15 @@ class MyTest extends Component{
         </div>
       );
     }
-    })
+    // })
     ;
-    return result;
+    // return result;
   };
 
 
     render(){
+    console.log(this.state.router)
+      console.log(window.location.href)
         console.log(this.props.questions.time)
         return(
             // <div>
@@ -201,7 +222,8 @@ class MyTest extends Component{
       
         <br />
         {this.props.questions ? (
-          this.renderQuestionRows()
+          this.renderQuestionRows(this.state.questions.questions[this.state.currentquestion],this.state.currentquestion)
+          // this.renderQuestionRows(this.state.questions.questions[7])
         ) : (
           <p>No Questions Added yet</p>
         )}
@@ -225,12 +247,16 @@ const mapDispatchToProps = (dispatch) => ({
     // changeTime: (time) => {
     //   dispatch(changeTime(time));
     // },
+    updateUserAnsList :(list) =>{
+      dispatch(actions.userAnsList(list))
+    }
   });
   const mapStateToProps = (state) => {
     return {
       user: state.user,
       questions: state.question,
-      option: state.option
+      option: state.option,
+      list: state.list
     };
   };
 

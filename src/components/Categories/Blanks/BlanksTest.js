@@ -1,5 +1,5 @@
-import React, { Component, useState } from "react";
-import { Card, Input} from "antd";
+import React, { Component} from "react";
+import { Card, Button} from "antd";
 // import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 // import {EditFillInTheBlanks} from "./EditFillInTheBlanks";
 // const blankString = "____";
@@ -63,7 +63,35 @@ class BlanksTest extends Component{
       ansans[name-1] = m
       this.setState({userans:ansans})
       console.log(this.state.userans)
-    }
+    };
+
+    onClickHandler = ()=>{
+      console.log("clicked")
+      let yesorno = false
+      const userans = this.state.userans
+      const ansans = this.state.ans
+      if(userans.length !== ansans.length){
+        yesorno = false
+      }  
+      else{ 
+  // comapring each element of array 
+   for(var i=0;i<userans.length;i++)
+   if(userans[i].toLowerCase() === ansans[i].toLowerCase()){
+    yesorno = true
+   }
+   else{
+    yesorno = false
+  } }
+      // if(userans === ansans){
+      //   yesorno = true
+      // }
+      const data = {queNo: this.props.quesNo, userAns: userans, correctans:ansans, val:yesorno}
+      console.log(data)
+      this.props.userAnsList(data)
+      this.props.nextQue()
+      console.log("i an called nextque and updatelist");
+      
+    };
 
     render(){
       return(
@@ -93,6 +121,7 @@ class BlanksTest extends Component{
         })}
         </div>
       </Card>
+      <Button type="primary" style={{float:"right"}} onClick={this.onClickHandler}>Next</Button>
      
     </div>
       )
