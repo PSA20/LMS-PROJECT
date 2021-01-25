@@ -1,24 +1,103 @@
-import React, { useState } from "react";
-import { Modal, Card } from "antd";
+import React, { Component, useState } from "react";
+import { Card, Input} from "antd";
 // import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 // import {EditFillInTheBlanks} from "./EditFillInTheBlanks";
-const blankString = "____";
+// const blankString = "____";
 
 
-const myIncludes=(str)=>{
-    if(str.includes(".")){
-        return true;
-    }else if(str.includes(",")){
-        return true;
-    }else if(str.includes("'")){
-        return true;
-    }else if(str.includes("\"")){
-        return true;
+// const myIncludes=(str)=>{
+//     if(str.includes(".")){
+//         return true;
+//     }else if(str.includes(",")){
+//         return true;
+//     }else if(str.includes("'")){
+//         return true;
+//     }else if(str.includes("\"")){
+//         return true;
+//     }
+//     return false;
+// };
+
+// export const BlanksTest = (props) => {
+class BlanksTest extends Component{
+
+    state = {
+      description:this.props.data.description,
+      ans: this.props.data.ans,
+      userans:new Array(this.props.data.ans.length),
+      numOfBlanks:0,
+      mod:""
     }
-    return false;
-};
+    
+  
+  componentDidMount(){
+    this.makeNumberedBlanks(this.state.description)
+  }
+    // console.log(props)
+    makeNumberedBlanks = (sen) => {
+      const words = sen.split('____');
+      let na = 0
+      let mod = "";
+      let c=1;
+      for(let i=0;i<words.length;i++){
+        if(words[i].length>0){
+          
+          mod+= "("+c+")____"+words[i];
+          c++;
+        }
+        
+      }
+      na = c-1;
+      this.setState({numOfBlanks:na, mod:mod})
+      console.log(mod)
+      // return mod;
+      
+    };
+    
+   
+    onChangeHandler=(val)=>{
+      // console.log(val.target)
+      const m = val.target.value
+      const name = Number(val.target.name)
+      let ansans = this.state.userans
+      ansans[name-1] = m
+      this.setState({userans:ansans})
+      console.log(this.state.userans)
+    }
 
-export const BlanksTest = (props) => {
+    render(){
+      return(
+        <div className="col-12 col-sm-10 offset-sm-1">
+      <Card
+        style={{ backgroundColor: this.props.color }}
+        
+      >
+        <p style={{ fontSize: 17 }}>
+         
+          {this.props.quesNo}. {this.state.mod}
+        </p>
+        <div>
+        {Array(this.state.numOfBlanks).fill(0).map((item, i) =>{
+          let m = i+1
+           return (
+            <form>
+            <label>{m}
+           <input style={{marginLeft:"5px",marginBottom:"2px"}} 
+           type="text"
+           name={m}
+           key={m} onChange={(val)=>{this.onChangeHandler(val)}}>
+             </input>
+             <br/>
+             </label>
+             </form>)
+        })}
+        </div>
+      </Card>
+     
+    </div>
+      )
+    }
+  }
  // console.log("props: ",props.data);
   // const [visible, toggleModal] = useState(false);
 
@@ -36,27 +115,11 @@ export const BlanksTest = (props) => {
   // const onDelete = () => {
   //   props.deleteQuestion(props.data.id);
   // };
-  var numOfBlanks;
-  const makeNumberedBlanks = (sen) => {
-    const words = sen.split('____');
-    
-    let mod = "";
-    let c=1;
-    for(let i=0;i<words.length;i++){
-      if(words[i].length>0){
-        
-        mod+= "("+c+")____"+words[i];
-        c++;
-      }
-      
-    }
-    numOfBlanks = c-1;
-    console.log(mod)
-    return mod;
-    
-  };
-  
-  // const makeDescription = (desc) => {
+
+
+export default BlanksTest
+
+ // const makeDescription = (desc) => {
   //   //console.log("ans: ",props.data.ans[0]);
   //   const array = desc.split(" ");
   //   let count = 0;
@@ -160,35 +223,3 @@ export const BlanksTest = (props) => {
   //    //console.log("last result");
   //   return result;
   // };
-  return (
-    <div className="col-12 col-sm-10 offset-sm-1">
-      <Card
-        style={{ backgroundColor: props.color }}
-        
-      >
-        <p style={{ fontSize: 17 }}>
-         
-          {props.quesNo}. {makeNumberedBlanks(props.data.description)}
-        </p>
-        <div>
-        {Array(numOfBlanks).fill(0).map((item, i) =>{
-           return (<span>{i+1}<input style={{marginLeft:"5px",marginBottom:"2px"}}></input><br/></span>)
-        })}
-        </div>
-      </Card>
-      {/* <Modal
-        style={{ width: 1000 }}
-        title="Edit Question"
-        visible={visible}
-        onCancel={() => handleCancel()}
-        width={1200}
-        footer={null}
-      > */}
-         {/* <EditFillInTheBlanks updateQuestion={props.updateQuestion} data={props.data} handleOk={handleOk} handleCancel={handleCancel}/>  */}
-      {/* </Modal> */}
-    </div>
-  );
-};
-
-
-export default BlanksTest

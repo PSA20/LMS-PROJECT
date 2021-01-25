@@ -16,7 +16,7 @@ class MatchingWords extends Component{
       this.setState({ visible: true });
     };
   
-    handleOk = () => {
+    handleOk = () => { 
       this.setState({ visible: false });
     };
   

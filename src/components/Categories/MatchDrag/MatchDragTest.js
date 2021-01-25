@@ -46,6 +46,9 @@ class MatchDragTest extends Component{
             const temp = right.indexOf(result.destination.droppableId)
             const arr = this.state.arr
             const lrr = this.state.lrr
+            if(arr[temp]){
+                return;
+            }
             // if(arr[temp] !== null){return;}
             arr[temp] = result.draggableId
             lrr[srcindex] = ""
@@ -68,6 +71,9 @@ class MatchDragTest extends Component{
             const temp = items.indexOf(result.destination.droppableId)
             const arr = this.state.arr
             const lrr = this.state.lrr
+            if(lrr[temp]){
+                return;
+            }
             arr[srcindex] = ""
             lrr[temp] = result.draggableId
             // console.log("right",right)
@@ -83,6 +89,9 @@ class MatchDragTest extends Component{
                     data:right
                 }
             }, arr:arr, lrr:lrr})
+        }
+        else{
+            return;
         }
         // console.log(result)
     }
