@@ -62,29 +62,29 @@ class BlanksTest extends Component{
       let ansans = this.state.userans
       ansans[name-1] = m
       this.setState({userans:ansans})
-      console.log(this.state.userans)
+      // console.log(this.state.userans)
     };
 
     onClickHandler = ()=>{
       console.log("clicked")
       let yesorno = false
-      const userans = this.state.userans
-      const ansans = this.state.ans
+      const userans = [...this.state.userans];
+      const ansans = [...this.state.ans];
       if(userans.length !== ansans.length){
         yesorno = false
+        console.log("first if")
       }  
       else{ 
   // comapring each element of array 
    for(var i=0;i<userans.length;i++){
-     if(!userans[i]){
-      yesorno = false;
-      break;
-     }
-    if(userans[i].toLowerCase() === ansans[i].toLowerCase()){
-    yesorno = true
-   }
+    if(userans[i] && (userans[i].toLowerCase() === ansans[i].toLowerCase())){
+      yesorno = true;
+      console.log("second if")
+    }
+
     else{
     yesorno = false;
+    console.log("else")
     break;
   } }}
       // if(userans === ansans){
@@ -94,7 +94,7 @@ class BlanksTest extends Component{
       console.log(data)
       this.props.userAnsList(data)
       this.props.nextQue()
-      console.log("i an called nextque and updatelist");
+      // console.log("i an called nextque and updatelist");
       
     };
 

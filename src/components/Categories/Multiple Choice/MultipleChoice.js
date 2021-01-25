@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Radio,  Card, Modal } from 'antd';
 import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
-import EditMultipleChoice from "./EditMultipleChoice";
+// import EditMultipleChoice from "./EditMultipleChoice";
 import MakeMultipleChoice from "./MakeMultipleChoice";
 export default class MultipleChoice extends Component {
     constructor(props) {
