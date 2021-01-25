@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card,  List } from 'antd';
+import { Card,  List, Button } from 'antd';
 import classes from "./MatchingWords.module.css";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 class MatchingWordsTest extends Component{
@@ -8,9 +8,9 @@ class MatchingWordsTest extends Component{
         this.state = {
             value: 1,
             visible: false,
-            mydata: this.props.data.rightoptions,
-            answers: this.props.data.ans,
-            leftoptions: this.props.data.leftoptions
+            mydata: [...this.props.data.rightoptions],
+            answers: [...this.props.data.ans],
+            leftoptions: [...this.props.data.leftoptions]
 
           };
     }
@@ -27,6 +27,25 @@ class MatchingWordsTest extends Component{
         
         
     }
+    onClickHandler = ()=>{
+        const userans = [...this.state.mydata];
+        const ansans = [...this.props.data.ans];
+        let yesorno = false;
+        for(var i = 0; i<userans.length;i++){
+            if(userans[i] === ansans[i]){
+                yesorno = true
+            }
+            else{
+                yesorno = false
+                break;
+            }
+        }
+      const data = {queNo: this.props.quesNo, userAns: userans, correctans:ansans, val:yesorno}
+      this.props.userAnsList(data)
+      this.props.nextQue()
+
+    }
+
 
     render(){
 
@@ -91,6 +110,7 @@ class MatchingWordsTest extends Component{
         
             
             </Card>
+            <Button type="primary" style={{float:"right"}} onClick={this.onClickHandler}>Next</Button>
             </div>
         )
     }

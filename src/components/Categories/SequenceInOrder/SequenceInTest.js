@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card,  List } from 'antd';
+import { Card,  List, Button } from 'antd';
 import classes from './SequenceInOrder.module.css';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 class SequenceInTest extends Component{
@@ -8,7 +8,7 @@ class SequenceInTest extends Component{
         this.state = {
             value: 1,
             visible: false,
-            mydata: this.props.data.options,
+            mydata: [...this.props.data.options],
           };
     }
     handleOnDragEnd = (result) =>{
@@ -23,6 +23,24 @@ class SequenceInTest extends Component{
         this.setState({mydata: items})
         
         
+    }
+    onClickHandler = ()=>{
+        const userans = [...this.state.mydata];
+        const ansans = [...this.props.data.ans];
+        let yesorno = false;
+        for(var i = 0; i<userans.length;i++){
+            if(userans[i] === ansans[i]){
+                yesorno = true
+            }
+            else{
+                yesorno = false
+                break;
+            }
+        }
+      const data = {queNo: this.props.quesNo, userAns: userans, correctans:ansans, val:yesorno}
+      this.props.userAnsList(data)
+      this.props.nextQue()
+
     }
 
     render(){
@@ -63,6 +81,7 @@ class SequenceInTest extends Component{
             </DragDropContext>
             
             </Card>
+            <Button type="primary" style={{float:"right"}} onClick={this.onClickHandler}>Next</Button>
             </div>
         )
     }

@@ -25,6 +25,13 @@ class MyTest extends Component{
   }
   updateCurrentNo = ()=>{
     let x = this.state.currentquestion + 1
+    // if(x<this.props.questions.questions.length)
+
+
+    // start from here make sure that the final test complete page is added ans also score..
+
+
+
     this.setState({currentquestion: x})
   }
 
@@ -146,6 +153,8 @@ class MyTest extends Component{
             color={this.props.questions.color}
             quesNo={index}
             data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
           />
         </div>
       );
@@ -162,6 +171,8 @@ class MyTest extends Component{
             color={this.props.questions.color}
             quesNo={index}
             data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
           />
         </div>
       );
@@ -178,6 +189,8 @@ class MyTest extends Component{
             color={this.props.questions.color}
             quesNo={index}
             data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
           />
         </div>
       );

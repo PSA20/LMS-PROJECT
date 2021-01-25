@@ -46,7 +46,7 @@ export const Questions = (
           description: "From the below options Drag and drop in correact positions ",
           leftoptions: ["A","B","C","D"],
           rightoptions: ["Cat", "Dino", "Apple", "Banana"],
-          ans: ["Apple", "Banana", "Cat", "Dino"],
+          ans: ["C", "D", "A", "B"],
         }
               
     ],color: "white",score:1,time:60,

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card} from 'antd';
+import {Card, Button} from 'antd';
 import classes from "./MatchDrag.module.css";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 class MatchDragTest extends Component{
@@ -8,15 +8,15 @@ class MatchDragTest extends Component{
         this.state = {
             value: 1,
             visible: false,
-            mydata: this.props.data.rightoptions,
-            answers: this.props.data.ans,
-            leftoptions: this.props.data.leftoptions,
+            mydata: [...this.props.data.rightoptions],
+            answers: [...this.props.data.ans],
+            leftoptions: [...this.props.data.leftoptions],
             dragdata: {
                 1:{ id:"leftoptions",
-                    data:this.props.data.leftoptions,
+                    data:[...this.props.data.leftoptions],
                 },
                 2:{id:"rightoptions",
-                    data:this.props.data.rightoptions,
+                    data:[...this.props.data.rightoptions],
                 }
             },
             arr: new Array(this.props.data.rightoptions.length),
@@ -44,8 +44,8 @@ class MatchDragTest extends Component{
             
             
             const temp = right.indexOf(result.destination.droppableId)
-            const arr = this.state.arr
-            const lrr = this.state.lrr
+            const arr = [...this.state.arr];
+            const lrr = [...this.state.lrr]
             if(arr[temp]){
                 return;
             }
@@ -54,7 +54,7 @@ class MatchDragTest extends Component{
             lrr[srcindex] = ""
             // console.log("right",right)
             // console.log("items",items)
-            // console.log("arr",arr)
+            console.log("arr",arr)
             this.setState({dragdata:{
                 1:{
                     id:"leftoptions",
@@ -143,6 +143,24 @@ class MatchDragTest extends Component{
                             </div>
             );
         }
+    }
+    onClickHandler = ()=>{
+        const ansans = [...this.state.answers];
+        const userans = [...this.state.arr]
+        let yesorno = false
+        for(var i = 0; i<ansans.length;i++){
+            if(userans[i] === ansans[i]){
+                yesorno = true;
+            }
+            else{
+                yesorno = false;
+                break;
+            }
+        }
+      const data = {queNo: this.props.quesNo, userAns: userans, correctans:ansans, val:yesorno}
+      this.props.userAnsList(data)
+      this.props.nextQue()
+
     }
 
     render(){
@@ -243,11 +261,8 @@ class MatchDragTest extends Component{
                         })} 
              </div>
             </DragDropContext>
-            
-       
-        
-            
             </Card>
+            <Button type="primary" style={{float:"right"}} onClick={this.onClickHandler}>Next</Button>
             </div>
         )
     }

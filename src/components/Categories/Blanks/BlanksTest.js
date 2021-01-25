@@ -75,13 +75,18 @@ class BlanksTest extends Component{
       }  
       else{ 
   // comapring each element of array 
-   for(var i=0;i<userans.length;i++)
-   if(userans[i].toLowerCase() === ansans[i].toLowerCase()){
+   for(var i=0;i<userans.length;i++){
+     if(!userans[i]){
+      yesorno = false;
+      break;
+     }
+    if(userans[i].toLowerCase() === ansans[i].toLowerCase()){
     yesorno = true
    }
-   else{
-    yesorno = false
-  } }
+    else{
+    yesorno = false;
+    break;
+  } }}
       // if(userans === ansans){
       //   yesorno = true
       // }
