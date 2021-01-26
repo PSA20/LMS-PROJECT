@@ -30,7 +30,15 @@ class SubmitTest extends Component{
             <br />
             <div style={{textAlign:"center"}}>
             <h1>Your Score: {this.props.questions.testscore}</h1>
-            
+            {this.props.list.map(id =>{
+                console.log(id)
+                return(
+                    <div>
+                        <p>QueNo:{id.queNo}, userAns:{id.userAns}, CorrectAns:{id.correctans}</p>
+                    </div>
+                )
+                
+            })}
             </div>
             
             </div>
@@ -41,7 +49,8 @@ const mapStateToProps = (state) => {
     return {
       user: state.user,
       questions: state.question,
-      option: state.option
+      option: state.option,
+      list: state.question.list
     };
   };
 
