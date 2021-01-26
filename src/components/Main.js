@@ -109,7 +109,7 @@ class Main extends Component {
       if(item.category === CategoryTypes.MULTIPLE_CHOICE){
       return (
         <div
-          key={item.ans[0]}
+          key={"MultipleCM"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -127,7 +127,7 @@ class Main extends Component {
      // console.log("sdfsd");
       return (
         <div
-          key={item.ans[0]}
+          key={"BlanksM"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -144,7 +144,7 @@ class Main extends Component {
     }else if(item.category=== CategoryTypes.SELECT_FROM_DROPDOWN){
       return (
         <div
-          key={item.ans[0]}
+          key={"DropDownM"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -161,7 +161,7 @@ class Main extends Component {
     }else if(item.category=== CategoryTypes.TRUE_AND_FALSE){
       return (
         <div
-          key={item.ans[0]}
+          key={"TandFM"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -178,7 +178,7 @@ class Main extends Component {
     }else if(item.category === CategoryTypes.MULTIPLE_CHECKBOX){
       return (
         <div
-          key={item.ans[0]}
+          key={"MCheckboxM"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -195,7 +195,7 @@ class Main extends Component {
     }else if(item.category === CategoryTypes.SEQUENCE_IN_ORDER){
       return (
         <div
-          key={item.ans[0]}
+          key={"SeqinOM"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -213,7 +213,7 @@ class Main extends Component {
     else if(item.category === CategoryTypes.MATCHING_WORDS){
       return (
         <div
-          key={item.ans[0]}
+          key={"MatchWM"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -231,7 +231,7 @@ class Main extends Component {
     else if(item.category === CategoryTypes.MATCH_DRAG){
       return (
         <div
-          key={item.ans[0]}
+          key={"MDragM"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -246,7 +246,7 @@ class Main extends Component {
         </div>
       );
     }
-    
+    return result;
     })
     ;
     return result;

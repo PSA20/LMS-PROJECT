@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react';
 import {Button, Divider, Input} from "antd";
 import {DeleteTwoTone} from "@ant-design/icons";
 import Joi from "joi-browser";
@@ -21,7 +21,6 @@ export   const EditFillInTheBlanks = (props) => {
         blankValue: "",
         bankValueError: "",
     });
-
     
     const deleteBlankInDescription=(index)=>{
       console.log("index: ", index)

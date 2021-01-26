@@ -49,7 +49,7 @@ class SequenceInOrder extends Component{
                 <List itemLayout="horizontal" >
             {this.props.data.options.map(index=>{
                 return(
-                    <div className={classes.MyListDiv}>
+                    <div className={classes.MyListDiv} key={"Seqoptions"+index}>
                         <List.Item>{index}</List.Item>
                     </div>
             )})}
@@ -60,7 +60,7 @@ class SequenceInOrder extends Component{
                 <List itemLayout="horizontal" >
             {this.props.data.ans.map(index=>{
                 return(
-                    <div className={classes.MyListDiv}>
+                    <div className={classes.MyListDiv} key={"Seqans"+index}>
                         <List.Item>{index}</List.Item>
                     </div>
             )  })}

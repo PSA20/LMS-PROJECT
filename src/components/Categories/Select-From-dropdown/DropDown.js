@@ -45,14 +45,15 @@ export default class DropDownSelect extends Component {
                             ansIndex++;
                             let count=ansIndex-1;
                             // console.log(count)
-                        return(<Dropdown overlay={this.menu(data.options[count], data.ans[count], count)}>
-                            <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                        return(<Dropdown overlay={this.menu(data.options[count], data.ans[count], count)} key={"Drop"+data.options[0]}>
+                            <a href="/" className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                               -Select- 
                             </a>
                           </Dropdown>);    
                         }
                         if(item2.includes("\n")){
                             const item3 = item2.split("\n");
+                          
                             return item3.map((i)=>{
                                 return(<><br/> {i}</>);
                             })
@@ -71,11 +72,11 @@ export default class DropDownSelect extends Component {
          const optionsArr = options.split(",");
             return <Menu>  {optionsArr.map((item,index)=>{
                 if(index === ans){
-                    return   <Menu.Item key={index} danger>{item}</Menu.Item>;
+                    return   <Menu.Item key={"Menuitem"+index} danger>{item}</Menu.Item>;
                 }else{
                     return(
                         
-                          <Menu.Item key={index}>
+                          <Menu.Item key={"Menuitem"+index}>
                             
                               {item}
                           

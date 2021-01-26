@@ -1,15 +1,15 @@
 import { Modal, Button, InputNumber, Form } from 'antd';
 import React from "react";
-const formItemLayout = {
-    labelCol: {
-      xs: { span: 24 },
-      sm: { span: 5 },
-    },
-    wrapperCol: {
-      xs: { span: 24 },
-      sm: { span: 12 },
-    },
-  };
+// const formItemLayout = {
+//     labelCol: {
+//       xs: { span: 24 },
+//       sm: { span: 5 },
+//     },
+//     wrapperCol: {
+//       xs: { span: 24 },
+//       sm: { span: 12 },
+//     },
+//   };
 export default class CustomTime extends React.Component {
  
 

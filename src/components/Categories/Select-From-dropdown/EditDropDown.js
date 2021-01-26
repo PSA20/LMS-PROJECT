@@ -82,7 +82,7 @@ _handleKeyDown = (e) => {
   };
   onDeleteOptionValue = (index, optionIndex) => {
     let optionValue = this.state.options[index].split(",");
-    let del = optionValue.splice(optionIndex, 1);
+    // let del = optionValue.splice(optionIndex, 1);
     let options = this.state.options;
     if (optionIndex === this.state.ans[index]) {
       //if we remove checked then make ans 0 index
@@ -169,7 +169,8 @@ _handleKeyDown = (e) => {
     addOptionFieldsError.splice(index,1);
     const str= "#"+(index+1)+" Dropdown#";
     const newDesc=description.split(str).join("");
-    let count=1; let first=true; let skip=false;
+    let count=1; 
+    // let first=true; let skip=false;
     let finalDesc=newDesc.split("Dropdown#");
     let Desc=[];
   //  console.log("newDesc: ", newDesc);

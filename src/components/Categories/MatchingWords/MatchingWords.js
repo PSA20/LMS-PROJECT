@@ -50,7 +50,7 @@ class MatchingWords extends Component{
                 <List itemLayout="horizontal" >
             {this.props.data.leftoptions.map(index=>{
                 return(
-                    <div className={classes.MyListDiv}>
+                    <div className={classes.MyListDiv} key={"Matchleft"+index}>
                         <List.Item>{index}</List.Item>
                     </div>
             )})}
@@ -61,7 +61,7 @@ class MatchingWords extends Component{
                 <List itemLayout="horizontal" >
             {this.props.data.rightoptions.map(index=>{
                 return(
-                    <div className={classes.MyListDiv}>
+                    <div className={classes.MyListDiv} key={"Matchright"+index}>
                         <List.Item>{index}</List.Item>
                     </div>
             )  })}
@@ -72,7 +72,7 @@ class MatchingWords extends Component{
                 <List itemLayout="horizontal" >
             {this.props.data.ans.map(index=>{
                 return(
-                    <div className={classes.MyListDiv}>
+                    <div className={classes.MyListDiv} key={"Matchans"+index}>
                         <List.Item>{index}</List.Item>
                     </div>
             )  })}

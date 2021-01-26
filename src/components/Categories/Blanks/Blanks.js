@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Card } from "antd";
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
-import {EditFillInTheBlanks} from "./EditFillInTheBlanks";
+// import {EditFillInTheBlanks} from "./EditFillInTheBlanks";
 import {MakeFillInTheBlanks} from "./MakeFillInTheBlanks";
 const blankString = "____";
 
@@ -49,7 +49,7 @@ export const Blanks = (props) => {
             
             count=count+1
           return (
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+            <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks0"+count}>
               {props.data.ans[count-1]}
               {"."}
               
@@ -59,7 +59,7 @@ export const Blanks = (props) => {
             console.log("found");
             count=count+1;
             return (
-                <span style={{ color: "#1890ff", textDecoration: "underline" }}>.{" "} 
+                <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks1"+count}>.{" "} 
                   {props.data.ans[count-1]}
                   
                 </span>
@@ -67,7 +67,7 @@ export const Blanks = (props) => {
         }else if (item[item.length - 1] === ",") {
             count=count+1;
             return (
-              <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+              <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks2"+count}>
                 {props.data.ans[count-1]}
                 {","}
                 
@@ -76,7 +76,7 @@ export const Blanks = (props) => {
           } else if (item[0] === ",") {
             count=count+1;
               return (
-                  <span style={{ color: "#1890ff", textDecoration: "underline" }}>,{" "} 
+                  <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks3"+count}>,{" "} 
                     {props.data.ans[count-1]}
                     
                   </span>
@@ -87,7 +87,7 @@ export const Blanks = (props) => {
       if (item === blankString) {
         count=count+1;
         return (
-          <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+          <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks4"+count}>
             {props.data.ans[count-1]}{" "}
            
           </span>
@@ -101,14 +101,14 @@ export const Blanks = (props) => {
         const arr= item.split(".");
         if(arr[0]===blankString){
             return(<>
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+            <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks5"+count}>
             {props.data.ans[count-1]}
             
           </span>. {arr[1]} {" "}</>);
         }else{
             return(
             <>{arr[0]}.
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+            <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks6"+count}>
             {props.data.ans[count-1]} {" "}
             
           </span>
@@ -120,14 +120,14 @@ export const Blanks = (props) => {
         const arr= item.split(",");
         if(arr[0]===blankString){
             return(<>
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+            <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks7"+count}>
             {props.data.ans[count-1]}
             
           </span>, {arr[1]} {" "}</>);
         }else{
             return(
             <>{arr[0]},
-            <span style={{ color: "#1890ff", textDecoration: "underline" }}>
+            <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks8"+count}>
             {props.data.ans[count-1]} {" "}
             
           </span>

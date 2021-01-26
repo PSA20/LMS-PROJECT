@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Radio,  Card, Modal,Checkbox, Row,Col  } from 'antd';
+import { Card, Modal,Checkbox, Row } from 'antd';
 import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
 // import EditMultipleChoice from "./EditMultipleChoice";
 import MakeMultipleCheckbox from "./MakeMultipleCheckbox"

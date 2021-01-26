@@ -50,8 +50,9 @@ class MatchDrag extends Component{
                     <h6>Left Options</h6>
                 <List itemLayout="horizontal" >
             {this.props.data.leftoptions.map(index=>{
+                // console.log(index)
                 return(
-                    <div className={classes.MyListDiv}>
+                    <div className={classes.MyListDiv} key={"Mergeleft"+index}>
                         <List.Item>{index}</List.Item>
                     </div>
             )})}
@@ -62,7 +63,7 @@ class MatchDrag extends Component{
                 <List itemLayout="horizontal" >
             {this.props.data.rightoptions.map(index=>{
                 return(
-                    <div className={classes.MyListDiv}>
+                    <div className={classes.MyListDiv} key={"Mergeright"+index}>
                         <List.Item>{index}</List.Item>
                     </div>
             )  })}
@@ -73,7 +74,7 @@ class MatchDrag extends Component{
                 <List itemLayout="horizontal" >
             {this.props.data.ans.map(index=>{
                 return(
-                    <div className={classes.MyListDiv}>
+                    <div className={classes.MyListDiv} key={"Mergeans"+index}>
                         <List.Item>{index}</List.Item>
                     </div>
             )  })}
