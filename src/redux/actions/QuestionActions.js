@@ -39,6 +39,12 @@ export const changeScore = (score) => ({
  }
 
  export const userAnsList = ( list )=>({
-   type: ActionTypes.USER_ANS_LIST,
-   payload: list
+  
+  type: ActionTypes.USER_ANS_LIST,
+  payload: list
  })
+
+//  export const updateAnsList = (list) =>({
+//   type: ActionTypes.USER_ANS_LIST,
+//   payload: list
+//  })

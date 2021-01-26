@@ -10,3 +10,4 @@ export const CHANGE_TIME="CHANGE_TIME";
 
 export const INIT_QUESTIONS = "INIT_QUESTIONS";
 export const USER_ANS_LIST = "USER_ANS_LIST";
+export const UPDATE_ANS_LIST = "UPDATE_ANS_LIST";

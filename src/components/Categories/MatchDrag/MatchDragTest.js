@@ -158,7 +158,7 @@ class MatchDragTest extends Component{
             }
         }
       const data = {queNo: this.props.quesNo, userAns: userans, correctans:ansans, val:yesorno}
-      this.props.userAnsList(data)
+      this.props.userAnsList(data, this.props.score)
       this.props.nextQue()
 
     }

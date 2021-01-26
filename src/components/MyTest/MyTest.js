@@ -14,6 +14,7 @@ import MultipleCheckboxTest from "../Categories/MultipleCheckbox/MultipleCheckbo
 import SequenceInTest from "../Categories/SequenceInOrder/SequenceInTest";
 import MatchingWordsTest from "../Categories/MatchingWords/MatchingWordsTest";
 import MatchDragTest from "../Categories/MatchDrag/MatchDragTest";
+import SubmitTest from "../SubmitTest/SubmitTest";
 // import MultipleC from "../Categories/Multip"
 
 class MyTest extends Component{
@@ -39,7 +40,6 @@ class MyTest extends Component{
     //<MultipleChoice quesNo={1} data={data} />
     //    const ques = this.props.questions;
     console.log(this.state.questions.questions[1])
-    console.log(this.props.list)
     //console.log("ques.ques: ",this.props.questions.questions);
     // const result = this.props.questions.questions.map((item, index) => {
       //console.log("item ",item);
@@ -66,6 +66,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             data={item}
+            score = {this.props.score}
           />
         </div>
       );
@@ -84,6 +85,7 @@ class MyTest extends Component{
             data={item}
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
           />
         </div>
       );
@@ -101,6 +103,7 @@ class MyTest extends Component{
             data={item}
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
           />
         </div>
       );
@@ -116,8 +119,10 @@ class MyTest extends Component{
             color={this.props.questions.color}
             quesNo={index}
             data={item}
+            score = {this.props.score}
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
+            
           />
         </div>
       )
@@ -137,6 +142,7 @@ class MyTest extends Component{
             data={item}
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
           />
         </div>
       );
@@ -155,6 +161,7 @@ class MyTest extends Component{
             data={item}
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
           />
         </div>
       );
@@ -173,6 +180,7 @@ class MyTest extends Component{
             data={item}
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
           />
         </div>
       );
@@ -191,6 +199,7 @@ class MyTest extends Component{
             data={item}
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
           />
         </div>
       );
@@ -200,9 +209,29 @@ class MyTest extends Component{
     // return result;
   };
 
+  RenderorSubmit = ()=>{
+    const crr = this.state.currentquestion
+    if(crr === this.props.questions.questions.length){
+      return(
+        <SubmitTest />
+      )
+    }
+    else if(this.props.questions.questions){
+      return(
+        this.renderQuestionRows(this.state.questions.questions[this.state.currentquestion],this.state.currentquestion)
+      )
+    }
+    else{
+      return(
+        <p>No Questions Added yet</p>
+      )
+    }
+  }
+
 
     render(){
     console.log(this.state.router)
+    console.log(this.props.score)
       console.log(window.location.href)
         console.log(this.props.questions.time)
         return(
@@ -238,12 +267,13 @@ class MyTest extends Component{
         </div>
       
         <br />
-        {this.props.questions ? (
+        {/* {this.props.questions ? (
           this.renderQuestionRows(this.state.questions.questions[this.state.currentquestion],this.state.currentquestion)
           // this.renderQuestionRows(this.state.questions.questions[7])
         ) : (
           <p>No Questions Added yet</p>
-        )}
+        )} */}
+        {this.RenderorSubmit()}
       </div>
         )
     }
@@ -264,8 +294,8 @@ const mapDispatchToProps = (dispatch) => ({
     // changeTime: (time) => {
     //   dispatch(changeTime(time));
     // },
-    updateUserAnsList :(list) =>{
-      dispatch(actions.userAnsList(list))
+    updateUserAnsList :(list,score ) =>{
+      dispatch(actions.userAnsList({list, score}))
     }
   });
   const mapStateToProps = (state) => {
@@ -273,7 +303,8 @@ const mapDispatchToProps = (dispatch) => ({
       user: state.user,
       questions: state.question,
       option: state.option,
-      list: state.list
+      score: state.question.score
+
     };
   };
 
