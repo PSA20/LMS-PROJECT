@@ -79,7 +79,31 @@ export default class Options extends Component {
               Light Green
             </a>
           </Menu.Item>
-         
+          <Menu.Item onClick={()=>{this.props.onChangeColor(colors.LIGHTPINK);}}>
+            <a target="_blank" rel="noopener noreferrer">
+              Light Pink
+            </a>
+          </Menu.Item>
+          <Menu.Item onClick={()=>{this.props.onChangeColor(colors.LIGHTPURPLE);}}>
+            <a target="_blank" rel="noopener noreferrer">
+              Light Purple
+            </a>
+          </Menu.Item>
+          <Menu.Item onClick={()=>{this.props.onChangeColor(colors.LIGHTBROWN);}}>
+            <a target="_blank" rel="noopener noreferrer">
+              Light Brown
+            </a>
+          </Menu.Item>
+          <Menu.Item onClick={()=>{this.props.onChangeColor(colors.LIGHTGRAY);}}>
+            <a target="_blank" rel="noopener noreferrer">
+              Light Gray
+            </a>
+          </Menu.Item>
+          <Menu.Item onClick={()=>{this.props.onChangeColor(colors.LIGHTSKYBLUE);}}>
+            <a target="_blank" rel="noopener noreferrer">
+              Light Skyblue
+            </a>
+          </Menu.Item>
         </Menu>
     );}
     ScoreMenu =()=> {
@@ -144,9 +168,26 @@ export default class Options extends Component {
       return "Light Yellow";
     }else if(color===colors.LIGHTGREEN){
       return "Light Green";
-    }else if(color===colors.LIGHTBLUE){
+    }
+    else if(color===colors.LIGHTBLUE){
       return "Light Blue";
-    }else{
+    }
+    else if(color===colors.LIGHTPINK){
+      return "Light Pink";
+    }
+    else if(color===colors.LIGHTPURPLE){
+      return "Light Purple";
+    }
+    else if(color===colors.LIGHTBROWN){
+      return "Light Brown";
+    }
+    else if(color===colors.LIGHTGRAY){
+      return "Light Gray";
+    }
+    else if(color===colors.LIGHTSKYBLUE){
+      return "Light Skyblue";
+    }
+    else{
       return "White";
     }
   }
