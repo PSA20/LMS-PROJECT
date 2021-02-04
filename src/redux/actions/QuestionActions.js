@@ -27,15 +27,42 @@ export const changeScore = (score) => ({
      type: ActionTypes.UPDATE_QUESTION,
      payload: question,
  });
+ export const fetchQuestionsSuccess=(fetchedMedic)=>{
+  return {
+      type: ActionTypes.FETCH_QUESTIONS_SUCCESS,
+      data: fetchedMedic
+  }
+}
+export const fetchQuestionsFail =(error)=>{
+  return {
+    type: ActionTypes.FETCH_QUESTIONS_FAIL,
+    error: error
+};
+}
 
  export const initquestions = () =>{
-   axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json")
+  console.log("res")
+   return dispatch =>{
+    // dispatch( FetchQuestionsStart() );
+    axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json")
    .then(res=>{
      console.log(res)
-   })
+     const fetchedMedic = [];
+        for ( let key in res.data ) {
+          fetchedMedic.push( {
+            ...res.data[key],
+            id: key
+        } );
+        }
+        console.log(fetchedMedic)
+        dispatch(fetchQuestionsSuccess(res.data));
+      })
    .catch(err=>{
      console.log(err)
+     dispatch( fetchQuestionsFail( err ) );
    })
+   }
+   
  }
 
  export const userAnsList = ( list )=>({

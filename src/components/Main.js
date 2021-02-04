@@ -43,12 +43,13 @@ const mapDispatchToProps = (dispatch) => ({
   changeTime: (time) => {
     dispatch(changeTime(time));
   },
-  initquestions:()=>{ dispatch(initquestions());}
+  initquestions:()=>{ dispatch(initquestions())}
 });
 const mapStateToProps = (state) => {
   return {
     user: state.user,
     questions: state.question,
+    xyz : state
   };
 };
 
@@ -63,7 +64,9 @@ class Main extends Component {
   }
   componentDidMount() {
     // this.props.addQuestion();
-    initquestions()
+    console.log("SASASADSASD", this.props.xyz)
+    console.log(this.props.questions)
+    this.props.initquestions()
   }
   onChangeTime = (value) => {
     const reg = /^-?(0|[1-9][0-9]*)(\.[0-9]*)?$/;
