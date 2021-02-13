@@ -1,0 +1,30 @@
+.MainDiv{
+    width: auto;
+}
+.MyListDiv{
+    height: 50px;
+    width: 300px;
+    /* border: 2px; */
+    border-color: rgb(199, 199, 199);
+    margin: 9px ;
+    background-color: rgb(233, 233, 233);
+    padding-left: 10px;
+}
+
+
+.DivinCol{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.InnerDiv{
+    width: auto;
+}
+
+.BoxOrderDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
