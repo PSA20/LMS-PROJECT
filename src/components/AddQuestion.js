@@ -10,6 +10,7 @@ import MakeTrueFalse from "./Categories/TrueAndFalse/MakeTrueFalse";
 import MakeSequenceinorder from "./Categories/SequenceInOrder/MakeSequenceInOrder";
 import MakeMatchingWords from "./Categories/MatchingWords/MakeMatchingWords";
 import MakeMatchDrag from "./Categories/MatchDrag/MakeMatchDrag";
+import MakeMatchDragImg from "./Categories/MatchDragImg/MakeMatchDragImg";
 import * as CategoryTypes from "../util/Categories";
 
 export default class AddQuestion extends Component {
@@ -82,6 +83,11 @@ export default class AddQuestion extends Component {
           Match Drag
  
       </Menu.Item>
+      <Menu.Item onClick={()=>{this.onCatChange(CategoryTypes.MATCH_DRAG_IMG);}}>
+          
+          Match Drag Image
+ 
+      </Menu.Item>
         </Menu>
       );
    }
@@ -110,6 +116,9 @@ export default class AddQuestion extends Component {
        }
        else if (this.state.catergory === CategoryTypes.MATCH_DRAG){
         return (<MakeMatchDrag addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+       }
+       else if (this.state.catergory === CategoryTypes.MATCH_DRAG_IMG){
+        return (<MakeMatchDragImg addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }
        return null;
    }

@@ -14,6 +14,7 @@ import MultipleCheckboxTest from "../Categories/MultipleCheckbox/MultipleCheckbo
 import SequenceInTest from "../Categories/SequenceInOrder/SequenceInTest";
 import MatchingWordsTest from "../Categories/MatchingWords/MatchingWordsTest";
 import MatchDragTest from "../Categories/MatchDrag/MatchDragTest";
+import MatchDragImgTest from "../Categories/MatchDragImg/MatchDragImgTest";
 import SubmitTest from "../SubmitTest/SubmitTest";
 // import MultipleC from "../Categories/Multip"
 
@@ -24,6 +25,13 @@ class MyTest extends Component{
     currentquestion:0,
     questions:this.props.questions
   }
+  componentDidMount() {
+    // this.props.addQuestion();
+    console.log("loading questions From Test page ")
+    console.log(this.props.questions)
+    // this.props.initquestions()
+  }
+
   updateCurrentNo = ()=>{
     let x = this.state.currentquestion + 1
     // if(x<this.props.questions.questions.length)
@@ -185,6 +193,25 @@ class MyTest extends Component{
         </div>
       );
     }
+    else if(item.category === CategoryTypes.MATCH_DRAG_IMG){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <MatchDragImgTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
+          />
+        </div>
+      );
+    }
     else if(item.category === CategoryTypes.MATCH_DRAG){
       return (
         <div
@@ -296,7 +323,8 @@ const mapDispatchToProps = (dispatch) => ({
     // },
     updateUserAnsList :(list,score ) =>{
       dispatch(actions.userAnsList({list, score}))
-    }
+    },
+    initquestions:()=>{ dispatch(actions.initquestions())}
   });
   const mapStateToProps = (state) => {
     return {

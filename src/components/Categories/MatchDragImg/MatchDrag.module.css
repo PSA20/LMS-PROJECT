@@ -1,0 +1,82 @@
+.MainDiv{
+    width: auto;
+}
+.MyListDiv{
+    height: 100px;
+    width: 300px;
+    /* border: 2px; */
+    overflow: scroll;
+    text-align: center;
+    border-color: rgb(199, 199, 199);
+    margin: 2px auto ;
+    background-color: rgb(255, 238, 89);
+    /* padding-left: 15px; */
+}
+.MyListDrop{
+    height: 20px;
+    width: 300px;
+    /* border: 2px; */
+    /* position: absolute; */
+    /* overflow: scroll; */
+    text-align: center;
+    flex-direction: column;
+    /* align-content: center; */
+    border-color: rgb(199, 199, 199);
+    /* margin: 9px ; */
+    background-color: rgb(169, 245, 255);
+    padding-left: 15px;
+}
+.MyListDiv2{
+    height: 100px;
+    width: 300px;
+    text-align: center;
+    /* border: 2px; */
+    overflow: scroll;
+    border-color: rgb(199, 199, 199);
+    /* margin: 9px ; */
+    background-color: rgb(255, 238, 89);
+    /* padding-left: 15px; */
+    padding-top: 10px;
+}
+
+
+.DivinCol{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.DivinCol2{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.InnerDiv{
+    width: auto;
+}
+.BoxOrderDiv{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; */
+    margin: 3px;
+    border-color: black;
+    border-style: solid;
+    /* position: absolute; */
+}
+
+.DropContent{
+    
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.Img{
+    height: 100px;
+    width: 300px;
+    object-fit: fill;
+}
