@@ -5,11 +5,11 @@
     height: 100px;
     width: 300px;
     /* border: 2px; */
-    overflow: scroll;
+    /* overflow: scroll; */
     text-align: center;
     border-color: rgb(199, 199, 199);
     margin: 2px auto ;
-    background-color: rgb(255, 238, 89);
+    background-color: rgb(233, 233, 233);
     /* padding-left: 15px; */
 }
 .MyListDrop{
@@ -31,7 +31,7 @@
     width: 300px;
     text-align: center;
     /* border: 2px; */
-    overflow: scroll;
+    /* overflow: scroll; */
     border-color: rgb(199, 199, 199);
     /* margin: 9px ; */
     background-color: rgb(255, 238, 89);
@@ -77,6 +77,6 @@
 
 .Img{
     height: 100px;
-    width: 300px;
+    width: 298px;
     object-fit: fill;
 }

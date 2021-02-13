@@ -157,12 +157,13 @@ export default class MakeMatchDragImg extends Component {
     if(this.state.addorupdate === "Update Question"){
       // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Match Drag", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans,id:this.props.question.id};
+      const data={category: "Match Drag Image", description: this.state.description,leftoptions:this.state.options, rightoptions: ans, ans: ans,
+      leftoptionsurl:this.state.leftoptions, id:this.props.question.id};
       this.props.updateQuestion(data)
     }
     else{
       // console.log("ADD QUESTION function is called")
-      const data={category: "Match Drag", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans};
+      const data={category: "Match Drag Image", description: this.state.description,leftoptions:this.state.options, leftoptionsurl:this.state.leftoptions, rightoptions: ans, ans: ans};
       this.props.addQuestion(data)
     }
   }
@@ -313,7 +314,7 @@ export default class MakeMatchDragImg extends Component {
           <div className="col-12 col-sm-7 offset-sm-1">
             <Input
             style ={{width:"250px"}}
-              placeholder="Enter Left Option Here"
+              placeholder="Enter Image url here"
               value={this.state.leftoptionValue}
               onChange={(val) => {
                 this.onChangeLeftField(val);
@@ -330,7 +331,7 @@ export default class MakeMatchDragImg extends Component {
               onClick={this.onAddLeftOption}
             >
               {" "}
-              Add Left
+              Add image
             </Button>
           </div>
         </div>
@@ -338,7 +339,7 @@ export default class MakeMatchDragImg extends Component {
           <div className="col-12 col-sm-7 offset-sm-1">
             <Input
             style ={{width:"250px"}}
-              placeholder="Enter Right Option Here"
+              placeholder="Enter Image Name in order"
               value={this.state.optionValue}
               onChange={(val) => {
                 this.onChangeOptionField(val);
@@ -355,7 +356,7 @@ export default class MakeMatchDragImg extends Component {
               onClick={this.onAddOption}
             >
               {" "}
-              Add Right
+              Image Name
             </Button>
           </div>
         </div>
@@ -366,7 +367,7 @@ export default class MakeMatchDragImg extends Component {
           <div className="col-12 col-sm-5 offset-sm-1">
             <Input
             style ={{width:"250px"}}
-              placeholder="Enter Answer Here"
+              placeholder="Enter Swapped Options list"
               value={this.state.AnsValue}
               onChange={(val) => {
                 this.onChangeAnsField(val);
@@ -407,18 +408,18 @@ export default class MakeMatchDragImg extends Component {
         <br />
         <div className={classes.DivinCol}>
         <div>
-          <h6>Left Options</h6>
+          <h6>URL's of the Images </h6>
         {this.renderOptions(this.state.leftoptions)}
           </div>
           <div>
-          <h6>Right Options</h6>
+          <h6>Image names with respect to URL's</h6>
         {this.renderAnswers(this.state.options)}
           </div>
         
         </div>
         <br />
         <div className="col" style={{paddingLeft:"40%"}}>
-        <h6>Answers in order</h6>
+        <h6>Swapped options List</h6>
         {this.renderAnswers(this.state.Answers)}
         </div>
         

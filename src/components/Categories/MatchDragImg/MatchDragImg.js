@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Card, Modal, List } from 'antd';
 import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
 // import  from './MakeSequenceInOrder';
-import classes from '../MatchingWords/MatchingWords.module.css';
+import classes from '../MatchDragImg/MatchDrag.module.css';
 
 import MakeMatchDragImg from './MakeMatchDragImg';
 class MatchDragImg extends Component{
@@ -47,7 +47,7 @@ class MatchDragImg extends Component{
             {/* </div> */}
             <div className={classes.DivinCol}>
                 <div>
-                    <h6>Left Options</h6>
+                    <h6>Image Names</h6>
                 <List itemLayout="horizontal" >
             {this.props.data.leftoptions.map(index=>{
                 // console.log(index)
@@ -59,18 +59,21 @@ class MatchDragImg extends Component{
             </List>
                 </div>
                 <div>
-                    <h6>Right Options</h6>
+                    <h6>Images Options</h6>
                 <List itemLayout="horizontal" >
-            {this.props.data.rightoptions.map(index=>{
+            {this.props.data.leftoptionsurl.map(index=>{
                 return(
                     <div className={classes.MyListDiv} key={"Mergeright"+index}>
-                        <List.Item>{index}</List.Item>
+                        <List.Item>
+                            {/* {index} */}
+                            <img className={classes.Img} src={index} alt={"img"}/>
+                        </List.Item>
                     </div>
             )  })}
             </List>
                 </div>
                 <div>
-                    <h6>Right Answers</h6>
+                    <h6>Swapped/Correct Order</h6>
                 <List itemLayout="horizontal" >
             {this.props.data.ans.map(index=>{
                 return(

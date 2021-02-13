@@ -27,7 +27,7 @@ class MatchDragImgTest extends Component{
           };
     }
     handleOnDragEnd = (result) =>{
-        // console.log(result)
+        console.log(result)
         if (!result.destination) return;
         const items = this.state.leftoptions
         const right = this.state.mydata
@@ -48,14 +48,17 @@ class MatchDragImgTest extends Component{
             const temp = right.indexOf(result.destination.droppableId)
             const arr = [...this.state.arr];
             const lrr = [...this.state.lrr]
+            const lefturls = [...this.state.lefturls];
             const arrurl = [...this.state.arrurl];
-            if(arr[temp]){
+            if(arrurl[temp]){
                 return;
             }
             // if(arr[temp] !== null){return;}
             arr[temp] = result.draggableId
-            arrurl[temp] = this.state.lefturls[temp]
+            arrurl[temp] = lefturls[srcindex]
             lrr[srcindex] = ""
+            lefturls[srcindex]= "" 
+
 
             // console.log("right",right)
             // console.log("items",items)
@@ -70,18 +73,24 @@ class MatchDragImgTest extends Component{
                     id:"rightoptions",
                     data:right
                 }
-            }, arr:arr, lrr:lrr})
+            }, arr:arr, lrr:lrr, arrurl:arrurl, lefturls:lefturls})
         }
         else if(right.includes(result.source.droppableId) && items.includes(result.destination.droppableId)){
             const srcindex = right.indexOf(result.source.droppableId);
             const temp = items.indexOf(result.destination.droppableId)
-            const arr = this.state.arr
-            const lrr = this.state.lrr
-            if(lrr[temp]){
+            const arr = [...this.state.arr]
+            const lrr = [...this.state.lrr]
+            const lefturls = [...this.state.lefturls];
+            const arrurl = [...this.state.arrurl];
+            if(lefturls[temp]){
                 return;
             }
             arr[srcindex] = ""
             lrr[temp] = result.draggableId
+            lefturls[temp]= arrurl[srcindex]
+            arrurl[srcindex] = ""
+            
+
             // console.log("right",right)
             // console.log("items",items)
             // console.log("arr",arr)
@@ -94,7 +103,7 @@ class MatchDragImgTest extends Component{
                     id:"rightoptions",
                     data:right
                 }
-            }, arr:arr, lrr:lrr})
+            }, arr:arr, lrr:lrr, arrurl:arrurl, lefturls:lefturls})
         }
         else{
             return;
@@ -115,15 +124,15 @@ class MatchDragImgTest extends Component{
             // console.log("bllllllll")
             return(
                 <div>
-                        <Draggable key = {temp} draggableId={temp} index= {m}>
+                        <Draggable key = {"ans"+temp} draggableId={temp} index= {m}>
                         {(provided) => (
                            
-                        <li className={classes.MyListDiv}
+                        <p className={classes.MyListDiv}
                          ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                             {/* <img {this.state.arr[m]} */}
-                            {this.state.arr[m]}
-                            {/* <img className={classes.Img} alt={this.state.lrr[m]} src={this.state.lefturls[m]}/> */}
-                       </li>
+                            {/* {this.state.arr[m]} */}
+                            <img className={classes.Img} alt={this.state.arr[m]} src={this.state.arrurl[m]}/>
+                       </p>
                          )}
                          </Draggable>
                             </div>
@@ -141,7 +150,7 @@ class MatchDragImgTest extends Component{
             // console.log("bllllllll")
             return(
                 <div>
-                        <Draggable key = {temp} draggableId={temp} index= {m}>
+                        <Draggable key = {"opt"+temp} draggableId={temp} index= {m}>
                         {(provided) => (
                            
                         <li className={classes.MyListDiv}
@@ -189,7 +198,7 @@ class MatchDragImgTest extends Component{
                 {Object.entries(this.state.dragdata).map((data)=>{
                     // console.log("kajhsdkahsdkajshd",data)
                     let x = data[1]
-                    // // console.log(x.data)
+                    // // console.log(x.data)s
                     if(x.id === "leftoptions"){
                         return(
                             <div >
@@ -205,7 +214,7 @@ class MatchDragImgTest extends Component{
                                      
                                             <div className={classes.DivinCol2}>
                                             <div className={classes.MyListDrop}>
-                                                <p  style={{textAlign:"center"}}>{}</p>
+                                                {/* <p  style={{textAlign:"center"}}>{}</p> */}
                                              </div>
                                              {renderdataa}
                                                 {/* <Draggable key = {index} draggableId={index} index= {x.data.indexOf(index)}>
