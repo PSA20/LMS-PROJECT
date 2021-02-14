@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Card, Modal, List } from 'antd';
 import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
 import MakesequenceInOrder from './AudioMakeSequence';
+import ReactAudioPlayer from 'react-audio-player';
 import classes from './SequenceInOrder.module.css';
 
 // continue from here....
@@ -13,6 +14,7 @@ class AudioSequenceInOrder extends Component{
         this.state = {
             value: 1,
             visible: false,
+            audiourl:this.props.data.audiourl
           };
     }
     showModal = () => {
@@ -45,6 +47,11 @@ class AudioSequenceInOrder extends Component{
                     <EditTwoTone onClick={()=>{this.showModal();}} twoToneColor="#52c41a"   key="edit" />,
                     <DeleteTwoTone onClick={()=>{this.onDelete();}} twoToneColor="#eb2f96" key="del"/>,
                   ]}>
+                    <ReactAudioPlayer
+                src={this.state.audiourl}
+                autoPlay={false}
+                controls
+                />
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
             {/* </div> */}
             <div className={classes.DivinCol}>

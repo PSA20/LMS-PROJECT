@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Card, Button } from 'antd';
 import classes from './SequenceInOrder.module.css';
+import ReactAudioPlayer from 'react-audio-player';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 class AudioSequenceInTest extends Component{
     constructor(props) {
@@ -9,6 +10,7 @@ class AudioSequenceInTest extends Component{
             value: 1,
             visible: false,
             mydata: [...this.props.data.options],
+            audiourl : this.props.data.audiourl
           };
     }
     handleOnDragEnd = (result) =>{
@@ -49,6 +51,11 @@ class AudioSequenceInTest extends Component{
             <div  className="col-12 col-sm-10 offset-sm-1">
                 <Card style={{backgroundColor:this.props.color}}
                   >
+                <ReactAudioPlayer
+                src={this.state.audiourl}
+                autoPlay
+                controls
+                />
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
             {/* </div> */}
             <DragDropContext onDragEnd={this.handleOnDragEnd}>

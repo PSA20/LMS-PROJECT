@@ -12,6 +12,7 @@ import MakeMatchingWords from "./Categories/MatchingWords/MakeMatchingWords";
 import MakeMatchDrag from "./Categories/MatchDrag/MakeMatchDrag";
 import MakeMatchDragImg from "./Categories/MatchDragImg/MakeMatchDragImg";
 import MakeAudioMultipleChoice from './Categories/AudioMultipleChoice/MakeAudioMultipleChoice';
+import AudioMakeSequence from './Categories/AudioSequenceInOrder/AudioMakeSequence';
 import * as CategoryTypes from "../util/Categories";
 
 export default class AddQuestion extends Component {
@@ -94,6 +95,11 @@ export default class AddQuestion extends Component {
           Audio Multiple Choice
  
       </Menu.Item>
+      <Menu.Item onClick={()=>{this.onCatChange(CategoryTypes.AUDIO_SEQUENCE_ORDER);}}>
+          
+          Audio Sequence Order
+ 
+      </Menu.Item>
         </Menu>
       );
    }
@@ -128,6 +134,9 @@ export default class AddQuestion extends Component {
        }
        else if (this.state.catergory === CategoryTypes.AUDIO_MULTIPLE_CHOICE){
         return (<MakeAudioMultipleChoice addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+       }
+       else if (this.state.catergory === CategoryTypes.AUDIO_SEQUENCE_ORDER){
+        return (<AudioMakeSequence addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }
        return null;
    }

@@ -64,8 +64,7 @@ export default class AudioMultipleChoiceTest extends Component {
         // const { value } = this.state;
         return (
             <div  className="col-12 col-sm-10 offset-sm-1">
-                <Card style={{backgroundColor:this.props.color}}
-                  >
+                <Card style={{backgroundColor:this.props.color}}>
                 <ReactAudioPlayer
                 src={this.state.audiourl}
                 autoPlay

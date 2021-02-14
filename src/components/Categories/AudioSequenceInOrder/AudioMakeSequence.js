@@ -24,6 +24,7 @@ export default class MakeSequenceInOrder extends Component {
       Answers:[],
       optionsError: "",
       AnsValue:"",
+      audiourl:"",
       value: [],
     };
   }
@@ -152,12 +153,12 @@ export default class MakeSequenceInOrder extends Component {
     if(this.state.addorupdate === "Update Question"){
       console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Sequence In Order", description: this.state.description, options: this.state.options, ans: ans,id:this.props.question.id};
+      const data={category: "Audio Sequence Order", description: this.state.description, audiourl:this.state.audiourl, options: this.state.options, ans: ans,id:this.props.question.id};
       this.props.updateQuestion(data)
     }
     else{
       console.log("ADD QUESTION function is called")
-      const data={category: "Sequence In Order", description: this.state.description, options: this.state.options, ans: ans};
+      const data={category: "Audio Sequence Order", description: this.state.description, audiourl:this.state.audiourl, options: this.state.options, ans: ans};
       this.props.addQuestion(data)
     }
   }
@@ -234,6 +235,10 @@ export default class MakeSequenceInOrder extends Component {
       );
     });
   };
+  onChangeURLField = (e) =>{
+    const value = e.target.value;
+    this.setState({ audiourl: value });
+  }
   onAddQuestion = () => {
     if (this.state.options.length > 0) {
       // options are present
@@ -278,13 +283,24 @@ export default class MakeSequenceInOrder extends Component {
               onChange={this.onChangeDescription}
               rows={4}
             />
+            <br />
+            <br />
+            <TextArea
+            placeholder="Enter Audio URL here"
+            value={this.state.audiourl}
+        onChange={(val) => {
+          this.onChangeURLField(val);
+        }}
+      />
           </div>
+
         </div>
         <div className="row">
           <div className="col-12 col-sm-10 offset-sm-1">
             <p style={errorStyleText}>{this.state.descriptionError}</p>
           </div>
-        </div>
+        </div>       
+        <br />
         <br />
         <div className={classes.BoxOrderDiv}>
         <div className="row">

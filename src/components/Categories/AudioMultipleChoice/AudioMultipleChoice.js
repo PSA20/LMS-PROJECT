@@ -51,7 +51,7 @@ export default class AudioMultipleChoice extends Component {
                   ]}>
                     <ReactAudioPlayer
                 src={this.props.data.audiourl}
-                autoPlay
+                autoPlay={false}
                 controls
                 muted
                 />
