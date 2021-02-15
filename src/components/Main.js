@@ -19,6 +19,7 @@ import MatchDragImg from "./Categories/MatchDragImg/MatchDragImg";
 import AudioMultipleChoice from "./Categories/AudioMultipleChoice/AudioMultipleChoice";
 import AudioSequenceInOrder from './Categories/AudioSequenceInOrder/AudioSequenceInOrder';
 import VideoMultipleChoice from './Categories/VideoMultipleChoice/VideoMultipleChoice';
+import VideoSequenceInOrder from './Categories/VideoSequenceInOrder/VideoSequenceInOrder';
 import * as CategoryTypes from "../util/Categories"; 
 import { NavLink } from 'react-router-dom';
 import {
@@ -256,7 +257,7 @@ class Main extends Component {
     else if(item.category === CategoryTypes.AUDIO_MULTIPLE_CHOICE){
       return (
         <div
-          key={"MatchWM"+index}
+          key={"AudioMC"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -274,7 +275,7 @@ class Main extends Component {
     else if(item.category === CategoryTypes.VIDEO_MULTIPLE_CHOICE){
       return (
         <div
-          key={"MatchWM"+index}
+          key={"VideoMC"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
@@ -292,12 +293,30 @@ class Main extends Component {
     else if(item.category === CategoryTypes.AUDIO_SEQUENCE_ORDER){
       return (
         <div
-          key={"MatchWM"+index}
+          key={"AudioSO"+index}
           style={{ marginTop: 20 }}
           // key={item}
           className="row"
         >
           <AudioSequenceInOrder
+            deleteQuestion={this.props.deleteQuestion}
+            updateQuestion={this.props.updateQuestion}
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
+    else if(item.category === CategoryTypes.VIDEO_SEQUENCE_ORDER){
+      return (
+        <div
+          key={"VideoSO"+index}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <VideoSequenceInOrder
             deleteQuestion={this.props.deleteQuestion}
             updateQuestion={this.props.updateQuestion}
             color={this.props.questions.color}

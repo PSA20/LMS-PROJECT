@@ -14,6 +14,7 @@ import MakeMatchDragImg from "./Categories/MatchDragImg/MakeMatchDragImg";
 import MakeAudioMultipleChoice from './Categories/AudioMultipleChoice/MakeAudioMultipleChoice';
 import AudioMakeSequence from './Categories/AudioSequenceInOrder/AudioMakeSequence';
 import MakeVideoMultipleChoice from './Categories/VideoMultipleChoice/MakeVideoMultipleChoice';
+import VideoMakeSequence from './Categories/VideoSequenceInOrder/VideoMakeSequence';
 import * as CategoryTypes from "../util/Categories";
 
 export default class AddQuestion extends Component {
@@ -106,6 +107,11 @@ export default class AddQuestion extends Component {
           Video Multiple Choice
  
       </Menu.Item>
+      <Menu.Item onClick={()=>{this.onCatChange(CategoryTypes.VIDEO_SEQUENCE_ORDER);}}>
+          
+          Video Sequence Order
+ 
+      </Menu.Item>
         </Menu>
       );
    }
@@ -146,6 +152,9 @@ export default class AddQuestion extends Component {
        }
        else if (this.state.catergory === CategoryTypes.VIDEO_MULTIPLE_CHOICE){
         return (<MakeVideoMultipleChoice addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+       }
+       else if (this.state.catergory === CategoryTypes.VIDEO_SEQUENCE_ORDER){
+        return (<VideoMakeSequence addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }
        return null;
    }

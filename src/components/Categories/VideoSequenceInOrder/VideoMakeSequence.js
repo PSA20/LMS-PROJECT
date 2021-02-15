@@ -153,12 +153,12 @@ export default class VideoMakeSequenceInOrder extends Component {
     if(this.state.addorupdate === "Update Question"){
       console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Audio Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans,id:this.props.question.id};
+      const data={category: "Video Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans,id:this.props.question.id};
       this.props.updateQuestion(data)
     }
     else{
       console.log("ADD QUESTION function is called")
-      const data={category: "Audio Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans};
+      const data={category: "Video Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans};
       this.props.addQuestion(data)
     }
   }
@@ -286,7 +286,7 @@ export default class VideoMakeSequenceInOrder extends Component {
             <br />
             <br />
             <TextArea
-            placeholder="Enter Audio URL here"
+            placeholder="Enter Video URL here"
             value={this.state.videourl}
         onChange={(val) => {
           this.onChangeURLField(val);

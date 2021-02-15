@@ -18,6 +18,7 @@ import MatchDragImgTest from "../Categories/MatchDragImg/MatchDragImgTest";
 import AudioMultipleChoiceTest from '../Categories/AudioMultipleChoice/AudioMultipleChoiceTest';
 import AudioSequenceInTest from '../Categories/AudioSequenceInOrder/AudioSequenceInTest';
 import VideoMultipleChoiceTest from '../Categories/VideoMultipleChoice/VideoMultipleChoiceTest';
+import VideoSequenceInTest from '../Categories/VideoSequenceInOrder/VideoSequenceInTest';
 import SubmitTest from "../SubmitTest/SubmitTest";
 // import MultipleC from "../Categories/Multip"
 
@@ -262,6 +263,25 @@ class MyTest extends Component{
           className="row"
         >
           <VideoMultipleChoiceTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
+          />
+        </div>
+      );
+    }
+    else if(item.category === CategoryTypes.VIDEO_SEQUENCE_ORDER){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <VideoSequenceInTest
             color={this.props.questions.color}
             quesNo={index}
             data={item}
