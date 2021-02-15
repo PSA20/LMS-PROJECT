@@ -10,7 +10,7 @@ const { TextArea } = Input;
 const errorStyleText = {
   color: "#eb2f96",
 };
-export default class AudioMakeSequenceInOrder extends Component {
+export default class VideoMakeSequenceInOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ export default class AudioMakeSequenceInOrder extends Component {
       Answers:[],
       optionsError: "",
       AnsValue:"",
-      audiourl:"",
+      videourl:"",
       value: [],
     };
   }
@@ -153,12 +153,12 @@ export default class AudioMakeSequenceInOrder extends Component {
     if(this.state.addorupdate === "Update Question"){
       console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Audio Sequence Order", description: this.state.description, audiourl:this.state.audiourl, options: this.state.options, ans: ans,id:this.props.question.id};
+      const data={category: "Audio Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans,id:this.props.question.id};
       this.props.updateQuestion(data)
     }
     else{
       console.log("ADD QUESTION function is called")
-      const data={category: "Audio Sequence Order", description: this.state.description, audiourl:this.state.audiourl, options: this.state.options, ans: ans};
+      const data={category: "Audio Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans};
       this.props.addQuestion(data)
     }
   }
@@ -237,7 +237,7 @@ export default class AudioMakeSequenceInOrder extends Component {
   };
   onChangeURLField = (e) =>{
     const value = e.target.value;
-    this.setState({ audiourl: value });
+    this.setState({ videourl: value });
   }
   onAddQuestion = () => {
     if (this.state.options.length > 0) {
@@ -287,7 +287,7 @@ export default class AudioMakeSequenceInOrder extends Component {
             <br />
             <TextArea
             placeholder="Enter Audio URL here"
-            value={this.state.audiourl}
+            value={this.state.videourl}
         onChange={(val) => {
           this.onChangeURLField(val);
         }}

@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
 import { Card, Modal, List } from 'antd';
 import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
-import MakesequenceInOrder from './AudioMakeSequence';
-import ReactAudioPlayer from 'react-audio-player';
+import MakesequenceInOrder from './VideoMakeSequence';
+import VideoPlayer from 'react-video-js-player';
+// import ReactAudioPlayer from 'react-audio-player';
 import classes from './SequenceInOrder.module.css';
 
 // continue from here....
 
 
-class AudioSequenceInOrder extends Component{
+class VideoSequenceInOrder extends Component{
     constructor(props) {
         super(props);
         this.state = {
             value: 1,
             visible: false,
-            audiourl:this.props.data.audiourl
+            videourl:this.props.data.videourl
           };
     }
     showModal = () => {
@@ -47,11 +48,13 @@ class AudioSequenceInOrder extends Component{
                     <EditTwoTone onClick={()=>{this.showModal();}} twoToneColor="#52c41a"   key="edit" />,
                     <DeleteTwoTone onClick={()=>{this.onDelete();}} twoToneColor="#eb2f96" key="del"/>,
                   ]}>
-                    <ReactAudioPlayer
+                    {/* <ReactAudioPlayer
                 src={this.state.audiourl}
                 autoPlay={false}
                 controls
-                />
+                /> */}
+                <VideoPlayer controls={true} src={this.props.data.videourl} width="720"
+                    height="420" />
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
             {/* </div> */}
             <div className={classes.DivinCol}>
@@ -97,4 +100,4 @@ class AudioSequenceInOrder extends Component{
 }
 
 
-export default AudioSequenceInOrder;
+export default VideoSequenceInOrder;

@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import { Card, Button } from 'antd';
 import classes from './SequenceInOrder.module.css';
-import ReactAudioPlayer from 'react-audio-player';
+// import ReactAudioPlayer from 'react-audio-player';
+import VideoPlayer from 'react-video-js-player';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-class AudioSequenceInTest extends Component{
+class VideoSequenceInTest extends Component{
     constructor(props) {
         super(props);
         this.state = {
             value: 1,
             visible: false,
             mydata: [...this.props.data.options],
-            audiourl : this.props.data.audiourl
+            videourl : this.props.data.videourl
           };
     }
     handleOnDragEnd = (result) =>{
@@ -51,11 +52,13 @@ class AudioSequenceInTest extends Component{
             <div  className="col-12 col-sm-10 offset-sm-1">
                 <Card style={{backgroundColor:this.props.color}}
                   >
-                <ReactAudioPlayer
+                {/* <ReactAudioPlayer
                 src={this.state.audiourl}
                 autoPlay
                 controls
-                />
+                /> */}
+                <VideoPlayer controls={true} src={this.props.data.videourl} width="720"
+                    height="420" />
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
             {/* </div> */}
             <DragDropContext onDragEnd={this.handleOnDragEnd}>
@@ -97,5 +100,4 @@ class AudioSequenceInTest extends Component{
 // {/* <div > */}
 // {/* <List.Item */}
 
-export default AudioSequenceInTest;
-
+export default VideoSequenceInTest;
