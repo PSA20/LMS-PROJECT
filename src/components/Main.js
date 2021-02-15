@@ -30,6 +30,7 @@ import {
   changeTime,
   updateQuestion,
   initquestions,
+  initcolor, initscore, inittime
 } from "../redux/actions/QuestionActions";
 
 
@@ -48,7 +49,10 @@ const mapDispatchToProps = (dispatch) => ({
   changeTime: (time) => {
     dispatch(changeTime(time));
   },
-  initquestions:()=>{ dispatch(initquestions())}
+  initquestions:()=>{ dispatch(initquestions())},
+  initcolor:()=>{dispatch(initcolor())},
+  inittime:()=>{dispatch(inittime())},
+  initscore:()=>{dispatch(initscore())}
 });
 const mapStateToProps = (state) => {
   return {
@@ -72,6 +76,9 @@ class Main extends Component {
     console.log("SASASADSASD", this.props.xyz)
     console.log(this.props.questions)
     this.props.initquestions()
+    this.props.initcolor()
+    this.props.initscore()
+    this.props.inittime()
   }
   onChangeTime = (value) => {
     const reg = /^-?(0|[1-9][0-9]*)(\.[0-9]*)?$/;
@@ -364,9 +371,7 @@ class Main extends Component {
             <AddQuestion addQuestion={this.props.addQuestion} />
             
             <br />
-            {/* <NavLink to="/test">TEST START</NavLink> */}
-            <hr />
-            <NavLink to="/test123">TEST START</NavLink>
+            
             <br />
           </div>
           

@@ -33,7 +33,9 @@ class MyTest extends Component{
     // this.props.addQuestion();
     console.log("loading questions From Test page ")
     console.log(this.props.questions)
-    // this.props.initquestions()
+    console.log(this.state.questions)
+    this.props.initquestions()
+    this.props.initcolor()
   }
 
   updateCurrentNo = ()=>{
@@ -52,6 +54,7 @@ class MyTest extends Component{
     //<MultipleChoice quesNo={1} data={data} />
     //    const ques = this.props.questions;
     console.log(this.state.questions.questions[1])
+    console.log(this.state.questions)
     //console.log("ques.ques: ",this.props.questions.questions);
     // const result = this.props.questions.questions.map((item, index) => {
       //console.log("item ",item);
@@ -324,8 +327,9 @@ class MyTest extends Component{
       )
     }
     else if(this.props.questions.questions){
+      console.log(this.props.questions.questions[this.state.currentquestion])
       return(
-        this.renderQuestionRows(this.state.questions.questions[this.state.currentquestion],this.state.currentquestion)
+        this.renderQuestionRows(this.props.questions.questions[this.state.currentquestion],this.state.currentquestion)
       )
     }
     else{
@@ -340,7 +344,7 @@ class MyTest extends Component{
     console.log(this.state.router)
     console.log(this.props.score)
       console.log(window.location.href)
-        console.log(this.props.questions.time)
+        console.log(this.props.questions)
         return(
             // <div>
             //     <Countdown date={Date.now() + 30000}></Countdown>
@@ -380,7 +384,12 @@ class MyTest extends Component{
         ) : (
           <p>No Questions Added yet</p>
         )} */}
-        {this.RenderorSubmit()}
+        {/* {this.RenderorSubmit()} */}
+        {this.props.questions ? (
+          this.RenderorSubmit()
+        ) : (
+          <p>No Questions Added yet</p>
+        )}
       </div>
         )
     }
@@ -404,7 +413,9 @@ const mapDispatchToProps = (dispatch) => ({
     updateUserAnsList :(list,score ) =>{
       dispatch(actions.userAnsList({list, score}))
     },
-    initquestions:()=>{ dispatch(actions.initquestions())}
+    initquestions:()=>{ dispatch(actions.initquestions())},
+    initcolor:()=>{dispatch(actions.initcolor())}
+
   });
   const mapStateToProps = (state) => {
     return {

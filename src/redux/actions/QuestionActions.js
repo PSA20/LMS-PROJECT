@@ -39,6 +39,42 @@ export const fetchQuestionsFail =(error)=>{
     error: error
 };
 }
+export const fetchcolorfail =(error)=>{
+  return {
+    type: ActionTypes.FETCH_COLOR_FAIL,
+    error: error
+};
+}
+export const fetchcolorsuccess = (color) =>{
+  return{
+    type: ActionTypes.FETCH_COLOR_SUCCESS,
+    color: color
+  }
+}
+export const fetchscorefail =(error)=>{
+  return {
+    type: ActionTypes.FETCH_SCORE_FAIL,
+    error: error
+};
+}
+export const fetchscoresuccess = (score) =>{
+  return{
+    type: ActionTypes.FETCH_SCORE_SUCCESS,
+    score: score
+  }
+}
+export const fetchtimefail =(error)=>{
+  return {
+    type: ActionTypes.FETCH_TIME_FAIL,
+    error: error
+};
+}
+export const fetchtimesuccess = (time) =>{
+  return{
+    type: ActionTypes.FETCH_TIME_SUCCESS,
+    time: time
+  }
+}
 
  export const initquestions = () =>{
   console.log("res")
@@ -64,6 +100,45 @@ export const fetchQuestionsFail =(error)=>{
    }
    
  }
+ export const initcolor = () =>{
+   return dispatch =>{
+     axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/color.json")
+     .then(res =>{
+      console.log(res)
+      dispatch(fetchcolorsuccess(res.data))
+     })
+     .catch(err =>{
+      console.log(err)
+      dispatch(fetchcolorfail(err))
+     })
+   }
+ }
+ export const initscore = () =>{
+  return dispatch =>{
+    axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/score.json")
+    .then(res =>{
+     console.log(res)
+     dispatch(fetchscoresuccess(res.data))
+    })
+    .catch(err =>{
+     console.log(err)
+     dispatch(fetchscorefail(err))
+    })
+  }
+}
+export const inittime = () =>{
+  return dispatch =>{
+    axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/time.json")
+    .then(res =>{
+     console.log(res)
+     dispatch(fetchtimesuccess(res.data))
+    })
+    .catch(err =>{
+     console.log(err)
+     dispatch(fetchtimefail(err))
+    })
+  }
+}
 
  export const userAnsList = ( list )=>({
   

@@ -120,6 +120,12 @@ export const Questions = ( state = initialState, action) => {
             return { ...state, questions: state.questions}    
     case types.FETCH_QUESTIONS_SUCCESS: return fetchQuestionsSuccess(state, action);
     case types.FETCH_QUESTIONS_FAIL: return fetchQuestionsFail(state,action)
+    case types.FETCH_COLOR_SUCCESS: return updateObject(state,{color: action.color});
+    case types.FETCH_COLOR_FAIL: return updateObject( state, { color: "white" } );
+    case types.FETCH_SCORE_SUCCESS: return updateObject(state,{score: action.score});
+    case types.FETCH_SCORE_FAIL: return updateObject( state, { score: 1 } );
+    case types.FETCH_TIME_SUCCESS: return updateObject(state,{time: action.time});
+    case types.FETCH_TIME_FAIL: return updateObject( state, { time: 60 } );
 
 
     default:
