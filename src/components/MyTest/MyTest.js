@@ -36,6 +36,8 @@ class MyTest extends Component{
     console.log(this.state.questions)
     this.props.initquestions()
     this.props.initcolor()
+    this.props.initscore()
+    this.props.inittime()
   }
 
   updateCurrentNo = ()=>{
@@ -414,7 +416,9 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(actions.userAnsList({list, score}))
     },
     initquestions:()=>{ dispatch(actions.initquestions())},
-    initcolor:()=>{dispatch(actions.initcolor())}
+    initcolor:()=>{dispatch(actions.initcolor())},
+    inittime:()=>{dispatch(actions.inittime())},
+    initscore:()=>{dispatch(actions.initscore())}
 
   });
   const mapStateToProps = (state) => {
