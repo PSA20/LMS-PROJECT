@@ -92,7 +92,8 @@ export const Questions = ( state = initialState, action) => {
        const actualscore = state.testscore
        console.log(arr.val)
        console.log(state.list)
-       let score = action.payload.score
+      //  let score = action.payload.score
+      let score = 0
        if(arr.val){
         score = action.payload.score + actualscore
        }

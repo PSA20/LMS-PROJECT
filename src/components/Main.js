@@ -18,6 +18,7 @@ import MatchDrag from "./Categories/MatchDrag/MatchDrag";
 import MatchDragImg from "./Categories/MatchDragImg/MatchDragImg";
 import AudioMultipleChoice from "./Categories/AudioMultipleChoice/AudioMultipleChoice";
 import AudioSequenceInOrder from './Categories/AudioSequenceInOrder/AudioSequenceInOrder';
+import VideoMultipleChoice from './Categories/VideoMultipleChoice/VideoMultipleChoice';
 import * as CategoryTypes from "../util/Categories"; 
 import { NavLink } from 'react-router-dom';
 import {
@@ -261,6 +262,24 @@ class Main extends Component {
           className="row"
         >
           <AudioMultipleChoice
+            deleteQuestion={this.props.deleteQuestion}
+            updateQuestion={this.props.updateQuestion}
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
+    else if(item.category === CategoryTypes.VIDEO_MULTIPLE_CHOICE){
+      return (
+        <div
+          key={"MatchWM"+index}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <VideoMultipleChoice
             deleteQuestion={this.props.deleteQuestion}
             updateQuestion={this.props.updateQuestion}
             color={this.props.questions.color}

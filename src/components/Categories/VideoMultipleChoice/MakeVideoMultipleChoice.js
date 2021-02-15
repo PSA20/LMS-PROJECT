@@ -9,7 +9,7 @@ const { TextArea } = Input;
 const errorStyleText = {
   color: "#eb2f96",
 };
-export default class MakeAudioMultipleChoice extends Component {
+export default class MakeVideosMultipleChoice extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ export default class MakeAudioMultipleChoice extends Component {
       options: [],
       optionsError: "",
       value: 0,
-      audiourl:"",
+      videourl:"",
       addorupdate: "Add Question"
     };
   }
@@ -92,12 +92,12 @@ export default class MakeAudioMultipleChoice extends Component {
     if(this.state.addorupdate === "Update Question"){
       console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Audio Multiple Choice", description: this.state.description, options: this.state.options, ans: ans, audiourl:this.state.audiourl,id:this.props.question.id};
+      const data={category: "Video Multiple Choice", description: this.state.description, options: this.state.options, ans: ans, videourl:this.state.videourl,id:this.props.question.id};
       this.props.updateQuestion(data)
     }
     else{
       console.log("ADD QUESTION function is called")
-      const data={category: "Audio Multiple Choice", description: this.state.description, options: this.state.options, ans: ans, audiourl:this.state.audiourl};
+      const data={category: "Video Multiple Choice", description: this.state.description, options: this.state.options, ans: ans, videourl:this.state.videourl};
       this.props.addQuestion(data)
     }
   }
@@ -148,7 +148,7 @@ export default class MakeAudioMultipleChoice extends Component {
   };
   onChangeURLField = (e) =>{
     const value = e.target.value;
-    this.setState({ audiourl: value });
+    this.setState({ videourl: value });
   }
   onAddQuestion = () => {
     if (this.state.options.length > 0) {
@@ -212,8 +212,8 @@ export default class MakeAudioMultipleChoice extends Component {
         <div className="row">
           <div className="col-12 col-sm-5 offset-sm-1">
             <TextArea
-              placeholder="Enter Audio URL here"
-              value={this.state.audiourl}
+              placeholder="Enter Video URL here"
+              value={this.state.videourl}
               onChange={(val) => {
                 this.onChangeURLField(val);
               }}
