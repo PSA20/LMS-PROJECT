@@ -20,8 +20,12 @@ import AudioSequenceInTest from '../Categories/AudioSequenceInOrder/AudioSequenc
 import VideoMultipleChoiceTest from '../Categories/VideoMultipleChoice/VideoMultipleChoiceTest';
 import VideoSequenceInTest from '../Categories/VideoSequenceInOrder/VideoSequenceInTest';
 import SubmitTest from "../SubmitTest/SubmitTest";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+// import CountDown from 'react-native-countdown-component';
 // import MultipleC from "../Categories/Multip"
 
+const minuteSeconds = 60;
+const hourSeconds = 3600;
 class MyTest extends Component{
 
   state = {
@@ -29,6 +33,17 @@ class MyTest extends Component{
     currentquestion:0,
     questions:this.props.questions
   }
+  renderTime = (dimension, time) => {
+    return (
+      <div className="time-wrapper">
+        <div className="time">{time}</div>
+        <div>{dimension}</div>
+      </div>
+    );
+  };
+  getTimeSeconds = (time) => (minuteSeconds - time) | 0;
+  getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
+  
   componentDidMount() {
     // this.props.addQuestion();
     console.log("loading questions From Test page ")
@@ -347,11 +362,16 @@ class MyTest extends Component{
     console.log(this.props.score)
       console.log(window.location.href)
         console.log(this.props.questions)
+        console.log(this.props.questions.color)
+        const timerProps = {
+          isPlaying: true,
+          size: 60,
+          strokeWidth: 6
+        };
+        const remainingTime = this.props.time * 60
+        console.log(remainingTime)
+        console.log(this.props.time)
         return(
-            // <div>
-            //     <Countdown date={Date.now() + 30000}></Countdown>
-            //     <Countdown date={Date.now() + (this.props.questions.time * 60 * 1000)}></Countdown>
-            // </div>
             <div className="mainBody">
         {/* <h1>{this.props.user.username}</h1> */}
         <Header />
@@ -368,8 +388,45 @@ class MyTest extends Component{
         <div style={{ height: 10 }} />
         <div />
         <Divider style={{ marginTop: 20 }} orientation="left">
-          Options
+        
         </Divider>
+
+        <div className="row" style={{float: "right", paddingRight:"50px"}}>
+        <CountdownCircleTimer
+        {...timerProps}
+        colors={[["#EF798A"]]}
+        duration={remainingTime}
+        // initialRemainingTime={remainingTime % hourSeconds}
+        onComplete={(totalElapsedTime) => [
+          remainingTime - totalElapsedTime > minuteSeconds
+        ]}
+      >
+        {({ elapsedTime }) =>
+        // console.log(elapsedTime)
+          this.renderTime("M", this.getTimeMinutes(remainingTime - elapsedTime))
+        }
+      </CountdownCircleTimer>
+      <CountdownCircleTimer
+        {...timerProps}
+        // colors={[["#218380"]]}
+        colors={[["#000000"]]}
+        // colors={this.props.questions.color}
+        duration={minuteSeconds}
+        // duration={20}
+        // initialRemainingTime={remainingTime % minuteSeconds}
+        onComplete={(totalElapsedTime) => [
+          remainingTime - totalElapsedTime > 0
+        ]}
+      >
+        {({ elapsedTime }) =>
+          this.renderTime("S", this.getTimeSeconds(elapsedTime))
+        }
+      </CountdownCircleTimer>
+      </div>
+
+
+
+
         <Divider style={{ marginTop: 20 }} orientation="left" />
         <div style={{flex:1, flexDirection: "row-reverse", justifyContent: "center", alignItems: "center", textAlign: "center"}}>
           <p>Questions :{" "}
@@ -426,7 +483,8 @@ const mapDispatchToProps = (dispatch) => ({
       user: state.user,
       questions: state.question,
       option: state.option,
-      score: state.question.score
+      score: state.question.score,
+      time: state.question.time
 
     };
   };

@@ -16,6 +16,7 @@
     "react-audio-player": "^0.14.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-countdown": "^2.3.1",
+    "react-countdown-circle-timer": "^2.5.0",
     "react-dom": "^17.0.1",
     "react-joi-validation": "^1.7.0",
     "react-native-countdown-component": "^2.7.1",
