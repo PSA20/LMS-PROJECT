@@ -13,7 +13,17 @@ export const changeColor = (color) => ({
   type: ActionTypes.CHANGE_COLOR,
   payload: color,
 });
-
+export const changetime = (time) =>{
+  return dispatch=>{
+    axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/time.json",time)
+    .then(
+      res =>{
+        console.log("from change time in db",res)
+        dispatch(changeTime(res.data))
+      })
+    .catch(err=>{console.log(err)})
+  }
+}
 export const changeScore = (score) => ({
     type: ActionTypes.CHANGE_SCORE,
     payload: score,

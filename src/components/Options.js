@@ -27,8 +27,10 @@ export default class Options extends Component {
     });
   };
 
-  handleOk = () => {
+  handleOk = (time) => {
+    this.props.onChangeTime(time)
     this.setState({ ModalTimeLoading: true });
+
     setTimeout(() => {
       this.setState({ ModalTimeLoading: false, ModalTimeVisible: false });
     }, 3000);

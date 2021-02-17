@@ -30,7 +30,7 @@ import {
   changeTime,
   updateQuestion,
   initquestions,
-  initcolor, initscore, inittime
+  initcolor, initscore, inittime, changetime
 } from "../redux/actions/QuestionActions";
 
 
@@ -49,6 +49,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeTime: (time) => {
     dispatch(changeTime(time));
   },
+  changetime:(time =>{ dispatch(changetime(time))}),
   initquestions:()=>{ dispatch(initquestions())},
   initcolor:()=>{dispatch(initcolor())},
   inittime:()=>{dispatch(inittime())},
@@ -87,7 +88,8 @@ class Main extends Component {
       value === "" ||
       value === "-"
     ) {
-      this.props.changeTime(value);
+      // this.props.changeTime(value);
+      this.props.changetime(value)
       this.setState({ time: value, timeError: false });
     } else {
       this.setState({ timeError: true });
