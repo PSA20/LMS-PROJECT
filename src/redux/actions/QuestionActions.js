@@ -24,6 +24,29 @@ export const changetime = (time) =>{
     .catch(err=>{console.log(err)})
   }
 }
+export const changescore = (score) =>{
+  return dispatch=>{
+    axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/score.json",score)
+    .then(
+      res =>{
+        console.log("from change score in db",res)
+        dispatch(changeScore(res.data))
+      })
+    .catch(err=>{console.log(err)})
+  }
+}
+export const changecolor = (color) =>{
+  console.log("from redux",color)
+  return dispatch=>{
+    axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/color.json",{color})
+    .then(
+      res =>{
+        console.log("from change color in db",res)
+        dispatch(changeColor(res.data.color))
+      })
+    .catch(err=>{console.log(err)})
+  }
+}
 export const changeScore = (score) => ({
     type: ActionTypes.CHANGE_SCORE,
     payload: score,
@@ -115,7 +138,7 @@ export const fetchtimesuccess = (time) =>{
      axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/color.json")
      .then(res =>{
       console.log(res)
-      dispatch(fetchcolorsuccess(res.data))
+      dispatch(fetchcolorsuccess(res.data.color))
      })
      .catch(err =>{
       console.log(err)

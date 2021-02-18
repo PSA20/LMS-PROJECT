@@ -28,12 +28,12 @@ export default class Options extends Component {
   };
 
   handleOk = (time) => {
-    this.props.onChangeTime(time)
+    
     this.setState({ ModalTimeLoading: true });
-
+    this.props.onChangeTime(time)
     setTimeout(() => {
       this.setState({ ModalTimeLoading: false, ModalTimeVisible: false });
-    }, 3000);
+    }, 700);
   };
 
   handleCancel = () => {
@@ -47,7 +47,8 @@ export default class Options extends Component {
     });
   };
 
-  handleOkScore = () => {
+  handleOkScore = (score) => {
+    this.props.onChangeScore(score)
     this.setState({ ModalScoreLoading: true });
     setTimeout(() => {
       this.setState({ ModalScoreLoading: false, ModalScoreVisible: false });

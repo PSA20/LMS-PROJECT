@@ -15,7 +15,14 @@ const formItemLayout = {
 
 export default class CustomScore extends React.Component {
  
-
+  state = {
+    score: this.props.score
+  }
+  onChangeAnsField = (val) => {
+    console.log(val)
+    this.setState({ score: val});
+    // console.log(this.state.AnsValue)
+  };
   
 
   render() {
@@ -33,7 +40,7 @@ export default class CustomScore extends React.Component {
             <Button key="back" onClick={this.props.handleCancel}>
               Return
             </Button>,
-            <Button key="submit" type="primary" loading={loading} onClick={this.props.handleOk}>
+            <Button key="submit" type="primary" loading={loading} onClick={()=>{this.props.handleOk(this.state.score)}}>
               Submit
             </Button>,
           ]}
@@ -41,7 +48,7 @@ export default class CustomScore extends React.Component {
           <Form {...formItemLayout}>
          
     <Form.Item  hasFeedback validateStatus="success">
-      <InputNumber onChange={(val)=> {this.props.onChange(val)}} value={this.props.score}  style={{ width: '100%' }} />
+      <InputNumber onChange={this.onChangeAnsField} value={this.props.score}  style={{ width: '100%' }} />
     </Form.Item>
           </Form>
         </Modal>

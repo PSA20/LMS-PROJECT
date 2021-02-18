@@ -43,6 +43,7 @@ export default class MultipleChoice extends Component {
         return (
             <div  className="col-12 col-sm-10 offset-sm-1">
                 <Card style={{backgroundColor:this.props.color}}
+                // <Card style={{backgroundColor: "#ffc2d4"}}
                   actions={[
                     
                     <EditTwoTone onClick={()=>{this.showModal();}} twoToneColor="#52c41a"   key="edit" />,
