@@ -29,9 +29,9 @@ class SubmitTest extends Component{
             </Divider>
             <br />
             <div style={{textAlign:"center"}}>
-            <h1>Your Score: {this.props.questions.testscore}</h1>
+            <h1>Your Score: {this.props.testscore}</h1>
             {this.props.list.map(id =>{
-                console.log(id)
+                // console.log(id)
                 return(
                     <div>
                         <p>QueNo:{id.queNo}, userAns:{id.userAns}, CorrectAns:{id.correctans}</p>
@@ -50,7 +50,8 @@ const mapStateToProps = (state) => {
       user: state.user,
       questions: state.question,
       option: state.option,
-      list: state.question.list
+      list: state.question.list,
+      testscore: state.question.testscore
     };
   };
 

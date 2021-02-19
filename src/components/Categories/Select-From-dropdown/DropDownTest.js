@@ -154,7 +154,7 @@ export default class DropDownSelect extends Component {
       // }
       const data = {queNo: this.props.quesNo, userAns: userans, correctans:myans, val:yesorno}
       console.log(data)
-      this.props.userAnsList(data, this.props.score)
+      this.props.userAnsList(data, this.props.testscore, this.props.score)
       this.props.nextQue()
       // console.log("i an called nextque and updatelist");
       

@@ -21,7 +21,7 @@ import AudioSequenceInOrder from './Categories/AudioSequenceInOrder/AudioSequenc
 import VideoMultipleChoice from './Categories/VideoMultipleChoice/VideoMultipleChoice';
 import VideoSequenceInOrder from './Categories/VideoSequenceInOrder/VideoSequenceInOrder';
 import * as CategoryTypes from "../util/Categories"; 
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import {
   addQuestion,
   deleteQuestion,

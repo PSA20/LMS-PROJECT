@@ -88,25 +88,27 @@ export const Questions = ( state = initialState, action) => {
     case types.CHANGE_TIME:
             return { ...state, time: action.payload}  
     case types.USER_ANS_LIST:
-       const arr = action.payload.list
-       const actualscore = state.testscore
-       console.log(arr.val)
+       const arr = action.payload
        console.log(state.list)
-      //  let score = action.payload.score
-      let score = 0
-       if(arr.val){
-        score = action.payload.score + actualscore
-       }
-       else{
-         score = actualscore
-       }
-      //  const score = action.payload.score + actualscore
-       console.log(state)
-       console.log(arr)
-       console.log(score)
-       console.log(action)
+      //  console.log(action)
+      //  const actualscore = state.testscore
+      //  console.log(arr.val)
       //  console.log(state.list)
-       return{...state, list:[...state.list, arr],testscore: score }
+      // //  let score = action.payload.score
+      // let score = 0
+      //  if(arr.val){
+      //   score = action.score + actualscore
+      //  }
+      //  else{
+      //    score = actualscore
+      //  }
+      // //  const score = action.payload.score + actualscore
+      //  console.log(state)
+      //  console.log(arr)
+      //  console.log(score)
+      //  console.log(action)
+      //  console.log(state.list)
+       return{...state, list:[...state.list, arr],testscore: action.score }
       // return state
     case types.UPDATE_QUESTION:
             const question=action.payload;

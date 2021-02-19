@@ -66,6 +66,11 @@ export const changeScore = (score) => ({
       data: fetchedMedic
   }
 }
+
+// continur from here add change in exam score to db
+
+
+
 export const fetchQuestionsFail =(error)=>{
   return {
     type: ActionTypes.FETCH_QUESTIONS_FAIL,
@@ -133,6 +138,23 @@ export const fetchtimesuccess = (time) =>{
    }
    
  }
+ export const changetestscore = (list, totsc, s) =>{
+   return dispatch =>{
+     const arr = list
+     const acscore = totsc
+     let score = 0
+     if(arr.val){
+      score = s + acscore
+     }
+     else{
+       score = acscore
+     }
+    axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/testscore.json",score)
+    .then(res =>{
+      dispatch(userAnsList(list, score))
+    })
+   }
+ }
  export const initcolor = () =>{
    return dispatch =>{
      axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/color.json")
@@ -173,10 +195,11 @@ export const inittime = () =>{
   }
 }
 
- export const userAnsList = ( list )=>({
+ export const userAnsList = ( list, score )=>({
   
   type: ActionTypes.USER_ANS_LIST,
-  payload: list
+  payload: list,
+  score: score
  })
 
 //  export const updateAnsList = (list) =>({

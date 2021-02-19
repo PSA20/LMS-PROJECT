@@ -13,6 +13,7 @@ export default function TrueAndFalse(props) {
      
       const onChange = e => {
         console.log('radio checked', e.target.value);
+        console.log(props)
         console.log(props.score)
         setValue(e.target.value);
         // if(){
@@ -24,13 +25,14 @@ export default function TrueAndFalse(props) {
       const onClickHandler=()=>{
         let yesorno = false
         const score = props.score
+        const testscore = props.testscore
         if(value === props.data.ans[0]){
           yesorno = true
         }
       const data = {queNo: props.quesNo, userAns: value, correctans: props.data.ans[0], val:yesorno}
       console.log(data)
       
-      props.userAnsList(data, score)
+      props.userAnsList(data, testscore, score)
       props.nextQue()
       console.log("i an called nextque and updatelist");
       }

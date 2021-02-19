@@ -99,6 +99,7 @@ class MyTest extends Component{
             nextQue = {this.updateCurrentNo}
             data={item}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -118,6 +119,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -136,7 +138,9 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
+          
         </div>
       );
     }else if(item.category === CategoryTypes.TRUE_AND_FALSE){
@@ -154,6 +158,7 @@ class MyTest extends Component{
             score = {this.props.score}
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
+            testscore = {this.props.testscore}
             
           />
         </div>
@@ -175,6 +180,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -194,6 +200,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -213,6 +220,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -232,6 +240,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -251,6 +260,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -270,6 +280,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -289,6 +300,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -308,6 +320,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -327,6 +340,7 @@ class MyTest extends Component{
             userAnsList={this.props.updateUserAnsList}
             nextQue = {this.updateCurrentNo}
             score = {this.props.score}
+            testscore = {this.props.testscore}
           />
         </div>
       );
@@ -469,8 +483,8 @@ const mapDispatchToProps = (dispatch) => ({
     // changeTime: (time) => {
     //   dispatch(changeTime(time));
     // },
-    updateUserAnsList :(list,score ) =>{
-      dispatch(actions.userAnsList({list, score}))
+    updateUserAnsList :(list, score, testscore ) =>{
+      dispatch(actions.changetestscore(list, testscore, score))
     },
     initquestions:()=>{ dispatch(actions.initquestions())},
     initcolor:()=>{dispatch(actions.initcolor())},
@@ -484,6 +498,7 @@ const mapDispatchToProps = (dispatch) => ({
       questions: state.question,
       option: state.option,
       score: state.question.score,
+      testscore: state.question.testscore,
       time: state.question.time
 
     };
