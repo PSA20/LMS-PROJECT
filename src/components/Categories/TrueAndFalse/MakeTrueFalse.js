@@ -26,7 +26,7 @@ export default function MakeTrueFalse(props) {
         let ans=[];
         ans[0]=value;
              
-              const data={category: TRUE_AND_FALSE, description: question.description, options: [], ans: ans,descriptionError: "" };
+              const data={category: TRUE_AND_FALSE, description: question.description, options: [], ans: ans };
              //console.log(data);
                props.addQuestion(data);
               props.handleOk();

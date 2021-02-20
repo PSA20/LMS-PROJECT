@@ -154,7 +154,7 @@ export default class VideoMakeSequenceInOrder extends Component {
       console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
       const data={category: "Video Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans,id:this.props.question.id};
-      this.props.updateQuestion(data)
+      this.props.updateQuestion(data, this.props.question.key)
     }
     else{
       console.log("ADD QUESTION function is called")

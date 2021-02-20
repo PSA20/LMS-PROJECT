@@ -26,10 +26,10 @@ export default function EditTrueFalse(props) {
         let ans=[];
         ans[0]=value;
              
-              const data={category: TRUE_AND_FALSE, description: question.description, options: [], ans: ans,descriptionError: "", id: props.data.id };
-             //console.log(data);
-               props.updateQuestion(data);
-              props.handleOk();
+        const data={category: TRUE_AND_FALSE, description: question.description, options: [], ans: ans,descriptionError: "", id: props.data.id };
+        //console.log(data);
+        this.props.updateQuestion(data, this.props.question.key)
+        props.handleOk();
         }
       };
 

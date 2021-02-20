@@ -30,12 +30,15 @@ import {
   changeTime,
   updateQuestion,
   initquestions,
-  initcolor, initscore, inittime, changetime, changecolor, changescore
+  initcolor, initscore, inittime, changetime, changecolor, changescore, addquestions, deletequestion, updatequestion
 } from "../redux/actions/QuestionActions";
 
 
 const mapDispatchToProps = (dispatch) => ({
   addQuestion: (data) => dispatch(addQuestion(data)),
+  addquestions: (data) => dispatch(addquestions(data)),
+  deletequestion: (id, key) => dispatch(deletequestion(id, key)),
+  updatequestion: (data, key) => dispatch(updatequestion(data, key)),
   updateQuestion: (data) => dispatch(updateQuestion(data)),
   deleteQuestion: (data) => {
     dispatch(deleteQuestion(data));
@@ -120,10 +123,10 @@ class Main extends Component {
   renderQuestionRows = () => {
     //<MultipleChoice quesNo={1} data={data} />
     //    const ques = this.props.questions;
-    //console.log("ques.ques: ",this.props.questions.questions);
-
+    console.log("ques.ques: ",this.props.questions.questions);
+    console.log(typeof(this.props.questions.questions))
     const result = this.props.questions.questions.map((item, index) => {
-      //console.log("item ",item);
+      // console.log("item ",item);
       index++;
       //console.log("item: ", item.category)
       if(item.category === CategoryTypes.MULTIPLE_CHOICE){
@@ -135,8 +138,8 @@ class Main extends Component {
           className="row"
         >
           <MultipleChoice
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -373,7 +376,8 @@ class Main extends Component {
         <div style={{ position: "fixed" }} className="add">
           <div className="row">
             
-            <AddQuestion addQuestion={this.props.addQuestion} />
+            {/* <AddQuestion addQuestion={this.props.addQuestion} /> */}
+            <AddQuestion addQuestion={this.props.addquestions} />
             
             <br />
             

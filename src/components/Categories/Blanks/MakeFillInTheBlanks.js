@@ -144,7 +144,7 @@ const onAddorUpdate = (ans)=>{
     console.log("Update function is called")
     // this.setState({ descriptionError: "", optionsError: "" });
     const data={category: "Fill in the Blanks", description: question.description, options: [], ans: ans, id: props.data.id};
-    props.updateQuestion(data)
+    this.props.updateQuestion(data, this.props.question.key)
   }
   else{
     console.log("ADD QUESTION function is called")

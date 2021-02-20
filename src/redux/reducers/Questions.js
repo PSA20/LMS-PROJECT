@@ -73,8 +73,15 @@ export const Questions = ( state = initialState, action) => {
        action.payload.id= action.payload.ans[0];
        console.log(action.payload)
        console.log(state.questions)
+       const newOrder = {
+        ...action.payload
+        // id:action.payload.ans[0]
+    }
+    const updateobj = {
+      questions: state.questions.concat(newOrder)}
       // return { ...state, questions: state.questions.concat(action.payload) };
-      return {...state, questions: [...state.questions, action.payload]}
+      // return {...state, questions: [...state.questions, action.payload]}
+      return updateObject(state, updateobj)
     // case types.INIT_QUESTIONS:
     //   axios.
 
@@ -111,6 +118,7 @@ export const Questions = ( state = initialState, action) => {
        return{...state, list:[...state.list, arr],testscore: action.score }
       // return state
     case types.UPDATE_QUESTION:
+      console.log(action.payload)
             const question=action.payload;
            // console.log("question: ",question);
             const id= question.id;
@@ -118,7 +126,7 @@ export const Questions = ( state = initialState, action) => {
             var foundIndex = state.questions.findIndex(x => x.id === id);
            // console.log("found index: ",foundIndex);
             state.questions[foundIndex]=question;
-            //console.log("state: ",state);
+            console.log("state: ",state);
             return { ...state, questions: state.questions}    
     case types.FETCH_QUESTIONS_SUCCESS: return fetchQuestionsSuccess(state, action);
     case types.FETCH_QUESTIONS_FAIL: return fetchQuestionsFail(state,action)

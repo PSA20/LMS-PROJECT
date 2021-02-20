@@ -24,7 +24,8 @@ export default class MultipleChoice extends Component {
     };
 
     onDelete=()=>{
-      this.props.deleteQuestion(this.props.data.id);
+      console.log(this.props.data.key)
+      this.props.deleteQuestion(this.props.data.id, this.props.data.key);
     }
       onChange = e => {
         //console.log('radio checked', e.target.value);

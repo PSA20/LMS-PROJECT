@@ -159,7 +159,7 @@ export default class MakeMatchDragImg extends Component {
       // this.setState({ descriptionError: "", optionsError: "" });
       const data={category: "Match Drag Image", description: this.state.description,leftoptions:this.state.options, rightoptions: ans, ans: ans,
       leftoptionsurl:this.state.leftoptions, id:this.props.question.id};
-      this.props.updateQuestion(data)
+      this.props.updateQuestion(data, this.props.question.key)
     }
     else{
       // console.log("ADD QUESTION function is called")

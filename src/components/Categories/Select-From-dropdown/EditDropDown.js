@@ -39,7 +39,7 @@ export default class EditDropDown extends Component {
         if(optionCount>0){
           const data={category: CategoryTypes.SELECT_FROM_DROPDOWN, description: this.state.description, options: this.state.options, ans: this.state.ans, id : this.props.data.id};
           //console.log("data: ", data);
-          this.props.updateQuestion(data);
+          this.props.updateQuestion(data, this.props.question.key)
           this.props.handleOk();
         }else{
           this.setState({descriptionError: "Add atleast one Dropdown"});

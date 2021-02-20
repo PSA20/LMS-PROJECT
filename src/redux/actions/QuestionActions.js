@@ -113,6 +113,38 @@ export const fetchtimesuccess = (time) =>{
     time: time
   }
 }
+export const deletequestion = (id,key) =>{
+  console.log(id, key)
+  return dispatch =>{
+    axios.delete('https://ymstutor-lms-default-rtdb.firebaseio.com/questions/'+key+".json")
+    .then(res =>{
+      console.log(res)
+      dispatch(deleteQuestion(id))
+    })
+  }
+}
+export const updatequestion = (data, key) =>{
+  // console.log(data.id, data.key)
+  return dispatch =>{
+    axios.put('https://ymstutor-lms-default-rtdb.firebaseio.com/questions/'+key+".json",data)
+    .then(res =>{
+      console.log(res)
+      dispatch(updateQuestion(data))
+    })
+    .catch( err =>{console.log(err)})
+  }
+}
+
+export const addquestions = (data) =>{
+  console.log(data)
+  return dispatch =>{
+    axios.post("https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json",data)
+    .then(res =>{
+      console.log(res)
+      dispatch(addQuestion(data))
+    })
+  }
+}
 
  export const initquestions = () =>{
   console.log("res")
@@ -121,15 +153,18 @@ export const fetchtimesuccess = (time) =>{
     axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json")
    .then(res=>{
      console.log(res)
-     const fetchedMedic = [];
+     let x = 0
+     const fetcheddata = [];
         for ( let key in res.data ) {
-          fetchedMedic.push( {
+          x = x + 1
+          fetcheddata.push( {
             ...res.data[key],
-            id: key
+            id: x,
+            key: key
         } );
         }
-        console.log(fetchedMedic)
-        dispatch(fetchQuestionsSuccess(res.data));
+        console.log(fetcheddata)
+        dispatch(fetchQuestionsSuccess(fetcheddata));
       })
    .catch(err=>{
      console.log(err)
