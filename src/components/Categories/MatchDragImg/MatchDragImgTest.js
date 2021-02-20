@@ -31,21 +31,15 @@ class MatchDragImgTest extends Component{
         if (!result.destination) return;
         const items = this.state.leftoptions
         const right = this.state.mydata
-        // if(right.includes(result.destination.droppableId) && right.includes(result.source.droppableId)){
-        //     const arr = this.state.arr
-        //     // const [reorderedItem] = arr.splice(result.source.index, 1);
-        //     // arr.splice(result.destination.index, 0, reorderedItem);
-        //     let temp = arr[result.source.index]
-        //     arr[result.source.index] = arr[result.destination.index]
-        //     arr[result.destination.index] = temp
-        //     this.setState({arr: arr})
-        // }
-        // // console.log(items.includes(result.source.droppableId))
-        if(items.includes(result.source.droppableId) && right.includes(result.destination.droppableId)){
-            const srcindex = items.indexOf(result.source.droppableId);
-            
-            
-            const temp = right.indexOf(result.destination.droppableId)
+        const sourceid = result.source.droppableId.substring(3)
+        const destid = result.destination.droppableId.substring(3)
+        const sid = result.source.droppableId.substring(0,3)
+        const did = result.destination.droppableId.substring(0,3)
+        // console.log(sid,did)
+        // console.log(sourceid, destid)
+        if(sid === "lef" && did === "rig"){
+            const srcindex = items.indexOf(sourceid);
+            const temp = right.indexOf(destid)
             const arr = [...this.state.arr];
             const lrr = [...this.state.lrr]
             const lefturls = [...this.state.lefturls];
@@ -54,12 +48,10 @@ class MatchDragImgTest extends Component{
                 return;
             }
             // if(arr[temp] !== null){return;}
-            arr[temp] = result.draggableId
+            arr[temp] = result.draggableId.substring(3)
             arrurl[temp] = lefturls[srcindex]
             lrr[srcindex] = ""
             lefturls[srcindex]= "" 
-
-
             // console.log("right",right)
             // console.log("items",items)
             console.log("arr",arr)
@@ -75,9 +67,10 @@ class MatchDragImgTest extends Component{
                 }
             }, arr:arr, lrr:lrr, arrurl:arrurl, lefturls:lefturls})
         }
-        else if(right.includes(result.source.droppableId) && items.includes(result.destination.droppableId)){
-            const srcindex = right.indexOf(result.source.droppableId);
-            const temp = items.indexOf(result.destination.droppableId)
+        // else if(right.includes(sourceid) && items.includes(destid)){
+        else if(sid === "rig" && did === "lef"){
+            const srcindex = right.indexOf(sourceid);
+            const temp = items.indexOf(destid)
             const arr = [...this.state.arr]
             const lrr = [...this.state.lrr]
             const lefturls = [...this.state.lefturls];
@@ -86,7 +79,7 @@ class MatchDragImgTest extends Component{
                 return;
             }
             arr[srcindex] = ""
-            lrr[temp] = result.draggableId
+            lrr[temp] = result.draggableId.substring(3)
             lefturls[temp]= arrurl[srcindex]
             arrurl[srcindex] = ""
             
@@ -124,7 +117,7 @@ class MatchDragImgTest extends Component{
             // console.log("bllllllll")
             return(
                 <div>
-                        <Draggable key = {"ans"+temp} draggableId={temp} index= {m}>
+                        <Draggable key = {"ans"+temp} draggableId={"ans"+temp} index= {m}>
                         {(provided) => (
                            
                         <p className={classes.MyListDiv}
@@ -150,7 +143,7 @@ class MatchDragImgTest extends Component{
             // console.log("bllllllll")
             return(
                 <div>
-                        <Draggable key = {"opt"+temp} draggableId={temp} index= {m}>
+                        <Draggable key = {"opt"+temp} draggableId={"opt"+temp} index= {m}>
                         {(provided) => (
                            
                         <li className={classes.MyListDiv}
@@ -206,7 +199,7 @@ class MatchDragImgTest extends Component{
                                      let ma =x.data.indexOf(index)
                                      const renderdataa = this.myoptionlist(ma,index)
                                           return(
-                                <Droppable droppableId={index} >
+                                <Droppable droppableId={"lef"+index} >
                                 {(provided, snapshot) => (
                                     <ul  className = "characters" 
                                     style={{listStyleType:"none", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 
@@ -250,7 +243,7 @@ class MatchDragImgTest extends Component{
                                     let m =x.data.indexOf(index)
                                     const renderdata = this.myanslist(m,index)
                                     return(
-                                        <Droppable droppableId={index} >
+                                        <Droppable droppableId={"rig"+index} >
                                     {(provided, snapshot) => (
                                 <ul  className = "characters" 
                                 style={{listStyleType:"none",padding:"0px", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 
