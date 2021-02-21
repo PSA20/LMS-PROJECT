@@ -21,13 +21,13 @@ import VideoMultipleChoiceTest from '../Categories/VideoMultipleChoice/VideoMult
 import VideoSequenceInTest from '../Categories/VideoSequenceInOrder/VideoSequenceInTest';
 import DragImageAreaTest from '../Categories/DragImageArea/DragImageAreaTest';
 import SubmitTest from "../SubmitTest/SubmitTest";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
+// import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Countdown from "react-countdown";
 
 // import MultipleC from "../Categories/Multip"
 
 const minuteSeconds = 60;
-let hourSeconds = 3600;
+// let hourSeconds = 3600;
 
 class MyTest extends Component{
 
@@ -50,11 +50,11 @@ class MyTest extends Component{
   };
   onCompleteCountdown = (rem)=>{
 
-    if(rem === 0){
-      console.log("kahsdhagsdihaskdjhalskjdhakjsdhkajshdkjah")
+    // if(rem === 0){
+    //   console.log("kahsdhagsdihaskdjhalskjdhakjsdhkajshdkjah")
       this.setState({currentquestion: this.props.questions.questions.length})
     this.RenderorSubmit()
-    }
+    // }
     // this.updateCurrentNo()
     
   }
@@ -415,14 +415,14 @@ class MyTest extends Component{
       console.log(window.location.href)
         console.log(this.props.questions)
         console.log(this.props.questions.color)
-        const timerProps = {
-          isPlaying: true,
-          size: 60,
-          strokeWidth: 6
-        };
+        // const timerProps = {
+        //   isPlaying: true,
+        //   size: 60,
+        //   strokeWidth: 6
+        // };
 
         const Completionist = () => <span>You are good to go!</span>;
-        const remainingTime = this.props.time * 60
+        const remainingTime = this.props.time * 60 *1000
         console.log(remainingTime)
         console.log(this.props.time)
         return(
@@ -446,7 +446,7 @@ class MyTest extends Component{
         </Divider>
 
         <div className="row" style={{float: "right", paddingRight:"50px"}}>
-        <CountdownCircleTimer
+        {/* <CountdownCircleTimer
         {...timerProps}
         colors={[["#000000", 0.8],["#FF0000", 0.2]]}
         duration={remainingTime}
@@ -473,15 +473,13 @@ class MyTest extends Component{
         {({ elapsedTime }) =>
           this.renderTime("S", this.getTimeSeconds(elapsedTime))
         }
-        {/* {this.onCompleteCountdown(remainingTime)} */}
-      </CountdownCircleTimer>
-      </div>
-      <Countdown date={Date.now() + 5000}>
-        
+      </CountdownCircleTimer> */}
+
+      <Countdown date={Date.now() + remainingTime} onComplete={this.onCompleteCountdown} style={{width:"60px"}}  >
     <Completionist />
-    
-    {/* <SubmitTest /> */}
   </Countdown>
+      </div>
+      
 
 
 
