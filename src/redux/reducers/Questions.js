@@ -57,7 +57,6 @@ const initialState = {
 
 
 const fetchQuestionsSuccess = (state, action)=>{
-  console.log("detchsuccess")
   return updateObject(state,{
     questions: action.data
   });
@@ -71,8 +70,8 @@ export const Questions = ( state = initialState, action) => {
   switch (action.type) {
     case types.ADD_QUESTION:
        action.payload.id= action.payload.ans[0];
-       console.log(action.payload)
-       console.log(state.questions)
+      //  console.log(action.payload)
+      //  console.log(state.questions)
        const newOrder = {
         ...action.payload
         // id:action.payload.ans[0]
@@ -96,7 +95,7 @@ export const Questions = ( state = initialState, action) => {
             return { ...state, time: action.payload}  
     case types.USER_ANS_LIST:
        const arr = action.payload
-       console.log(state.list)
+      //  console.log(state.list)
       //  console.log(action)
       //  const actualscore = state.testscore
       //  console.log(arr.val)
@@ -145,15 +144,3 @@ export const Questions = ( state = initialState, action) => {
 };
 
 export default Questions;
-// {
-//     category: "Multiple Choice",
-//     description: "How long one-one meeting with the subordinate last.",
-//     options: ["5 mins", "10 mins", "15 mins"],
-//     ans: "5 mins",
-//   },
-//   {
-//     category: "Multiple Choice",
-//     description: "How long one-one meeting with the subordinate last.",
-//     options: ["5 mins", "10 mins", "15 mins"],
-//     ans: "5 mins",
-//   },

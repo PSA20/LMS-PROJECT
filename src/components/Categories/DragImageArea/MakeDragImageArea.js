@@ -45,13 +45,6 @@ export default class MakeDragImageArea extends Component {
             addorupdate : "Update Question"})
     }
   }
-  onFinish = (values) => {
-    // console.log("Success:", values);
-  };
-
-  onFinishFailed = (errorInfo) => {
-    // console.log("Failed:", errorInfo);
-  };
 
   onChangeOptionField = (val) => {
     // console.log(val.target.value);

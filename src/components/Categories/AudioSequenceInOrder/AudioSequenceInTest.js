@@ -15,13 +15,13 @@ class AudioSequenceInTest extends Component{
     }
     handleOnDragEnd = (result) =>{
         if (!result.destination) return;
-        console.log(result)
+        // console.log(result)
         const items = Array.from(this.state.mydata);
         
         const [reorderedItem] = items.splice(result.source.index, 1);
-        console.log(reorderedItem)
+        // console.log(reorderedItem)
         items.splice(result.destination.index, 0, reorderedItem);
-        console.log(items)
+        // console.log(items)
         this.setState({mydata: items})
         
         
@@ -63,7 +63,7 @@ class AudioSequenceInTest extends Component{
     {(provided) => (
             <ol className = "characters" {...provided.droppableProps} ref={provided.innerRef}>
             {this.state.mydata.map(index=>{
-                console.log(index.split(",,"))
+                // console.log(index.split(",,"))
                 // let x = 123 
                 // let lala = index.split(",,")
                 // {this.props.data.options.indexOf(index)}

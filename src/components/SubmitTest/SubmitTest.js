@@ -7,7 +7,7 @@ import {  withRouter } from "react-router-dom";
 
 class SubmitTest extends Component{
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         return(
             <div className="mainBody">
             {/* <h1>{this.props.user.username}</h1> */}

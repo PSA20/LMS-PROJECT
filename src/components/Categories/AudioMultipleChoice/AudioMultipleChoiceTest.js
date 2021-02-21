@@ -29,8 +29,8 @@ export default class AudioMultipleChoiceTest extends Component {
     }
 
     onChange = e => {
-        console.log('radio checked', e.target.value);
-        console.log(this.props.data)
+        // console.log('radio checked', e.target.value);
+        // console.log(this.props.data)
         //  the state.value holds the value that has been chosen by the user...
         // either we can compare them here and then store them as yes or no or else can store the real ans and user ans
         // then we can compare the list after clicking the submit button...
@@ -39,18 +39,18 @@ export default class AudioMultipleChoiceTest extends Component {
         });
       };
     onClickHandler = ()=>{
-      console.log("clicked")
+      // console.log("clicked")
       let yesorno = false
       const userans = this.state.value
       const ansans = this.state.ans
-      console.log(userans, ansans)
+      // console.log(userans, ansans)
       if(userans === ansans){
         yesorno = true
       }
       const data = {queNo: this.props.quesNo, userAns: userans, correctans:ansans, val:yesorno}
       this.props.userAnsList(data, this.props.testscore, this.props.score)
       this.props.nextQue()
-      console.log("i an called nextque and updatelist");
+      // console.log("i an called nextque and updatelist");
       
     }
 

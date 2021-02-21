@@ -30,7 +30,6 @@ export default class VideoMakeSequenceInOrder extends Component {
   }
   componentDidMount() {
     if(this.props.description){
-      console.log(this.props.question)
         this.setState({description: this.props.question.description,
             options: this.props.question.options,
             Answers: this.props.question.ans,
@@ -38,52 +37,12 @@ export default class VideoMakeSequenceInOrder extends Component {
     }
   }
 
-  // onChangeC = (checkedValues) => {
-  //   console.log('checked = ', checkedValues.target.value);
-  //   console.log("valuee", this.state.value);
-  //   let uncheck = checkedValues.target.value
-  //   let myvalues = this.state.value
-  //   if(myvalues.includes(uncheck)){
-  //       const index = myvalues.indexOf(uncheck);
-  //       if (index > -1) {
-  //       myvalues.splice(index, 1);
-  //       }
-  //   this.setState({ value: myvalues });
-  // }
-  //   else{
-  //       this.setState({
-  //           value: this.state.value.concat(uncheck)
-  //         });
-  //   }
-    
-  // }
-//   onChange = (e) => {
-//     console.log("checked", this.state.value);
-//     this.setState({
-//         value: this.state.value.concat(e.target.value)
-//       });
-    
-//   };
-  onFinish = (values) => {
-    console.log("Success:", values);
-  };
-
-  onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
 
   onChangeOptionField = (val) => {
-    console.log(val.target.value);
+    // console.log(val.target.value);
     
     const value = val.target.value;
     this.setState({ optionValue: value });
-    console.log(this.state.optionValue)
-    //  const result=Joi.validate({description: value}, schema, { abortEarly: false } )
-    // if(result.error)
-    //  console.log(result.error.details[0].message);
-
-    //const errors = {};
-    //for (let item of result.error.details) errors[item.path[0]] = item.message; //in details array, there are 2 properties,path and message.path is the name of the input, message is the error message for that input.
     // console.log("errors: ", errors);
   };
   onChangeAnsField = (val) => {
@@ -151,13 +110,13 @@ export default class VideoMakeSequenceInOrder extends Component {
 
   onAddorUpdate = (ans)=>{
     if(this.state.addorupdate === "Update Question"){
-      console.log("Update function is called")
+      // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
       const data={category: "Video Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans,id:this.props.question.id};
       this.props.updateQuestion(data, this.props.question.key)
     }
     else{
-      console.log("ADD QUESTION function is called")
+      // console.log("ADD QUESTION function is called")
       const data={category: "Video Sequence Order", description: this.state.description, videourl:this.state.videourl, options: this.state.options, ans: ans};
       this.props.addQuestion(data)
     }
@@ -167,7 +126,7 @@ export default class VideoMakeSequenceInOrder extends Component {
   onDelete = (optionsorans,option) => {
     let options = optionsorans;
     let ansans = this.state.Answers
-    console.log(options, this.state)
+    // console.log(options, this.state)
     const index = options.indexOf(option);
     const indexans = ansans.indexOf(option);
     // if(ansans.includes(option)){
@@ -257,7 +216,7 @@ export default class VideoMakeSequenceInOrder extends Component {
           if (this.state.Answers[0]) {
           //      ADD to DATABASE
           // Closing modal
-          console.log(this.state.value)
+          // console.log(this.state.value)
           let ans=[];
           ans = this.state.Answers
           this.onAddorUpdate(ans)

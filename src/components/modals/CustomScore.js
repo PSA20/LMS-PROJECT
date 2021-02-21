@@ -19,7 +19,7 @@ export default class CustomScore extends React.Component {
     score: this.props.score
   }
   onChangeAnsField = (val) => {
-    console.log(val)
+    // console.log(val)
     this.setState({ score: val});
     // console.log(this.state.AnsValue)
   };

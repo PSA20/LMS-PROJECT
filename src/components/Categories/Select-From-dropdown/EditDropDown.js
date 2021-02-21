@@ -62,7 +62,7 @@ _handleKeyDown = (e) => {
       //console.log("value: ",value);
       this.setState({ description: value });
     }
-    console.log(value);
+    // console.log(value);
     this.setState({ description: value });
   };
   onEnterOptionValue = (index, e) => {

@@ -153,7 +153,7 @@ export default class DropDownSelect extends Component {
       //   yesorno = true
       // }
       const data = {queNo: this.props.quesNo, userAns: userans, correctans:myans, val:yesorno}
-      console.log(data)
+      // console.log(data)
       this.props.userAnsList(data, this.props.testscore, this.props.score)
       this.props.nextQue()
       // console.log("i an called nextque and updatelist");
@@ -161,8 +161,7 @@ export default class DropDownSelect extends Component {
     };
 
     render() {
-      console.log(this)
-      console.log(this.props.data.options.length)
+      // console.log(this.props.data.options.length)
         return (
             <div className="col-12 col-sm-10 offset-sm-1">
       <Card

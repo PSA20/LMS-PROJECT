@@ -410,21 +410,8 @@ class MyTest extends Component{
 
 
     render(){
-    console.log(this.state.router)
-    console.log(this.props.score)
-      console.log(window.location.href)
-        console.log(this.props.questions)
-        console.log(this.props.questions.color)
-        // const timerProps = {
-        //   isPlaying: true,
-        //   size: 60,
-        //   strokeWidth: 6
-        // };
-
         const Completionist = () => <span>You are good to go!</span>;
         const remainingTime = this.props.time * 60 *1000
-        console.log(remainingTime)
-        console.log(this.props.time)
         return(
             <div className="mainBody">
         {/* <h1>{this.props.user.username}</h1> */}
@@ -511,20 +498,6 @@ class MyTest extends Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    // addQuestion: (data) => dispatch(addQuestion(data)),
-    // updateQuestion: (data) => dispatch(updateQuestion(data)),
-    // deleteQuestion: (data) => {
-    //   dispatch(deleteQuestion(data));
-    // },
-    // changeColor: (color) => {
-    //   dispatch(changeColor(color));
-    // },
-    // changeScore: (score) => {
-    //   dispatch(changeScore(score));
-    // },
-    // changeTime: (time) => {
-    //   dispatch(changeTime(time));
-    // },
     updateUserAnsList :(list, score, testscore ) =>{
       dispatch(actions.changetestscore(list, testscore, score))
     },

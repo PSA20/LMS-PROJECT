@@ -30,7 +30,7 @@ class DragImageAreaTest extends Component{
           };
     }
     handleOnDragEnd = (result) =>{
-        console.log(result)
+        // console.log(result)
         if (!result.destination) return;
         const leftans = this.state.leftoptions
         const rightans = this.state.rightoptions
@@ -41,10 +41,8 @@ class DragImageAreaTest extends Component{
         const did = result.destination.droppableId.substring(0,3)
 
         if(sid === "opt" && did === "lef"){
-            console.log("entered")
             const srcindex = sopt.indexOf(sourceid)
             const temp = leftans.indexOf(destid)
-            console.log(srcindex, temp)
             const opts = [...this.state.soptions]
             const lefts = [...this.state.leftans]
             if(lefts[temp]){
@@ -52,14 +50,11 @@ class DragImageAreaTest extends Component{
             }
             lefts[temp] = result.draggableId.substring(3)
             opts[srcindex] = ""
-            console.log(lefts, opts)
             this.setState({soptions: opts, leftans: lefts})
         }
         if(sid === "opt" && did === "rig"){
-            console.log("entered")
             const srcindex = sopt.indexOf(sourceid)
             const temp = rightans.indexOf(destid)
-            console.log(srcindex, temp)
             const opts = [...this.state.soptions]
             const rights = [...this.state.rightans]
             if(rights[temp]){
@@ -67,15 +62,11 @@ class DragImageAreaTest extends Component{
             }
             rights[temp] = result.draggableId.substring(3)
             opts[srcindex] = ""
-            console.log(rights, opts)
             this.setState({soptions: opts, rightans: rights})
         }
         if(sid === "rig" && did === "opt"){
-            console.log("entered r to o")
             const srcindex = rightans.indexOf(sourceid)
             const temp = sopt.indexOf(destid)
-            console.log(srcindex, temp)
-            console.log(rightans, sopt)
             const opts = [...this.state.soptions]
             const rights = [...this.state.rightans]
             if(opts[temp]){
@@ -83,14 +74,11 @@ class DragImageAreaTest extends Component{
             }
             opts[temp] = result.draggableId.substring(3)
             rights[srcindex] = ""
-            console.log(rights, opts)
             this.setState({soptions: opts, rightans: rights})
         }
         if(sid === "lef" && did === "opt"){
-            console.log("entered")
             const srcindex = leftans.indexOf(sourceid)
             const temp = sopt.indexOf(destid)
-            console.log(srcindex, temp)
             const opts = [...this.state.soptions]
             const lefts = [...this.state.leftans]
             if(opts[temp]){
@@ -98,26 +86,21 @@ class DragImageAreaTest extends Component{
             }
             opts[temp] = result.draggableId.substring(3)
             lefts[srcindex] = ""
-            console.log(lefts, opts)
             this.setState({soptions: opts, leftans: lefts})
         }
         else{
             return;
         }
-        console.log(result)
     }
 
 
     myleftanslist=(m,data)=>{
-        // console.log(this.state.arr[m])
         let temp = this.state.leftans[m]
-        // console.log(isNaN(temp))
         if(!temp){
             // console.log(m)
             return(<div></div>)
         }
         else{
-            // console.log("bllllllll")
             return(
                 <div>
                         <Draggable key = {temp} draggableId={"lef"+temp} index= {m}>
@@ -133,15 +116,12 @@ class DragImageAreaTest extends Component{
         }
     }
     myrightanslist=(m,data)=>{
-        // console.log(this.state.arr[m])
         let temp = this.state.rightans[m]
-        // console.log(isNaN(temp))
         if(!temp){
             // console.log(m)
             return(<div></div>)
         }
         else{
-            // console.log("bllllllll")
             return(
                 <div>
                         <Draggable key = {temp} draggableId={"rig"+temp} index= {m}>
@@ -160,11 +140,9 @@ class DragImageAreaTest extends Component{
     myoptionlist = (m) =>{
         let temp = this.state.soptions[m]
         if(!temp){
-            // console.log(m)
             return(<div></div>)
         }
         else{
-            // console.log("bllllllll")
             return(
                 <div className={classes.MyListDivDown}>
                         <Draggable key = {temp} draggableId={"opt"+temp} index= {m}>
@@ -204,8 +182,6 @@ class DragImageAreaTest extends Component{
 
     render(){
 
-        console.log(this.state.answers)
-        console.log(this.props.data.imageurl)
         return(
             <div  className="col-12 col-sm-10 offset-sm-1">
                 <Card style={{backgroundColor:this.props.color}}

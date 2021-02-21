@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Radio,  Card, Modal } from 'antd';
 import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
-// import EditMultipleChoice from "./EditMultipleChoice";
 import MakeAudioMultipleChoice from "./MakeAudioMultipleChoice";
 import ReactAudioPlayer from 'react-audio-player';
 export default class AudioMultipleChoice extends Component {

@@ -30,7 +30,7 @@ export default class AudioMakeSequenceInOrder extends Component {
   }
   componentDidMount() {
     if(this.props.description){
-      console.log(this.props.question)
+      // console.log(this.props.question)
         this.setState({description: this.props.question.description,
             options: this.props.question.options,
             Answers: this.props.question.ans,
@@ -64,20 +64,13 @@ export default class AudioMakeSequenceInOrder extends Component {
 //       });
     
 //   };
-  onFinish = (values) => {
-    console.log("Success:", values);
-  };
-
-  onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
 
   onChangeOptionField = (val) => {
-    console.log(val.target.value);
+    // console.log(val.target.value);
     
     const value = val.target.value;
     this.setState({ optionValue: value });
-    console.log(this.state.optionValue)
+    // console.log(this.state.optionValue)
     //  const result=Joi.validate({description: value}, schema, { abortEarly: false } )
     // if(result.error)
     //  console.log(result.error.details[0].message);
@@ -151,13 +144,13 @@ export default class AudioMakeSequenceInOrder extends Component {
 
   onAddorUpdate = (ans)=>{
     if(this.state.addorupdate === "Update Question"){
-      console.log("Update function is called")
+      // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
       const data={category: "Audio Sequence Order", description: this.state.description, audiourl:this.state.audiourl, options: this.state.options, ans: ans,id:this.props.question.id};
       this.props.updateQuestion(data, this.props.question.key)
     }
     else{
-      console.log("ADD QUESTION function is called")
+      // console.log("ADD QUESTION function is called")
       const data={category: "Audio Sequence Order", description: this.state.description, audiourl:this.state.audiourl, options: this.state.options, ans: ans};
       this.props.addQuestion(data)
     }
@@ -167,7 +160,7 @@ export default class AudioMakeSequenceInOrder extends Component {
   onDelete = (optionsorans,option) => {
     let options = optionsorans;
     let ansans = this.state.Answers
-    console.log(options, this.state)
+    // console.log(options, this.state)
     const index = options.indexOf(option);
     const indexans = ansans.indexOf(option);
     // if(ansans.includes(option)){
@@ -257,7 +250,7 @@ export default class AudioMakeSequenceInOrder extends Component {
           if (this.state.Answers[0]) {
           //      ADD to DATABASE
           // Closing modal
-          console.log(this.state.value)
+          // console.log(this.state.value)
           let ans=[];
           ans = this.state.Answers
           this.onAddorUpdate(ans)

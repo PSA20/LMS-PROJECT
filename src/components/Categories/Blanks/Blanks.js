@@ -44,7 +44,7 @@ export const Blanks = (props) => {
     const result = array.map((item, index) => {
       // console.log(index);
       if((myIncludes(item)) &&  item.includes("____")){
-        console.log("found: ", item);
+        // console.log("found: ", item);
         if (item[item.length - 1] === ".") {
             
             count=count+1
@@ -56,7 +56,7 @@ export const Blanks = (props) => {
             </span>
           );
         } else if (item[0] === ".") {
-            console.log("found");
+            // console.log("found");
             count=count+1;
             return (
                 <span style={{ color: "#1890ff", textDecoration: "underline" }} key={"Blanks1"+count}>.{" "} 

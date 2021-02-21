@@ -39,7 +39,7 @@ export  const MakeFillInTheBlanks = (props) => {
   
 
     const deleteBlankInDescription=(index)=>{
-      console.log("index: ", index)
+      // console.log("index: ", index)
       let desc=question.description;
       const arr = desc.split("");
       let newArr=[];
@@ -48,7 +48,7 @@ export  const MakeFillInTheBlanks = (props) => {
       arr.forEach((item)=>{
      
         if(item === "_"){
-          console.log("dash");
+          // console.log("dash");
           if(index===count){
            
 
@@ -118,7 +118,7 @@ export  const MakeFillInTheBlanks = (props) => {
         });
       };
   
-const         onAddBlank=()=>{
+const onAddBlank=()=>{
     if(question.blankValue){
         const found = question.options.some(
             (item) => item.toUpperCase() === question.blankValue.toUpperCase()
@@ -141,13 +141,13 @@ const         onAddBlank=()=>{
 
 const onAddorUpdate = (ans)=>{
   if(question.addorupdate === "Update Question"){
-    console.log("Update function is called")
+    // console.log("Update function is called")
     // this.setState({ descriptionError: "", optionsError: "" });
     const data={category: "Fill in the Blanks", description: question.description, options: [], ans: ans, id: props.data.id};
     this.props.updateQuestion(data, this.props.question.key)
   }
   else{
-    console.log("ADD QUESTION function is called")
+    // console.log("ADD QUESTION function is called")
     const data={category: "Fill in the Blanks", description: question.description, options: [], ans: ans};
     props.addQuestion(data)
   }

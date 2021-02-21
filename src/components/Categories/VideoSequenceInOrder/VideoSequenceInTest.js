@@ -16,13 +16,13 @@ class VideoSequenceInTest extends Component{
     }
     handleOnDragEnd = (result) =>{
         if (!result.destination) return;
-        console.log(result)
+        // console.log(result)
         const items = Array.from(this.state.mydata);
         
         const [reorderedItem] = items.splice(result.source.index, 1);
-        console.log(reorderedItem)
+        // console.log(reorderedItem)
         items.splice(result.destination.index, 0, reorderedItem);
-        console.log(items)
+        // console.log(items)
         this.setState({mydata: items})
         
         

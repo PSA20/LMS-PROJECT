@@ -166,7 +166,7 @@ export default class MakeMultipleCheckbox extends Component {
   onDelete = (optionsorans,option) => {
     let options = optionsorans;
     let ansans = this.state.Answers
-    console.log(options, this.state)
+    // console.log(options, this.state)
     const index = options.indexOf(option);
     const indexans = ansans.indexOf(option);
     // if(ansans.includes(option)){
@@ -250,9 +250,7 @@ export default class MakeMultipleCheckbox extends Component {
         this.setState({ descriptionError: "", optionsError: "" });
         // if (this.state.value[0]) {
           if (this.state.Answers[0]) {
-          //      ADD to DATABASE
-          // Closing modal
-          console.log(this.state.value)
+          // console.log(this.state.value)
           let ans=[];
           ans = this.state.Answers
           this.onAddorUpdate(ans)

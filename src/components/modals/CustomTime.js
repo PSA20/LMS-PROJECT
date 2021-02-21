@@ -17,7 +17,7 @@ export default class CustomTime extends React.Component {
     time: this.props.time
   }
   onChangeAnsField = (val) => {
-    console.log(val)
+    // console.log(val)
     this.setState({ time: val});
     // console.log(this.state.AnsValue)
   };

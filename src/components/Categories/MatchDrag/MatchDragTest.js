@@ -98,15 +98,11 @@ class MatchDragTest extends Component{
 
 
     myanslist=(m,data)=>{
-        // console.log(this.state.arr[m])
         let temp = this.state.arr[m]
-        // console.log(isNaN(temp))
         if(!temp){
-            // console.log(m)
             return(<div></div>)
         }
         else{
-            // console.log("bllllllll")
             return(
                 <div>
                         <Draggable key = {temp} draggableId={temp} index= {m}>
@@ -125,11 +121,9 @@ class MatchDragTest extends Component{
     myoptionlist = (m) =>{
         let temp = this.state.lrr[m]
         if(!temp){
-            // console.log(m)
             return(<div></div>)
         }
         else{
-            // console.log("bllllllll")
             return(
                 <div>
                         <Draggable key = {temp} draggableId={temp} index= {m}>
@@ -176,9 +170,7 @@ class MatchDragTest extends Component{
              <DragDropContext onDragEnd={this.handleOnDragEnd}>
              <div className={classes.DivinCol}>
                 {Object.entries(this.state.dragdata).map((data)=>{
-                    console.log("kajhsdkahsdkajshd",data)
                     let x = data[1]
-                    console.log(x)
                     if(x.id === "leftoptions"){
                         return(
                             <div >
@@ -226,7 +218,6 @@ class MatchDragTest extends Component{
                         return(
                             <div>
                                 {x.data.map(index =>{
-                                    console.log("rightdrop", x.data)
                                     let m =x.data.indexOf(index)
                                     const renderdata = this.myanslist(m,index)
                                     return(
@@ -270,4 +261,3 @@ class MatchDragTest extends Component{
 
 
 export default MatchDragTest;
-

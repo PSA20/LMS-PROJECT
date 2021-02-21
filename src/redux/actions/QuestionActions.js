@@ -18,7 +18,7 @@ export const changetime = (time) =>{
     axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/time.json",time)
     .then(
       res =>{
-        console.log("from change time in db",res)
+        // console.log("from change time in db",res)
         dispatch(changeTime(res.data))
       })
     .catch(err=>{console.log(err)})
@@ -29,7 +29,7 @@ export const changescore = (score) =>{
     axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/score.json",score)
     .then(
       res =>{
-        console.log("from change score in db",res)
+        // console.log("from change score in db",res)
         dispatch(changeScore(res.data))
       })
     .catch(err=>{console.log(err)})
@@ -41,7 +41,7 @@ export const changecolor = (color) =>{
     axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/color.json",{color})
     .then(
       res =>{
-        console.log("from change color in db",res)
+        // console.log("from change color in db",res)
         dispatch(changeColor(res.data.color))
       })
     .catch(err=>{console.log(err)})
@@ -114,11 +114,11 @@ export const fetchtimesuccess = (time) =>{
   }
 }
 export const deletequestion = (id,key) =>{
-  console.log(id, key)
+  // console.log(id, key)
   return dispatch =>{
     axios.delete('https://ymstutor-lms-default-rtdb.firebaseio.com/questions/'+key+".json")
     .then(res =>{
-      console.log(res)
+      // console.log(res)
       dispatch(deleteQuestion(id))
     })
   }
@@ -128,7 +128,7 @@ export const updatequestion = (data, key) =>{
   return dispatch =>{
     axios.put('https://ymstutor-lms-default-rtdb.firebaseio.com/questions/'+key+".json",data)
     .then(res =>{
-      console.log(res)
+      // console.log(res)
       dispatch(updateQuestion(data))
     })
     .catch( err =>{console.log(err)})
@@ -136,23 +136,23 @@ export const updatequestion = (data, key) =>{
 }
 
 export const addquestions = (data) =>{
-  console.log(data)
+  // console.log(data)
   return dispatch =>{
     axios.post("https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json",data)
     .then(res =>{
-      console.log(res)
+      // console.log(res)
       dispatch(addQuestion(data))
     })
   }
 }
 
  export const initquestions = () =>{
-  console.log("res")
+  // console.log("res")
    return dispatch =>{
     // dispatch( FetchQuestionsStart() );
     axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json")
    .then(res=>{
-     console.log(res)
+    //  console.log(res)
      let x = 0
      const fetcheddata = [];
         for ( let key in res.data ) {
@@ -163,11 +163,11 @@ export const addquestions = (data) =>{
             key: key
         } );
         }
-        console.log(fetcheddata)
+        // console.log(fetcheddata)
         dispatch(fetchQuestionsSuccess(fetcheddata));
       })
    .catch(err=>{
-     console.log(err)
+    //  console.log(err)
      dispatch( fetchQuestionsFail( err ) );
    })
    }
@@ -194,11 +194,10 @@ export const addquestions = (data) =>{
    return dispatch =>{
      axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/color.json")
      .then(res =>{
-      console.log(res)
+      // console.log(res)
       dispatch(fetchcolorsuccess(res.data.color))
      })
      .catch(err =>{
-      console.log(err)
       dispatch(fetchcolorfail(err))
      })
    }
@@ -207,11 +206,9 @@ export const addquestions = (data) =>{
   return dispatch =>{
     axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/score.json")
     .then(res =>{
-     console.log(res)
      dispatch(fetchscoresuccess(res.data))
     })
     .catch(err =>{
-     console.log(err)
      dispatch(fetchscorefail(err))
     })
   }
@@ -220,11 +217,9 @@ export const inittime = () =>{
   return dispatch =>{
     axios.get("https://ymstutor-lms-default-rtdb.firebaseio.com/time.json")
     .then(res =>{
-     console.log(res)
      dispatch(fetchtimesuccess(res.data))
     })
     .catch(err =>{
-     console.log(err)
      dispatch(fetchtimefail(err))
     })
   }
@@ -236,8 +231,3 @@ export const inittime = () =>{
   payload: list,
   score: score
  })
-
-//  export const updateAnsList = (list) =>({
-//   type: ActionTypes.USER_ANS_LIST,
-//   payload: list
-//  })

@@ -23,7 +23,7 @@ export   const EditFillInTheBlanks = (props) => {
     });
     
     const deleteBlankInDescription=(index)=>{
-      console.log("index: ", index)
+      // console.log("index: ", index)
       let desc=question.description;
       const arr = desc.split("");
       let newArr=[];
@@ -32,7 +32,7 @@ export   const EditFillInTheBlanks = (props) => {
       arr.forEach((item)=>{
      
         if(item === "_"){
-          console.log("dash");
+          // console.log("dash");
           if(index===count){
            
 

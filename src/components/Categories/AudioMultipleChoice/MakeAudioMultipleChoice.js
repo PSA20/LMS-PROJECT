@@ -40,13 +40,6 @@ export default class MakeAudioMultipleChoice extends Component {
       value: e.target.value,
     });
   };
-  onFinish = (values) => {
-    console.log("Success:", values);
-  };
-
-  onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
 
   onChangeOptionField = (val) => {
     //console.log(val.target.value);
@@ -90,13 +83,13 @@ export default class MakeAudioMultipleChoice extends Component {
 
   onAddorUpdate = (ans)=>{
     if(this.state.addorupdate === "Update Question"){
-      console.log("Update function is called")
+      // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
       const data={category: "Audio Multiple Choice", description: this.state.description, options: this.state.options, ans: ans, audiourl:this.state.audiourl,id:this.props.question.id};
       this.props.updateQuestion(data, this.props.question.key)
     }
     else{
-      console.log("ADD QUESTION function is called")
+      // console.log("ADD QUESTION function is called")
       const data={category: "Audio Multiple Choice", description: this.state.description, options: this.state.options, ans: ans, audiourl:this.state.audiourl};
       this.props.addQuestion(data)
     }

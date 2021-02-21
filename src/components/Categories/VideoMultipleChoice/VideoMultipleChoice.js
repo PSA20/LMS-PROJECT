@@ -30,7 +30,6 @@ export default class VideoMultipleChoice extends Component {
       this.props.deleteQuestion(this.props.data.id);
     }
       onChange = e => {
-        //console.log('radio checked', e.target.value);
         this.setState({
           value: e.target.value,
         });

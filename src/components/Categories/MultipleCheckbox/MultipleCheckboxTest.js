@@ -10,7 +10,7 @@ class MultipleCheckboxTest extends Component {
     }
 
     onChangeC = (checkedValues) => {
-        console.log('checked = ', checkedValues.target.value);
+        // console.log('checked = ', checkedValues.target.value);
        
         let uncheck = checkedValues.target.value
         let myvalues = this.state.value
@@ -26,7 +26,7 @@ class MultipleCheckboxTest extends Component {
                 value: this.state.value.concat(uncheck)
               });
         }
-        console.log("valuee", this.state.value);
+        // console.log("valuee", this.state.value);
     }    
     onClickHandler = ()=>{
         const userans = this.state.value.sort();
@@ -53,8 +53,7 @@ class MultipleCheckboxTest extends Component {
     }
 
     render(){
-        console.log("heuu im form render")
-        console.log(this.state.value)
+        // console.log(this.state.value)
         const radioStyle = {
             display: 'block',
             height: '30px',

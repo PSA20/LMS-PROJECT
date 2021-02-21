@@ -80,8 +80,6 @@ class Main extends Component {
   }
   componentDidMount() {
     // this.props.addQuestion();
-    console.log("SASASADSASD", this.props.xyz)
-    console.log(this.props.questions)
     this.props.initquestions()
     this.props.initcolor()
     this.props.initscore()
@@ -102,7 +100,6 @@ class Main extends Component {
     }
   };
   onChangeScore = (value) => {
-    //console.log("value: ", value)
     const reg = /^-?(0|[1-9][0-9]*)(\.[0-9]*)?$/;
     if (
       (!Number.isNaN(value) && reg.test(value)) ||
@@ -116,7 +113,6 @@ class Main extends Component {
     }
   };
   onChangeColor = (color) => {
-    console.log(color)
     this.props.changecolor(color);
     this.setState({ color: color });
   };
@@ -124,8 +120,6 @@ class Main extends Component {
   renderQuestionRows = () => {
     //<MultipleChoice quesNo={1} data={data} />
     //    const ques = this.props.questions;
-    console.log("ques.ques: ",this.props.questions.questions);
-    console.log(typeof(this.props.questions.questions))
     const result = this.props.questions.questions.map((item, index) => {
       // console.log("item ",item);
       index++;
@@ -385,9 +379,6 @@ class Main extends Component {
   };
 
   render() {
-    //console.log("questions:",this.props.questions);
-    console.log("questions:",this.props.questions);
-    // console.log(this.props.data)
     return (
       <div className="mainBody">
         {/* <h1>{this.props.user.username}</h1> */}

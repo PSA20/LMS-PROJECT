@@ -24,7 +24,7 @@ export default class MultipleChoice extends Component {
     };
 
     onDelete=()=>{
-      console.log(this.props.data.key)
+      // console.log(this.props.data.key)
       this.props.deleteQuestion(this.props.data.id, this.props.data.key);
     }
       onChange = e => {
