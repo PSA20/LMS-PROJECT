@@ -176,9 +176,9 @@ class MatchDragTest extends Component{
              <DragDropContext onDragEnd={this.handleOnDragEnd}>
              <div className={classes.DivinCol}>
                 {Object.entries(this.state.dragdata).map((data)=>{
-                    // console.log("kajhsdkahsdkajshd",data)
+                    console.log("kajhsdkahsdkajshd",data)
                     let x = data[1]
-                    // // console.log(x.data)
+                    console.log(x)
                     if(x.id === "leftoptions"){
                         return(
                             <div >
@@ -226,7 +226,7 @@ class MatchDragTest extends Component{
                         return(
                             <div>
                                 {x.data.map(index =>{
-                                    // console.log("rightdrop", x.data)
+                                    console.log("rightdrop", x.data)
                                     let m =x.data.indexOf(index)
                                     const renderdata = this.myanslist(m,index)
                                     return(

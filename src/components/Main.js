@@ -20,6 +20,7 @@ import AudioMultipleChoice from "./Categories/AudioMultipleChoice/AudioMultipleC
 import AudioSequenceInOrder from './Categories/AudioSequenceInOrder/AudioSequenceInOrder';
 import VideoMultipleChoice from './Categories/VideoMultipleChoice/VideoMultipleChoice';
 import VideoSequenceInOrder from './Categories/VideoSequenceInOrder/VideoSequenceInOrder';
+import DragImageArea from './Categories/DragImageArea/DragImageArea';
 import * as CategoryTypes from "../util/Categories"; 
 import { NavLink } from 'react-router-dom';
 import {
@@ -332,6 +333,24 @@ class Main extends Component {
           className="row"
         >
           <VideoSequenceInOrder
+            deleteQuestion={this.props.deleteQuestion}
+            updateQuestion={this.props.updateQuestion}
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+          />
+        </div>
+      );
+    }
+    else if(item.category === CategoryTypes.DRAG_IMAGE_AREA){
+      return (
+        <div
+          key={"VideoSO"+index}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <DragImageArea
             deleteQuestion={this.props.deleteQuestion}
             updateQuestion={this.props.updateQuestion}
             color={this.props.questions.color}

@@ -19,13 +19,16 @@ import AudioMultipleChoiceTest from '../Categories/AudioMultipleChoice/AudioMult
 import AudioSequenceInTest from '../Categories/AudioSequenceInOrder/AudioSequenceInTest';
 import VideoMultipleChoiceTest from '../Categories/VideoMultipleChoice/VideoMultipleChoiceTest';
 import VideoSequenceInTest from '../Categories/VideoSequenceInOrder/VideoSequenceInTest';
+import DragImageAreaTest from '../Categories/DragImageArea/DragImageAreaTest';
 import SubmitTest from "../SubmitTest/SubmitTest";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-// import CountDown from 'react-native-countdown-component';
+import Countdown from "react-countdown";
+
 // import MultipleC from "../Categories/Multip"
 
 const minuteSeconds = 60;
-const hourSeconds = 3600;
+let hourSeconds = 3600;
+
 class MyTest extends Component{
 
   state = {
@@ -34,6 +37,10 @@ class MyTest extends Component{
     questions:this.props.questions
   }
   renderTime = (dimension, time) => {
+    // if(remainingTime === 0){
+    //   this.onCompleteCountdown()
+    // }
+    // this.onCompleteCountdown(remainingTime)
     return (
       <div className="time-wrapper">
         <div className="time">{time}</div>
@@ -41,8 +48,19 @@ class MyTest extends Component{
       </div>
     );
   };
+  onCompleteCountdown = (rem)=>{
+
+    if(rem === 0){
+      console.log("kahsdhagsdihaskdjhalskjdhakjsdhkajshdkjah")
+      this.setState({currentquestion: this.props.questions.questions.length})
+    this.RenderorSubmit()
+    }
+    // this.updateCurrentNo()
+    
+  }
   getTimeSeconds = (time) => (minuteSeconds - time) | 0;
-  getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
+  // getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
+  getTimeMinutes = (time) => (Math.floor(time / 60)) | 0;
   
   componentDidMount() {
     // this.props.addQuestion();
@@ -325,6 +343,26 @@ class MyTest extends Component{
         </div>
       );
     }
+    else if(item.category === CategoryTypes.DRAG_IMAGE_AREA){
+      return (
+        <div
+          key={item.ans[0]}
+          style={{ marginTop: 20 }}
+          // key={item}
+          className="row"
+        >
+          <DragImageAreaTest
+            color={this.props.questions.color}
+            quesNo={index}
+            data={item}
+            userAnsList={this.props.updateUserAnsList}
+            nextQue = {this.updateCurrentNo}
+            score = {this.props.score}
+            testscore = {this.props.testscore}
+          />
+        </div>
+      );
+    }
     else if(item.category === CategoryTypes.MATCH_DRAG){
       return (
         <div
@@ -382,6 +420,8 @@ class MyTest extends Component{
           size: 60,
           strokeWidth: 6
         };
+
+        const Completionist = () => <span>You are good to go!</span>;
         const remainingTime = this.props.time * 60
         console.log(remainingTime)
         console.log(this.props.time)
@@ -408,7 +448,7 @@ class MyTest extends Component{
         <div className="row" style={{float: "right", paddingRight:"50px"}}>
         <CountdownCircleTimer
         {...timerProps}
-        colors={[["#EF798A"]]}
+        colors={[["#000000", 0.8],["#FF0000", 0.2]]}
         duration={remainingTime}
         // initialRemainingTime={remainingTime % hourSeconds}
         onComplete={(totalElapsedTime) => [
@@ -422,9 +462,7 @@ class MyTest extends Component{
       </CountdownCircleTimer>
       <CountdownCircleTimer
         {...timerProps}
-        // colors={[["#218380"]]}
-        colors={[["#000000"]]}
-        // colors={this.props.questions.color}
+        colors={[["#000000", 0.8],["#FF0000", 0.2]]}
         duration={minuteSeconds}
         // duration={20}
         // initialRemainingTime={remainingTime % minuteSeconds}
@@ -435,9 +473,15 @@ class MyTest extends Component{
         {({ elapsedTime }) =>
           this.renderTime("S", this.getTimeSeconds(elapsedTime))
         }
+        {/* {this.onCompleteCountdown(remainingTime)} */}
       </CountdownCircleTimer>
       </div>
-
+      <Countdown date={Date.now() + 5000}>
+        
+    <Completionist />
+    
+    {/* <SubmitTest /> */}
+  </Countdown>
 
 
 

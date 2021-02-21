@@ -15,7 +15,7 @@ import MakeAudioMultipleChoice from './Categories/AudioMultipleChoice/MakeAudioM
 import AudioMakeSequence from './Categories/AudioSequenceInOrder/AudioMakeSequence';
 import MakeVideoMultipleChoice from './Categories/VideoMultipleChoice/MakeVideoMultipleChoice';
 import VideoMakeSequence from './Categories/VideoSequenceInOrder/VideoMakeSequence';
-// import MakeMatchDragArea from './Categories/MatchDragArea/MakeMatchDragArea';
+import MakeDragImageArea from './Categories/DragImageArea/MakeDragImageArea';
 import * as CategoryTypes from "../util/Categories";
 
 export default class AddQuestion extends Component {
@@ -113,11 +113,11 @@ export default class AddQuestion extends Component {
           Video Sequence Order
  
       </Menu.Item>
-      {/* <Menu.Item onClick={()=>{this.onCatChange(CategoryTypes.DRAG_IMAGE_AREA);}}>
+      <Menu.Item onClick={()=>{this.onCatChange(CategoryTypes.DRAG_IMAGE_AREA);}}>
           
           Drag Image Area
  
-      </Menu.Item> */}
+      </Menu.Item>
         </Menu>
       );
    }
@@ -162,9 +162,9 @@ export default class AddQuestion extends Component {
        else if (this.state.catergory === CategoryTypes.VIDEO_SEQUENCE_ORDER){
         return (<VideoMakeSequence addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }
-      //  else if (this.state.catergory === CategoryTypes.DRAG_IMAGE_AREA){
-      //   return (<MakeMatchDragArea addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
-      //  }
+       else if (this.state.catergory === CategoryTypes.DRAG_IMAGE_AREA){
+        return (<MakeDragImageArea addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+       }
        return null;
    }
 
