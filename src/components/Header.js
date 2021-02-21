@@ -33,6 +33,7 @@ export default class Header extends Component {
                 <Navbar color="light" fixed="top"  light expand="md">
         <NavbarBrand href="/">DYDQuizMaker</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
+        
         <Collapse isOpen={this.state.isOpen} navbar>
           {/* <Nav className="mr-auto" navbar>
             <NavItem>

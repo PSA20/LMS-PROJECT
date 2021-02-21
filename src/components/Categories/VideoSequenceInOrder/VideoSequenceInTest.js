@@ -66,7 +66,7 @@ class VideoSequenceInTest extends Component{
     {(provided) => (
             <ol className = "characters" {...provided.droppableProps} ref={provided.innerRef}>
             {this.state.mydata.map(index=>{
-                console.log(index.split(",,"))
+                // console.log(index.split(",,"))
                 // let x = 123 
                 // let lala = index.split(",,")
                 // {this.props.data.options.indexOf(index)}

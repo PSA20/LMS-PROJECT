@@ -27,7 +27,7 @@ class MatchDragImgTest extends Component{
           };
     }
     handleOnDragEnd = (result) =>{
-        console.log(result)
+        // console.log(result)
         if (!result.destination) return;
         const items = this.state.leftoptions
         const right = this.state.mydata
@@ -54,8 +54,8 @@ class MatchDragImgTest extends Component{
             lefturls[srcindex]= "" 
             // console.log("right",right)
             // console.log("items",items)
-            console.log("arr",arr)
-            console.log(arrurl)
+            // console.log("arr",arr)
+            // console.log(arrurl)
             this.setState({dragdata:{
                 1:{
                     id:"leftoptions",
@@ -176,7 +176,7 @@ class MatchDragImgTest extends Component{
     }
 
     render(){
-        console.log(this.props.data.leftoptionsurl)
+        // console.log(this.props.data.leftoptionsurl)
 
         // console.log(this.state.dragdata)
         return(

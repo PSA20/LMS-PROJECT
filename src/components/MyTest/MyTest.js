@@ -52,7 +52,8 @@ class MyTest extends Component{
 
     // if(rem === 0){
     //   console.log("kahsdhagsdihaskdjhalskjdhakjsdhkajshdkjah")
-      this.setState({currentquestion: this.props.questions.questions.length})
+    
+    this.setState({currentquestion: this.props.questions.questions.length})
     this.RenderorSubmit()
     // }
     // this.updateCurrentNo()
@@ -64,9 +65,6 @@ class MyTest extends Component{
   
   componentDidMount() {
     // this.props.addQuestion();
-    console.log("loading questions From Test page ")
-    console.log(this.props.questions)
-    console.log(this.state.questions)
     this.props.initquestions()
     this.props.initcolor()
     this.props.initscore()
@@ -88,14 +86,14 @@ class MyTest extends Component{
   renderQuestionRows = (item, cur) => {
     //<MultipleChoice quesNo={1} data={data} />
     //    const ques = this.props.questions;
-    console.log(this.state.questions.questions[1])
-    console.log(this.state.questions)
+    // console.log(this.state.questions.questions[1])
+    // console.log(this.state.questions)
     //console.log("ques.ques: ",this.props.questions.questions);
     // const result = this.props.questions.questions.map((item, index) => {
       //console.log("item ",item);
       cur++;
       const index = cur
-      console.log(index, cur)
+      // console.log(index, cur)
       //console.log("item: ", item.category)
       if(item.category === CategoryTypes.MULTIPLE_CHOICE){
       return (
@@ -396,7 +394,7 @@ class MyTest extends Component{
       )
     }
     else if(this.props.questions.questions){
-      console.log(this.props.questions.questions[this.state.currentquestion])
+      // console.log(this.props.questions.questions[this.state.currentquestion])
       return(
         this.renderQuestionRows(this.props.questions.questions[this.state.currentquestion],this.state.currentquestion)
       )

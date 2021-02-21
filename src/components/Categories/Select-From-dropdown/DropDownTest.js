@@ -33,20 +33,16 @@ export default class DropDownSelect extends Component {
                !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
       }
     onClickHandler = (count, e) =>{
-      console.log(this.state.val)
+      // console.log(this.state.val)
       let ca = this.props.data.options[count].split(",")
       let ansa = []
       ansa= ca[e.key]
-      // if(this.state.val[count]){
+
       let myans = this.state.userans
       myans[count] = ansa
-      // }
-      console.log( ca[e.key], e)
-      console.log(ansa)
-      console.log(myans)
       this.setState({val:this.state.val.concat({count, ansa}), userans:myans})
       
-      console.log(this.state.val)
+      // console.log(this.state.val)
     }
     // onClickHandler = ({key}) =>{
     //   let ca = this.props.data.options[key]
@@ -85,7 +81,7 @@ export default class DropDownSelect extends Component {
                // console.log("item: ", item);
                 if(item.includes("#")){
                     const deepItem=item.split("#");
-                    console.log("deepItem: ", deepItem);
+                    // console.log("deepItem: ", deepItem);
                      return deepItem.map((item2)=>{
                         if(this.isNumeric(item2[0])){
                             ansIndex++;
@@ -122,20 +118,19 @@ export default class DropDownSelect extends Component {
         </p>);
     }
     onClickNextHandler = ()=>{
-      console.log("clicked")
       let yesorno = false
       const userans = [...this.state.userans]
       const ansans = [...this.props.data.ans]
-      console.log(ansans)
-      console.log(userans)
+      // console.log(ansans)
+      // console.log(userans)
       const options = [...this.props.data.options];
       const myans = new Array(ansans.length)
       
       for(var j = 0; j<options.length;j++){
         let x = options[j].split(",")
-        console.log(x)
+        // console.log(x)
         myans[j] = x[ansans[j]]
-        console.log(myans)
+        // console.log(myans)
       }
       if(userans.length !== myans.length){
         yesorno = false
