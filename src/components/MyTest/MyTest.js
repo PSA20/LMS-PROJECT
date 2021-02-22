@@ -34,7 +34,8 @@ class MyTest extends Component{
   state = {
     router: React.PropTypes,
     currentquestion:0,
-    questions:this.props.questions
+    questions:this.props.questions,
+    remainingTime: 1000
   }
   renderTime = (dimension, time) => {
     // if(remainingTime === 0){
@@ -69,6 +70,7 @@ class MyTest extends Component{
     this.props.initcolor()
     this.props.initscore()
     this.props.inittime()
+    this.setState({remainingTime: (Date.now() + this.props.time * 60 * 1000)})
   }
 
   updateCurrentNo = ()=>{
@@ -409,11 +411,12 @@ class MyTest extends Component{
 
     render(){
         const Completionist = () => <span>You are good to go!</span>;
-        const remainingTime = this.props.time * 60 *1000
+        // const remainingTime = Date.now() + this.props.time * 60 *1000
+        const remainingTime = this.state.remainingTime
         return(
             <div className="mainBody">
         {/* <h1>{this.props.user.username}</h1> */}
-        <Header />
+        <Header  onCompleteC = {this.onCompleteCountdown} com = "Test"/>
         <div style={{ position: "fixed" }} className="add">
           <div className="row">
             <br />
@@ -460,9 +463,9 @@ class MyTest extends Component{
         }
       </CountdownCircleTimer> */}
 
-      <Countdown date={Date.now() + remainingTime} onComplete={this.onCompleteCountdown} style={{width:"60px"}}  >
+      {/* <Countdown date={parseInt(remainingTime)} onComplete={this.onCompleteCountdown} style={{width:"60px"}}  >
     <Completionist />
-  </Countdown>
+  </Countdown> */}
       </div>
       
 

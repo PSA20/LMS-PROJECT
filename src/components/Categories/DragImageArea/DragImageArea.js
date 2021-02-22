@@ -43,7 +43,10 @@ class DragImageArea extends Component{
                     <EditTwoTone onClick={()=>{this.showModal();}} twoToneColor="#52c41a"   key="edit" />,
                     <DeleteTwoTone onClick={()=>{this.onDelete();}} twoToneColor="#eb2f96" key="del"/>,
                   ]}>
-                <img className={classes.Img} src={this.props.data.imageurl} alt={"img"}/>
+        <div className={classes.Img}>
+        <img  src={this.props.data.imageurl} alt={"img"}/>
+        </div>
+        
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
             {/* </div> */}
             <div className={classes.DivinCol}>

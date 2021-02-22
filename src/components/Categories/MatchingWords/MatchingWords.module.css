@@ -51,3 +51,13 @@
     justify-content: space-evenly;
 
 }
+
+.Img{
+    width: 300px;
+    height: 300px;
+    object-fit: fill;
+}
+img{
+    width: 300px;
+    height: 300px;
+}

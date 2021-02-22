@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
+import {  withRouter } from "react-router-dom";
 import {
     Collapse,
     Navbar,
@@ -13,7 +15,8 @@ import {
     // DropdownItem,
     // NavbarText
   } from 'reactstrap';
-export default class Header extends Component {
+import Countdown from "react-countdown";
+class Header extends Component {
     
     constructor(props){
         super(props);
@@ -28,11 +31,23 @@ export default class Header extends Component {
      this.setIsOpen();
  } 
     render() {
+      const Completionist = () => <span>You are good to go!</span>;
+      const remainingTime = Date.now() + this.props.time * 60 * 1000
+      let rem = <div></div>
+      if(this.props.com === "Test"){
+        rem = <div style={{float:"right", paddingRight:"40px"}}>
+        <Countdown date={parseInt(remainingTime)} onComplete={this.onCompleteC}   >
+        {/* <Countdown date={Date.now() + 5000} onComplete={()=>{this.props.onCompleteC()}}   > */}
+      <Completionist />
+      </Countdown>
+        </div>
+      }
         return (
             <div>
                 <Navbar color="light" fixed="top"  light expand="md">
         <NavbarBrand href="/">DYDQuizMaker</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
+        
         
         <Collapse isOpen={this.state.isOpen} navbar>
           {/* <Nav className="mr-auto" navbar>
@@ -62,8 +77,16 @@ export default class Header extends Component {
           </Nav> */}
           {/* <NavbarText>Simple Text</NavbarText> */}
         </Collapse>
+        {rem}
       </Navbar>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    time: state.question.time
+  }}
+
+  export default withRouter(connect(mapStateToProps)(Header))

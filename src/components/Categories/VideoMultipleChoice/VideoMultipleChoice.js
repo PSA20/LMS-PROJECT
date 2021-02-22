@@ -56,8 +56,10 @@ export default class VideoMultipleChoice extends Component {
                 controls
                 muted
                 /> */}
-                <VideoPlayer controls={true} src={this.props.data.videourl} width="720"
-                    height="420" />
+                {/* <VideoPlayer controls={true} src={this.props.data.videourl} width="720"
+                    height="420" /> */}
+              <iframe src={this.props.data.videourl} title="Video" width="640" height="360" frameborder="1" style={{border: "1px solid black"}} 
+              allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                 {/* <VideoPlayer controls={true} src={example} /> */}
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
                 <Radio.Group value={this.props.data.ans[0]}>
