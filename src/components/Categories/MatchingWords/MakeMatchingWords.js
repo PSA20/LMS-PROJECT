@@ -157,8 +157,8 @@ export default class MakeMatchingWords extends Component {
     if(this.state.addorupdate === "Update Question"){
       // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Matching Words", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans,id:this.props.question.id};
-      this.props.updateQuestion(data, this.props.question.key)
+      const data={category: "Matching Words", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans};
+      this.props.updateQuestion(data, this.props.question.key, this.props.question.id)
     }
     else{
       // console.log("ADD QUESTION function is called")
@@ -204,6 +204,7 @@ export default class MakeMatchingWords extends Component {
       return (
         <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
           <div className="col-5 col-sm-6 offset-sm-1">
+            
             <div className={classes.MyListDiv}>
                         <List.Item
                         id={item}
@@ -291,6 +292,7 @@ export default class MakeMatchingWords extends Component {
       <>
         <div className="row">
           <div className="col-12 col-sm-11 offset-sm-1">
+          <p>Note: Enter the question words in the left box, swapped options in the right box and right sequence in the middle (answers) box</p>
             <TextArea
               placeholder="Enter Your Question"
               value={this.state.description}
@@ -364,6 +366,7 @@ export default class MakeMatchingWords extends Component {
               <br />
           <div className="row" style={{width:"600px", margin:"0 auto"}}>
           <div className="col-12 col-sm-5 offset-sm-1">
+            
             <Input
             style ={{width:"250px"}}
               placeholder="Enter Answer Here"

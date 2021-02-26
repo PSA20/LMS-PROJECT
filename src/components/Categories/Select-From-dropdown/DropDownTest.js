@@ -24,14 +24,11 @@ export default class DropDownSelect extends Component {
       this.setState({ visible: false });
     };
 
-    onDelete=()=>{
-      this.props.deleteQuestion(this.props.data.id);
+    isNumeric(str) {
+      if (typeof str != "string") return false // we only process strings!  
+      return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+            !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
     }
-     isNumeric(str) {
-        if (typeof str != "string") return false // we only process strings!  
-        return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-               !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
-      }
     onClickHandler = (count, e) =>{
       // console.log(this.state.val)
       let ca = this.props.data.options[count].split(",")

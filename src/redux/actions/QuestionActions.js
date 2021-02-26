@@ -203,7 +203,7 @@ export const addquestions = (data) =>{
         }
         // console.log(fetcheddata)
         dispatch(fetchQuestionsSuccess(fetcheddata));
-        console.log("heyyy testscoreeeeeee")
+        // console.log("heyyy testscoreeeeeee")
         dispatch(inittestscoretozero())
       })
    .catch(err=>{

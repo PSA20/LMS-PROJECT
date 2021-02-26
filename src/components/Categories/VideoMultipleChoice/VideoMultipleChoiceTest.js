@@ -25,10 +25,6 @@ export default class VideoMultipleChoiceTest extends Component {
       this.setState({ visible: false });
     };
 
-    onDelete=()=>{
-      this.props.deleteQuestion(this.props.data.id);
-    }
-
     onChange = e => {
         this.setState({
           value: e.target.value,

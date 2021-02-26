@@ -26,7 +26,7 @@ class MatchDrag extends Component{
     };
 
     onDelete=()=>{
-      this.props.deleteQuestion(this.props.data.id);
+      this.props.deleteQuestion(this.props.data.id, this.props.data.key);
     }
     render(){
         // const ListStyle = {

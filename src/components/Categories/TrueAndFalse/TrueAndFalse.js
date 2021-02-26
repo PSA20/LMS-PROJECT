@@ -21,7 +21,7 @@ export default function TrueAndFalse(props) {
         toggleModal(false);
       };
       const onDelete = () => {
-        props.deleteQuestion(props.data.id);
+        props.deleteQuestion(props.data.id, props.data.key);
       };
 
     return (

@@ -23,7 +23,7 @@ export default class DropDownSelect extends Component {
     };
 
     onDelete=()=>{
-      this.props.deleteQuestion(this.props.data.id);
+      this.props.deleteQuestion(this.props.data.id, this.props.data.key);
     }
      isNumeric(str) {
         if (typeof str != "string") return false // we only process strings!  

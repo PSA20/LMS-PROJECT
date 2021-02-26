@@ -24,10 +24,6 @@ export default class AudioMultipleChoiceTest extends Component {
       this.setState({ visible: false });
     };
 
-    onDelete=()=>{
-      this.props.deleteQuestion(this.props.data.id);
-    }
-
     onChange = e => {
         // console.log('radio checked', e.target.value);
         // console.log(this.props.data)

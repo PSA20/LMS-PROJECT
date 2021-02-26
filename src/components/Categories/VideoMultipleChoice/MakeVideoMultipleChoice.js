@@ -84,8 +84,8 @@ export default class MakeVideosMultipleChoice extends Component {
     if(this.state.addorupdate === "Update Question"){
       // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Video Multiple Choice", description: this.state.description, options: this.state.options, ans: ans, videourl:this.state.videourl,id:this.props.question.id};
-      this.props.updateQuestion(data, this.props.question.key)
+      const data={category: "Video Multiple Choice", description: this.state.description, options: this.state.options, ans: ans, videourl:this.state.videourl};
+      this.props.updateQuestion(data, this.props.question.key, this.props.question.id)
     }
     else{
       // console.log("ADD QUESTION function is called")

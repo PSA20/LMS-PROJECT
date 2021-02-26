@@ -35,7 +35,7 @@ export const Blanks = (props) => {
     toggleModal(false);
   };
   const onDelete = () => {
-    props.deleteQuestion(props.data.id);
+    props.deleteQuestion(props.data.id, props.data.key);
   };
   const makeDescription = (desc) => {
     //console.log("ans: ",props.data.ans[0]);

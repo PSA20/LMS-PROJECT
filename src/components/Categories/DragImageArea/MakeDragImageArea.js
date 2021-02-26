@@ -151,8 +151,8 @@ export default class MakeDragImageArea extends Component {
     if(this.state.addorupdate === "Update Question"){
       // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Drag Image Area", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, imageurl: this.state.imageurl, ans: ans,id:this.props.question.id};
-      this.props.updateQuestion(data, this.props.question.key)
+      const data={category: "Drag Image Area", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, imageurl: this.state.imageurl, ans: ans};
+      this.props.updateQuestion(data, this.props.question.key, this.props.question.id)
     }
     else{
       // console.log("ADD QUESTION function is called")
@@ -288,6 +288,7 @@ export default class MakeDragImageArea extends Component {
       <>
         <div className="row">
           <div className="col-12 col-sm-11 offset-sm-1">
+            <p>Note: Enter the exact labels of left part of image in the left box, right part of image in the right box and swapped label list in the middle box</p>
             <TextArea
               placeholder="Enter Your Question"
               value={this.state.description}
@@ -413,18 +414,18 @@ export default class MakeDragImageArea extends Component {
         <br />
         <div className={classes.DivinCol}>
         <div>
-          <h6>Left Options Correct Order</h6>
+          <h6>Left Labels Correct Order</h6>
         {this.renderOptions(this.state.leftoptions)}
           </div>
           <div>
-          <h6>Right Options Correct Order</h6>
+          <h6>Right Labels Correct Order</h6>
         {this.renderAnswers(this.state.options)}
           </div>
         
         </div>
         <br />
         <div className="col" style={{paddingLeft:"40%"}}>
-        <h6>Swapped Options to Display</h6>
+        <h6>Swapped Options to be displayed</h6>
         {this.renderAnswers(this.state.Answers)}
         </div>
         

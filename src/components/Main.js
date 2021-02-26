@@ -151,8 +151,8 @@ class Main extends Component {
           className="row"
         >
           <Blanks
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -168,8 +168,8 @@ class Main extends Component {
           className="row"
         >
           <DropDownSelect
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -185,8 +185,8 @@ class Main extends Component {
           className="row"
         >
           <TrueAndFalse
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -202,8 +202,8 @@ class Main extends Component {
           className="row"
         >
           <MultipleCheckbox
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -219,8 +219,8 @@ class Main extends Component {
           className="row"
         >
           <SequenceinOrder
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -237,8 +237,8 @@ class Main extends Component {
           className="row"
         >
           <MatchingWords
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -255,8 +255,8 @@ class Main extends Component {
           className="row"
         >
           <MatchDragImg
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -273,8 +273,8 @@ class Main extends Component {
           className="row"
         >
           <AudioMultipleChoice
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -291,8 +291,8 @@ class Main extends Component {
           className="row"
         >
           <VideoMultipleChoice
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -309,8 +309,8 @@ class Main extends Component {
           className="row"
         >
           <AudioSequenceInOrder
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -327,8 +327,8 @@ class Main extends Component {
           className="row"
         >
           <VideoSequenceInOrder
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -345,8 +345,8 @@ class Main extends Component {
           className="row"
         >
           <DragImageArea
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}
@@ -363,8 +363,8 @@ class Main extends Component {
           className="row"
         >
           <MatchDrag
-            deleteQuestion={this.props.deleteQuestion}
-            updateQuestion={this.props.updateQuestion}
+            deleteQuestion={this.props.deletequestion}
+            updateQuestion={this.props.updatequestion}
             color={this.props.questions.color}
             quesNo={index}
             data={item}

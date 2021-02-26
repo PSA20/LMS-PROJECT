@@ -158,8 +158,8 @@ export default class MakeMatchDragImg extends Component {
       // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
       const data={category: "Match Drag Image", description: this.state.description,leftoptions:this.state.options, rightoptions: ans, ans: ans,
-      leftoptionsurl:this.state.leftoptions, id:this.props.question.id};
-      this.props.updateQuestion(data, this.props.question.key)
+      leftoptionsurl:this.state.leftoptions};
+      this.props.updateQuestion(data, this.props.question.key, this.props.question.id)
     }
     else{
       // console.log("ADD QUESTION function is called")
@@ -292,6 +292,7 @@ export default class MakeMatchDragImg extends Component {
       <>
         <div className="row">
           <div className="col-12 col-sm-11 offset-sm-1">
+            <p>Note: Insert url in the left box, respective names of images in the right box and swapped option names (that are Answers) in the middle box</p>
             <TextArea
               placeholder="Enter Your Question"
               value={this.state.description}

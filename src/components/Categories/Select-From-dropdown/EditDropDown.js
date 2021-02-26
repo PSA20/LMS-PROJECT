@@ -37,9 +37,9 @@ export default class EditDropDown extends Component {
           this.setState({descriptionError: "Count of Dropdown is not equal"});
       }else if(dropdownCount === optionCount){
         if(optionCount>0){
-          const data={category: CategoryTypes.SELECT_FROM_DROPDOWN, description: this.state.description, options: this.state.options, ans: this.state.ans, id : this.props.data.id};
+          const data={category: CategoryTypes.SELECT_FROM_DROPDOWN, description: this.state.description, options: this.state.options, ans: this.state.ans};
           //console.log("data: ", data);
-          this.props.updateQuestion(data, this.props.question.key)
+          this.props.updateQuestion(data, this.props.question.key, this.props.question.id)
           this.props.handleOk();
         }else{
           this.setState({descriptionError: "Add atleast one Dropdown"});

@@ -27,7 +27,7 @@ export default class VideoMultipleChoice extends Component {
     };
 
     onDelete=()=>{
-      this.props.deleteQuestion(this.props.data.id);
+      this.props.deleteQuestion(this.props.data.id, this.props.data.key);
     }
       onChange = e => {
         this.setState({

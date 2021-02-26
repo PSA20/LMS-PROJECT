@@ -24,7 +24,7 @@ export default class AudioMultipleChoice extends Component {
     };
 
     onDelete=()=>{
-      this.props.deleteQuestion(this.props.data.id);
+      this.props.deleteQuestion(this.props.data.id, this.props.data.key);
     }
       onChange = e => {
         //console.log('radio checked', e.target.value);

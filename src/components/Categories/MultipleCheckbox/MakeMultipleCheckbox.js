@@ -87,8 +87,8 @@ export default class MakeMultipleCheckbox extends Component {
     if(this.state.addorupdate === "Update Question"){
       // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans,id:this.props.question.id};
-      this.props.updateQuestion(data, this.props.question.key)
+      const data={category: "Multiple Checkbox", description: this.state.description, options: this.state.options, ans: ans};
+      this.props.updateQuestion(data, this.props.question.key, this.props.question.id)
     }
     else{
       // console.log("ADD QUESTION function is called")

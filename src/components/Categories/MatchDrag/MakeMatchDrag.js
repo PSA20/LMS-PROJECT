@@ -157,8 +157,8 @@ export default class MakeMatchDrag extends Component {
     if(this.state.addorupdate === "Update Question"){
       // console.log("Update function is called")
       // this.setState({ descriptionError: "", optionsError: "" });
-      const data={category: "Match Drag", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans,id:this.props.question.id};
-      this.props.updateQuestion(data, this.props.question.key)
+      const data={category: "Match Drag", description: this.state.description,leftoptions:this.state.leftoptions, rightoptions: this.state.options, ans: ans};
+      this.props.updateQuestion(data, this.props.question.key, this.props.question.id)
     }
     else{
       // console.log("ADD QUESTION function is called")
@@ -291,6 +291,7 @@ export default class MakeMatchDrag extends Component {
       <>
         <div className="row">
           <div className="col-12 col-sm-11 offset-sm-1">
+          <p>Note: Enter the swapped options in the left box, question words to be paired in the right box and right sequence of swapped options in the middle (answers) box</p>
             <TextArea
               placeholder="Enter Your Question"
               value={this.state.description}

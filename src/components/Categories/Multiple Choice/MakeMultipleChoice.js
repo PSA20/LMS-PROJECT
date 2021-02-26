@@ -20,7 +20,6 @@ export default class MakeMultipleChoice extends Component {
       options: [],
       optionsError: "",
       value: 0,
-
       addorupdate: "Add Question"
     };
   }
@@ -114,7 +113,7 @@ export default class MakeMultipleChoice extends Component {
     const { value } = this.state;
     return this.state.options.map((item) => {
       return (
-        <div style={{ marginTop: 7 }} id={item} className="row">
+        <div style={{ marginTop: 7 }} id={"MCQ"+item} className="row">
           <div className="col-5 col-sm-5 offset-sm-1">
             <Radio.Group onChange={this.onChange} value={value}>
               <Radio style={radioStyle} value={item}>
@@ -185,7 +184,7 @@ export default class MakeMultipleChoice extends Component {
         <div className="row">
           
           <div className="col-12 col-sm-10 offset-sm-1">
-          <p></p>
+          {/* <p>Note:</p> */}
             <TextArea
               placeholder="Enter Your Question"
               value={this.state.description}
@@ -216,7 +215,7 @@ export default class MakeMultipleChoice extends Component {
               style={{ marginLeft: 0 }}
               block
               type="primary"
-              success
+              // success
               onClick={this.onAddOption}
             >
               {" "}
