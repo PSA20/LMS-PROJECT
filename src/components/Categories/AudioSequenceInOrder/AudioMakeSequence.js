@@ -34,6 +34,7 @@ export default class AudioMakeSequenceInOrder extends Component {
         this.setState({description: this.props.question.description,
             options: this.props.question.options,
             Answers: this.props.question.ans,
+            audiourl: this.props.question.audiourl,
             addorupdate : "Update Question"})
     }
   }

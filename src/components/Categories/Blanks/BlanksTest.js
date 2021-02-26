@@ -95,7 +95,7 @@ class BlanksTest extends Component{
         {Array(this.state.numOfBlanks).fill(0).map((item, i) =>{
           let m = i+1
            return (
-            <form>
+            <form key={"BT"+m}>
             <label>{m}
            <input style={{marginLeft:"5px",marginBottom:"2px"}} 
            type="text"

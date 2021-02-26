@@ -38,9 +38,10 @@ export default class MakeMatchDragImg extends Component {
     if(this.props.description){
       // console.log(this.props.question)
         this.setState({description: this.props.question.description,
-            options: this.props.question.rightoptions,
-            leftoptions: this.props.question.leftoptions,
+            // rightoptions: this.props.question.rightoptions,
+            options: this.props.question.leftoptions,
             Answers: this.props.question.ans,
+            leftoptions: this.props.question.leftoptionsurl,
             addorupdate : "Update Question"})
     }
   }

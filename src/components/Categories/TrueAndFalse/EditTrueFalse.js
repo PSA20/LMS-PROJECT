@@ -11,7 +11,8 @@ export default function EditTrueFalse(props) {
         description: props.data.description,
         options: [],
         ans: props.data.ans,
-        
+        key: props.data.key,
+        id: props.data.id,
         descriptionError: "",
        
     });
@@ -26,9 +27,9 @@ export default function EditTrueFalse(props) {
         let ans=[];
         ans[0]=value;
              
-        const data={category: TRUE_AND_FALSE, description: question.description, options: [], ans: ans,descriptionError: "" };
+        const data={category: "True and False", description: question.description, options: [], ans: ans};
         //console.log(data);
-        this.props.updateQuestion(data, this.props.question.key, this.props.question.id)
+        props.updateQuestion(data, question.key, question.id)
         props.handleOk();
         }
       };

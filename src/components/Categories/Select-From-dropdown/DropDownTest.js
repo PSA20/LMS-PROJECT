@@ -87,7 +87,7 @@ export default class DropDownSelect extends Component {
                             if(this.state.userans[count]){
                               x = this.state.userans[count]
                             }
-                        return(<Dropdown overlay={this.menu(data.options[count], data.ans[count], count)}>
+                        return(<Dropdown overlay={this.menu(data.options[count], data.ans[count], count)} key={"DD"+count}>
                             {/* <a className="ant-dropdown-link"  onClick={e => e.preventDefault()}>
                               -Select- 
                             </a> */}

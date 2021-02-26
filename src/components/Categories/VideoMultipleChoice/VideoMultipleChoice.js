@@ -4,7 +4,7 @@ import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
 // import EditMultipleChoice from "./EditMultipleChoice";
 import MakeVideoMultipleChoice from "./MakeVideoMultipleChoice";
 // import ReactAudioPlayer from 'react-audio-player';
-import VideoPlayer from 'react-video-js-player';
+// import VideoPlayer from 'react-video-js-player';
 // import example from '../../../assets/Video/examplevideo.mov';
 export default class VideoMultipleChoice extends Component {
     constructor(props) {
@@ -58,8 +58,8 @@ export default class VideoMultipleChoice extends Component {
                 /> */}
                 {/* <VideoPlayer controls={true} src={this.props.data.videourl} width="720"
                     height="420" /> */}
-              <iframe src={this.props.data.videourl} title="Video" width="640" height="360" frameborder="1" style={{border: "1px solid black"}} 
-              allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <iframe src={this.props.data.videourl} title="Video" width="640" height="360" style={{border: "1px solid black"}} 
+              allow="autoplay; fullscreen; picture-in-picture" ></iframe>
                 {/* <VideoPlayer controls={true} src={example} /> */}
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
                 <Radio.Group value={this.props.data.ans[0]}>

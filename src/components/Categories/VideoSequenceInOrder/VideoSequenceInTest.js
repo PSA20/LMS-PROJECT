@@ -59,8 +59,8 @@ class VideoSequenceInTest extends Component{
                 /> */}
                 {/* <VideoPlayer controls={true} src={this.props.data.videourl} width="720"
                     height="420" /> */}
-                     <iframe src={this.props.data.videourl} title="Video" width="640" height="360" frameborder="0" style={{border: "1px solid black"}} 
-              allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                     <iframe src={this.props.data.videourl} title="Video" width="640" height="360" style={{border: "1px solid black"}} 
+              allow="autoplay; fullscreen; picture-in-picture" ></iframe>
         <p style={{ fontSize: 17}}>{this.props.quesNo}. {this.props.data.description}</p>
             {/* </div> */}
             <DragDropContext onDragEnd={this.handleOnDragEnd}>

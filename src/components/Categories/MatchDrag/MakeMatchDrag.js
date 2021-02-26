@@ -129,7 +129,7 @@ export default class MakeMatchDrag extends Component {
       { option: this.state.AnsValue },
       Schemas.option
     );
-    if(this.state.options.includes(this.state.AnsValue)){
+    if(this.state.leftoptions.includes(this.state.AnsValue)){
       if (result.error) {
         this.setState({ AnsValueError: result.error.details[0].message });
       } 
@@ -202,7 +202,7 @@ export default class MakeMatchDrag extends Component {
   renderAnswers = (optionsorans) => {
     return optionsorans.map((item) => {
       return (
-        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
+        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol} key={"MMDA"+item}>
           <div className="col-5 col-sm-6 offset-sm-1">
             <div className={classes.MyListDiv}>
                         <List.Item
@@ -225,7 +225,7 @@ export default class MakeMatchDrag extends Component {
   renderOptions = (leftoptions) => {
     return leftoptions.map((item) => {
       return (
-        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
+        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol} key={"MMDO"+item}>
          <div className="col-5 col-sm-6 offset-sm-1">
           {/* <div > */}
             <div className={classes.MyListDiv}>

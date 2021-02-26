@@ -29,6 +29,7 @@ export default class MakeAudioMultipleChoice extends Component {
       this.setState({description: this.props.question.description,
           options: this.props.question.options,
           value: this.props.question.ans[0],
+          audiourl: this.props.question.audiourl,
           addorupdate:"Update Question"},
           )
   }

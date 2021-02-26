@@ -33,6 +33,7 @@ export default class VideoMakeSequenceInOrder extends Component {
         this.setState({description: this.props.question.description,
             options: this.props.question.options,
             Answers: this.props.question.ans,
+            videourl: this.props.question.videourl,
             addorupdate : "Update Question"})
     }
   }

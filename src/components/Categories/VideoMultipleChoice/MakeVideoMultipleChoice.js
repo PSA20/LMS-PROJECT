@@ -29,6 +29,7 @@ export default class MakeVideosMultipleChoice extends Component {
       this.setState({description: this.props.question.description,
           options: this.props.question.options,
           value: this.props.question.ans[0],
+          videourl: this.props.question.videourl,
           addorupdate:"Update Question"},
           )
   }

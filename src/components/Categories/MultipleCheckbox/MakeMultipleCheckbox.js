@@ -26,7 +26,7 @@ export default class MakeMultipleCheckbox extends Component {
     if(this.props.description){
         this.setState({description: this.props.question.description,
             options: this.props.question.options,
-            value: this.props.question.ans,
+            value: [],
             addorupdate : "Update Question"})
     }
   }
@@ -281,7 +281,7 @@ export default class MakeMultipleCheckbox extends Component {
               type="primary"
               style={{marginTop: 7}}
             >
-              {/* Add Question */}
+              Add Question
               {this.state.addorupdate}
             </Button>
           </div>

@@ -75,7 +75,7 @@ class MatchingWordsTest extends Component{
             {/* </div> */}
             
             <DragDropContext onDragEnd={this.handleOnDragEnd}>
-            <Droppable droppableId="characters" >
+            <Droppable droppableId="characters" key={"MWT"}>
     {(provided) => (
             <ul  className = "characters" style={{listStyleType:"none"}} {...provided.droppableProps} ref={provided.innerRef}>
             {this.state.mydata.map(index=>{
