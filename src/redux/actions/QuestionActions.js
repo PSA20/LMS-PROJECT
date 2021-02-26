@@ -1,8 +1,9 @@
 import * as ActionTypes from "../types/Questions";
 import axios from "axios";
-export const addQuestion = (question) => ({
+export const addQuestion = (question, key) => ({
   type: ActionTypes.ADD_QUESTION,
   payload: question,
+  key: key
 });
 
 export const deleteQuestion = (question) => ({
@@ -56,9 +57,11 @@ export const changeScore = (score) => ({
     payload: time,
   });
 
- export const updateQuestion = (question)=>({
+ export const updateQuestion = (question, key, id)=>({
      type: ActionTypes.UPDATE_QUESTION,
      payload: question,
+     key:key,
+     id: id
  });
  export const fetchQuestionsSuccess=(fetchedMedic)=>{
   return {
@@ -101,6 +104,17 @@ export const fetchscoresuccess = (score) =>{
     score: score
   }
 }
+export const settestscorezero = () =>{
+  return{
+    type: ActionTypes.SET_TEST_SCORE_ZERO
+  }
+}
+// export const settestscore = (score) =>{
+//   return{
+//     type: ActionTypes.SET_TEST_SCORE,
+//     score: score
+//   }
+// }
 export const fetchtimefail =(error)=>{
   return {
     type: ActionTypes.FETCH_TIME_FAIL,
@@ -123,25 +137,49 @@ export const deletequestion = (id,key) =>{
     })
   }
 }
-export const updatequestion = (data, key) =>{
-  // console.log(data.id, data.key)
+export const updatequestion = (data, key, id) =>{
+  console.log(data ,key)
   return dispatch =>{
     axios.put('https://ymstutor-lms-default-rtdb.firebaseio.com/questions/'+key+".json",data)
+    // axios.put('https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json',{key: data})
     .then(res =>{
-      // console.log(res)
-      dispatch(updateQuestion(data))
+      console.log(res)
+      dispatch(updateQuestion(data, key, id))
+      // dispatch(deletequestion(data.id, key))
+      // dispatch(addquestions(data))
     })
-    .catch( err =>{console.log(err)})
+    // .catch( err =>{console.log(err)})
   }
 }
-
+export const inittestscoretozero = ()=>{
+  return dispatch=>{
+    axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/testscore.json","0")
+    .then(
+      res =>{
+        // console.log("from change score in db",res)
+        dispatch(settestscorezero())
+      })
+    .catch(err=>{console.log(err)})
+  }
+}
+// export const changefinaltestscore = (score)=>{
+//   return dispatch=>{
+//     axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/testscore.json",score)
+//     .then(
+//       res =>{
+//         // console.log("from change score in db",res)
+//         dispatch(settestscore(res.data))
+//       })
+//     .catch(err=>{console.log(err)})
+//   }
+// }
 export const addquestions = (data) =>{
   // console.log(data)
   return dispatch =>{
     axios.post("https://ymstutor-lms-default-rtdb.firebaseio.com/questions.json",data)
     .then(res =>{
-      // console.log(res)
-      dispatch(addQuestion(data))
+      console.log("add question",res)
+      dispatch(addQuestion(data, res.data.name))
     })
   }
 }
@@ -165,6 +203,8 @@ export const addquestions = (data) =>{
         }
         // console.log(fetcheddata)
         dispatch(fetchQuestionsSuccess(fetcheddata));
+        console.log("heyyy testscoreeeeeee")
+        dispatch(inittestscoretozero())
       })
    .catch(err=>{
     //  console.log(err)
@@ -177,17 +217,25 @@ export const addquestions = (data) =>{
    return dispatch =>{
      const arr = list
      const acscore = totsc
+     console.log(totsc, s)
      let score = 0
      if(arr.val){
       score = s + acscore
      }
      else{
-       score = acscore
+       score = s
      }
-    axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/testscore.json",score)
+     console.log(score)
+    if(score !== s){
+      axios.put("https://ymstutor-lms-default-rtdb.firebaseio.com/testscore.json",score)
     .then(res =>{
       dispatch(userAnsList(list, score))
     })
+    }
+    else{
+      dispatch(userAnsList(list, score))
+    }
+    
    }
  }
  export const initcolor = () =>{

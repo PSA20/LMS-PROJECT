@@ -22,7 +22,7 @@ import VideoSequenceInTest from '../Categories/VideoSequenceInOrder/VideoSequenc
 import DragImageAreaTest from '../Categories/DragImageArea/DragImageAreaTest';
 import SubmitTest from "../SubmitTest/SubmitTest";
 // import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import Countdown from "react-countdown";
+// import Countdown from "react-countdown";
 
 // import MultipleC from "../Categories/Multip"
 
@@ -410,9 +410,9 @@ class MyTest extends Component{
 
 
     render(){
-        const Completionist = () => <span>You are good to go!</span>;
+        // const Completionist = () => <span>You are good to go!</span>;
         // const remainingTime = Date.now() + this.props.time * 60 *1000
-        const remainingTime = this.state.remainingTime
+        // const remainingTime = this.state.remainingTime
         return(
             <div className="mainBody">
         {/* <h1>{this.props.user.username}</h1> */}
@@ -505,7 +505,7 @@ const mapDispatchToProps = (dispatch) => ({
     initquestions:()=>{ dispatch(actions.initquestions())},
     initcolor:()=>{dispatch(actions.initcolor())},
     inittime:()=>{dispatch(actions.inittime())},
-    initscore:()=>{dispatch(actions.initscore())}
+    initscore:()=>{dispatch(actions.initscore())},
 
   });
   const mapStateToProps = (state) => {

@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch) => ({
   addQuestion: (data) => dispatch(addQuestion(data)),
   addquestions: (data) => dispatch(addquestions(data)),
   deletequestion: (id, key) => dispatch(deletequestion(id, key)),
-  updatequestion: (data, key) => dispatch(updatequestion(data, key)),
+  updatequestion: (data, key, id) => dispatch(updatequestion(data, key, id)),
   updateQuestion: (data) => dispatch(updateQuestion(data)),
   deleteQuestion: (data) => {
     dispatch(deleteQuestion(data));

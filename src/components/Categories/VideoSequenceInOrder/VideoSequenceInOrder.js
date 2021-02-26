@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Card, Modal, List } from 'antd';
 import { EditTwoTone,  DeleteTwoTone } from '@ant-design/icons';
 import MakesequenceInOrder from './VideoMakeSequence';
-import VideoPlayer from 'react-video-js-player';
+// import VideoPlayer from 'react-video-js-player';
 // import ReactAudioPlayer from 'react-audio-player';
 import classes from './SequenceInOrder.module.css';
 

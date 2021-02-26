@@ -69,15 +69,19 @@ const fetchQuestionsFail = ( state, action ) => {
 export const Questions = ( state = initialState, action) => {
   switch (action.type) {
     case types.ADD_QUESTION:
-       action.payload.id= action.payload.ans[0];
+      //  action.payload.id= action.payload.ans[0];
+      action.payload.id = state.questions.length + 1
       //  console.log(action.payload)
       //  console.log(state.questions)
+       // id:action.payload.ans[0]
+    
        const newOrder = {
-        ...action.payload
-        // id:action.payload.ans[0]
-    }
+        ...action.payload,
+        key: action.key
+       }   
     const updateobj = {
       questions: state.questions.concat(newOrder)}
+      console.log(state.questions)
       // return { ...state, questions: state.questions.concat(action.payload) };
       // return {...state, questions: [...state.questions, action.payload]}
       return updateObject(state, updateobj)
@@ -118,13 +122,21 @@ export const Questions = ( state = initialState, action) => {
       // return state
     case types.UPDATE_QUESTION:
       console.log(action.payload)
-            const question=action.payload;
+            // const question=action.payload;
            // console.log("question: ",question);
-            const id= question.id;
-          //  console.log("id: ",id);
-            var foundIndex = state.questions.findIndex(x => x.id === id);
+            // const id= question.id;
+            // const id= question.id;
+           console.log("id: ",action.id);
+           console.log(action.payload)
+            // var foundIndex = state.questions.findIndex(x => x.id === id);
+            var foundIndex = state.questions.findIndex(x => x.key === action.key);
            // console.log("found index: ",foundIndex);
-            state.questions[foundIndex]=question;
+           const updata = {
+            ...action.payload,
+            key: action.key,
+            id: action.id
+           }  
+            state.questions[foundIndex]=updata;
             console.log("state: ",state);
             return { ...state, questions: state.questions}    
     case types.FETCH_QUESTIONS_SUCCESS: return fetchQuestionsSuccess(state, action);
@@ -133,6 +145,8 @@ export const Questions = ( state = initialState, action) => {
     case types.FETCH_COLOR_FAIL: return updateObject( state, { color: "white" } );
     case types.FETCH_SCORE_SUCCESS: return updateObject(state,{score: action.score});
     case types.FETCH_SCORE_FAIL: return updateObject( state, { score: 1 } );
+    case types.SET_TEST_SCORE_ZERO: return updateObject( state, { testscore: 0 } );
+    case types.SET_TEST_SCORE: return updateObject( state, { testscore: action.score } );
     case types.FETCH_TIME_SUCCESS: return updateObject(state,{time: action.time});
     case types.FETCH_TIME_FAIL: return updateObject( state, { time: 60 } );
 

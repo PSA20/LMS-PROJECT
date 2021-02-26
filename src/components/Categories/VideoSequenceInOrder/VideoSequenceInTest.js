@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Card, Button } from 'antd';
 import classes from './SequenceInOrder.module.css';
 // import ReactAudioPlayer from 'react-audio-player';
-import VideoPlayer from 'react-video-js-player';
+// import VideoPlayer from 'react-video-js-player';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 class VideoSequenceInTest extends Component{
     constructor(props) {

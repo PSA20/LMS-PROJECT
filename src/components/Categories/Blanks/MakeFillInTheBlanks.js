@@ -35,7 +35,7 @@ export  const MakeFillInTheBlanks = (props) => {
           bankValueError: "",
       })
       }
-    },[props.description, props.data.description, props.data.ans, props.addorupdate]);
+    },[]);
   
 
     const deleteBlankInDescription=(index)=>{
@@ -141,10 +141,10 @@ const onAddBlank=()=>{
 
 const onAddorUpdate = (ans)=>{
   if(question.addorupdate === "Update Question"){
-    // console.log("Update function is called")
+    console.log("Update function is called", props.data)
     // this.setState({ descriptionError: "", optionsError: "" });
     const data={category: "Fill in the Blanks", description: question.description, options: [], ans: ans, id: props.data.id};
-    this.props.updateQuestion(data, this.props.question.key)
+    props.updateQuestion(data, props.data.key)
   }
   else{
     // console.log("ADD QUESTION function is called")

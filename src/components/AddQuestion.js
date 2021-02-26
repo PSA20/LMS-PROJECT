@@ -129,7 +129,7 @@ export default class AddQuestion extends Component {
         
            return (<MakeMultipleChoice addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }else if (this.state.catergory === "Fill in the Blanks"){
-        return (<MakeFillInTheBlanks addQuestion={this.props.addQuestion} description={NaN} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
+        return (<MakeFillInTheBlanks addQuestion={this.props.addQuestion} description={""} handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }else if (this.state.catergory === CategoryTypes.SELECT_FROM_DROPDOWN){
         return (<MakeDropDown addQuestion={this.props.addQuestion}  handleOk={this.handleOk} handleCancel={this.handleCancel}/>);
        }else if (this.state.catergory === CategoryTypes.TRUE_AND_FALSE){
