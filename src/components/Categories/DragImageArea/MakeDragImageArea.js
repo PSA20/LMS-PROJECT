@@ -42,6 +42,7 @@ export default class MakeDragImageArea extends Component {
             options: this.props.question.rightoptions,
             leftoptions: this.props.question.leftoptions,
             Answers: this.props.question.ans,
+            imageurl:this.props.question.imageurl,
             addorupdate : "Update Question"})
     }
   }
@@ -196,7 +197,7 @@ export default class MakeDragImageArea extends Component {
   renderAnswers = (optionsorans) => {
     return optionsorans.map((item) => {
       return (
-        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
+        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol} key={"MDIA"+item}>
           <div className="col-5 col-sm-6 offset-sm-1">
             <div className={classes.MyListDiv}>
                         <List.Item
@@ -219,7 +220,7 @@ export default class MakeDragImageArea extends Component {
   renderOptions = (leftoptions) => {
     return leftoptions.map((item) => {
       return (
-        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol}>
+        <div style={{ marginTop: 7 }} id={item} className={classes.DivinCol} key={"MDMO"+item}>
          <div className="col-5 col-sm-6 offset-sm-1">
           {/* <div > */}
             <div className={classes.MyListDiv}>
@@ -333,7 +334,7 @@ export default class MakeDragImageArea extends Component {
               style={{ marginLeft: 0, width:"100px" }}
               // block
               type="primary"
-              success
+              // success
               onClick={this.onAddLeftOption}
             >
               {" "}
@@ -358,7 +359,7 @@ export default class MakeDragImageArea extends Component {
               style={{ marginLeft: 0, width:"100px" }}
               // block
               type="primary"
-              success
+              // success
               onClick={this.onAddOption}
             >
               {" "}
@@ -386,7 +387,7 @@ export default class MakeDragImageArea extends Component {
               style={{ marginLeft: 0, width:"105px" }}
               // block
               type="primary"
-              success
+              // success
               onClick={this.onAddAnswer}
             >
               {" "}

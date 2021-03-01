@@ -103,7 +103,7 @@ class DragImageAreaTest extends Component{
         else{
             return(
                 <div>
-                        <Draggable key = {temp} draggableId={"lef"+temp} index= {m}>
+                        <Draggable key = {"DIALEF"+temp} draggableId={"lef"+temp} index= {m}>
                         {(provided) => (
                            
                         <li className={classes.MyListDiv}
@@ -119,12 +119,12 @@ class DragImageAreaTest extends Component{
         let temp = this.state.rightans[m]
         if(!temp){
             // console.log(m)
-            return(<div></div>)
+            return(<div key={"DIARIG"+m}></div>)
         }
         else{
             return(
                 <div>
-                        <Draggable key = {temp} draggableId={"rig"+temp} index= {m}>
+                        <Draggable key = {"DIGRIG12"+m} draggableId={"rig"+temp} index= {m}>
                         {(provided) => (
                            
                         <li className={classes.MyListDiv}
@@ -140,12 +140,12 @@ class DragImageAreaTest extends Component{
     myoptionlist = (m) =>{
         let temp = this.state.soptions[m]
         if(!temp){
-            return(<div></div>)
+            return(<div key={"DIGO"+m}></div>)
         }
         else{
             return(
-                <div className={classes.MyListDivDown}>
-                        <Draggable key = {temp} draggableId={"opt"+temp} index= {m}>
+                <div className={classes.MyListDivDown} key={"DIGO12"+m}>
+                        <Draggable key = {"DIG45"+m} draggableId={"opt"+temp} index= {m}>
                         {(provided) => (
                            
                         <li className={classes.MyListDiv}
@@ -198,7 +198,7 @@ class DragImageAreaTest extends Component{
     let ma =this.state.leftoptions.indexOf(index)
     const renderdataa = this.myleftanslist(ma,index)
         return(
-        <Droppable droppableId={"lef"+index} >
+        <Droppable droppableId={"lef"+index} key={"DIG56"+ma}>
         {(provided, snapshot) => (
         <ul  className = "characters" 
         style={{listStyleType:"none", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 
@@ -228,7 +228,7 @@ class DragImageAreaTest extends Component{
     let ma =this.state.rightoptions.indexOf(index)
     const renderdataa = this.myrightanslist(ma,index)
         return(
-        <Droppable droppableId={"rig"+index} >
+        <Droppable droppableId={"rig"+index} key={"DIG78"+ma}>
         {(provided, snapshot) => (
         <ul  className = "characters" 
         style={{listStyleType:"none", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 
@@ -257,7 +257,7 @@ class DragImageAreaTest extends Component{
     let ma =this.state.answers.indexOf(index)
     const renderdataa = this.myoptionlist(ma,index)
         return(
-        <Droppable droppableId={"opt"+index} >
+        <Droppable droppableId={"opt"+index} key={"DIG90"+ma}>
         {(provided, snapshot) => (
         <ul  className = "characters" 
         style={{listStyleType:"none", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 

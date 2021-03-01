@@ -33,7 +33,7 @@ class SubmitTest extends Component{
             {this.props.list.map(id =>{
                 // console.log(id)
                 return(
-                    <div>
+                    <div key={"SUMT"+id.queNo}>
                         <p>QueNo:{id.queNo}, userAns:{id.userAns}, CorrectAns:{id.correctans}</p>
                     </div>
                 )

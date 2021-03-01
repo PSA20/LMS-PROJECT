@@ -61,7 +61,7 @@ class MatchingWordsTest extends Component{
         <List itemLayout="horizontal" >
             {this.props.data.leftoptions.map(index=>{
                 return(
-                    <div className={classes.DivinCol}>
+                    <div className={classes.DivinCol} key={"MDT"+index}>
                         <div className={classes.MyListDiv}>
                         <List.Item>{index}</List.Item>  
                     </div>
@@ -84,7 +84,7 @@ class MatchingWordsTest extends Component{
                 // let lala = index.split(",,")
                 // {this.props.data.options.indexOf(index)}
                 return(
-                    <div className={classes.DivinCol}>
+                    <div className={classes.DivinCol} key={"MDT12"+index}>
                     <Draggable key = {index} draggableId={index} index= {this.state.mydata.indexOf(index)}>
                     {(provided) => (
                     <li className={classes.MyListDiv2}

@@ -100,11 +100,11 @@ class MatchDragTest extends Component{
     myanslist=(m,data)=>{
         let temp = this.state.arr[m]
         if(!temp){
-            return(<div></div>)
+            return(<div key={"MDA"+m}></div>)
         }
         else{
             return(
-                <div>
+                <div key={"MDA1"+m}>
                         <Draggable key = {temp} draggableId={temp} index= {m}>
                         {(provided) => (
                            
@@ -121,11 +121,11 @@ class MatchDragTest extends Component{
     myoptionlist = (m) =>{
         let temp = this.state.lrr[m]
         if(!temp){
-            return(<div></div>)
+            return(<div key={"MDO1"+m}></div>)
         }
         else{
             return(
-                <div>
+                <div key={"MDO23"+m}>
                         <Draggable key = {temp} draggableId={temp} index= {m}>
                         {(provided) => (
                            
@@ -173,12 +173,12 @@ class MatchDragTest extends Component{
                     let x = data[1]
                     if(x.id === "leftoptions"){
                         return(
-                            <div >
+                            <div key={"MDTLEF"}>
                                  {x.data.map(index =>{
                                      let ma =x.data.indexOf(index)
                                      const renderdataa = this.myoptionlist(ma,index)
                                           return(
-                                <Droppable droppableId={index} >
+                                <Droppable droppableId={index} key={"MDLEF23"+ma}>
                                 {(provided, snapshot) => (
                                     <ul  className = "characters" 
                                     style={{listStyleType:"none", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 
@@ -216,12 +216,12 @@ class MatchDragTest extends Component{
                     else{
                         
                         return(
-                            <div>
+                            <div key={"MDRIG"}>
                                 {x.data.map(index =>{
                                     let m =x.data.indexOf(index)
                                     const renderdata = this.myanslist(m,index)
                                     return(
-                                        <Droppable droppableId={index} >
+                                        <Droppable droppableId={index} key={"MDRIG45"+m}>
                                     {(provided, snapshot) => (
                                 <ul  className = "characters" 
                                 style={{listStyleType:"none",padding:"0px", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 

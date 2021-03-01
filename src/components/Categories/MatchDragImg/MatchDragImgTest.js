@@ -111,12 +111,12 @@ class MatchDragImgTest extends Component{
         // console.log(isNaN(temp))
         if(!temp){
             // console.log(m)
-            return(<div></div>)
+            return(<div key={"MDA"+m}></div>)
         }
         else{
             // console.log("bllllllll")
             return(
-                <div>
+                <div key={"MDA12"+m}>
                         <Draggable key = {"ans"+temp} draggableId={"ans"+temp} index= {m}>
                         {(provided) => (
                            
@@ -194,12 +194,12 @@ class MatchDragImgTest extends Component{
                     // // console.log(x.data)s
                     if(x.id === "leftoptions"){
                         return(
-                            <div >
+                            <div key={"MDILEF"}>
                                  {x.data.map(index =>{
                                      let ma =x.data.indexOf(index)
                                      const renderdataa = this.myoptionlist(ma,index)
                                           return(
-                                <Droppable droppableId={"lef"+index} >
+                                <Droppable droppableId={"lef"+index}  key={"MDALEF"+ma}>
                                 {(provided, snapshot) => (
                                     <ul  className = "characters" 
                                     style={{listStyleType:"none", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 
@@ -237,13 +237,13 @@ class MatchDragImgTest extends Component{
                     else{
                         
                         return(
-                            <div>
+                            <div key={"MDA1RIG"}>
                                 {x.data.map(index =>{
                                     // console.log("rightdrop", x.data)
                                     let m =x.data.indexOf(index)
                                     const renderdata = this.myanslist(m,index)
                                     return(
-                                        <Droppable droppableId={"rig"+index} >
+                                        <Droppable droppableId={"rig"+index}  key={"MDARIG"+m}>
                                     {(provided, snapshot) => (
                                 <ul  className = "characters" 
                                 style={{listStyleType:"none",padding:"0px", background: snapshot.isDraggingOver ? "lightblue" : "lightgrey"}} 
